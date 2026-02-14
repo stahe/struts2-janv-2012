@@ -1192,11 +1192,13 @@
 
 <ul>
 <li>ligne 8 : définit un package nommé <em>example</em> qui étend le package <em>struts-default</em>. Ce package gère les URL du type <em>/example/Action</em> (namespace /<em>example</em>).</li>
-<li>lignes 9-11 : définissent une action nommée <em>HelloWorld </em>(attribut <em>name</em>)<em> </em>qui correspond donc à l&#x27;URL <em>/example/Helloworld</em>. Cette action est traitée par une instance de la classe <em>example.HelloWorld</em> (attribut <em>class</em>).</li>
+<li>lignes 9-11 : définissent une action nommée <em>HelloWorld </em>(attribut <em>name</em>)<em> </em>qui correspond donc à l&#x27;URL <em>/example/Helloworld</em>. Cette action est traitée par une instance de la classe <em>example.HelloWorld</em> (attribut <em>class</em>).<ul>
 <li>le contrôleur [FilterDispatcher] fera exécuter la méthode <em>execute</em> de cette classe.</li>
 <li>cette méthode rendra une chaîne de caractères appelée <strong>clé de navigation</strong>.</li>
 <li>les différentes clés de navigation doivent être définies par des balises <em>&lt;result name=&quot;clé&quot;/&gt;</em> (ligne 10). En l&#x27;absence d&#x27;attribut <em>name</em>, c&#x27;est la clé <em>success</em> qui est utilisée par défaut. C&#x27;est le cas ci-dessus. Donc la méthode <em>execute</em> de la classe <em>example.HelloWorld</em> doit rendre au contrôleur [FilterDispatcher] la clé <em>success</em>.</li>
 <li>le contrôleur [FilterDispatcher] fait alors afficher la page [/example/HelloWorld.JSP] (ligne 10).</li>
+</ul>
+</li>
 </ul>
 <p>Si nous fusionnons les deux fichiers [struts.xml] et [example.xml], supprimons le package <em>default</em> qui semble inutile, tout se passe comme si on avait le fichier [struts.xml] réduit au seul fichier [example.xml].</p>
 <p><a id="refheading99751454977699"></a></p>
@@ -1347,7 +1349,8 @@
 <ul>
 <li>ligne 19 : définit un lien Html. L&#x27;attribut <strong>href</strong> de la balise <strong>&lt;a&gt;</strong> attend une chaîne de caractères. Ici, on veut utiliser la valeur de l&#x27;URL définie en ligne 16 et d&#x27;id <strong>URL</strong>. On écrit pour cela, <em>href=&quot;%{URL}&quot;</em>. La variable <em>URL</em> est évaluée et sa valeur affectée à l&#x27;attribut <em>href</em>. Dans la plupart des cas, l&#x27;évaluation des variables est implicite. Par exemple, lorsqu&#x27;on écrit</li>
 </ul>
-<p><em>&lt;s:property name= &quot;message &quot;/&gt;</em></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;s:property name= &quot;message &quot;/&gt;
+</code></pre></div>
 <p>c&#x27;est la valeur de la propriété <em>message</em> qui est affichée et non la chaîne &quot;<em> message </em>&quot;. Mais dans d&#x27;autres cas, il faut forcer l&#x27;évaluation des variables ou propriétés. Si on avait écrit <em>href= &quot;URL&quot;</em>, c&#x27;est la chaîne <em>URL</em> qui aurait été affectée à l&#x27;attribut <em>href</em>.</p>
 <ul>
 <li>lignes 23-27 : créent un lien Html pour changer la langue des pages en espagnol.</li>
