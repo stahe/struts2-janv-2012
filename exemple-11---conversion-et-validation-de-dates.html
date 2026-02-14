@@ -1,0 +1,1580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduction à STRUTS 2 par l'exemple">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/struts2-janv-2012/exemple-11---conversion-et-validation-de-dates.html">
+      
+      
+        <link rel="prev" href="exemple-10---conversion-et-validation-des-nombres-reels.html">
+      
+      
+        <link rel="next" href="exemple-12---conversions-et-validations-diverses.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>14. Exemple 11 – Conversion et validation de dates - Introduction à STRUTS 2 par l'exemple</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduction à STRUTS 2 par l'exemple";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#14-exemple-11-conversion-et-validation-de-dates" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduction à STRUTS 2 par l&#39;exemple" class="md-header__button md-logo" aria-label="Introduction à STRUTS 2 par l'exemple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduction à STRUTS 2 par l'exemple
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              14. Exemple 11 – Conversion et validation de dates
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer au mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer au mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/struts2-janv-2012" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduction à STRUTS 2 par l&#39;exemple" class="md-nav__button md-logo" aria-label="Introduction à STRUTS 2 par l'exemple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduction à STRUTS 2 par l'exemple
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/struts2-janv-2012" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="un-premier-exemple.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Un premier exemple
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-02---injection-de-parametres-dans-laction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Exemple 02 – Injection de paramètres dans l'action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-03---les-cles-de-navigation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Exemple 03 – Les clés de navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-04---internationalisation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Exemple 04 – Internationalisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-05---le-formulaire-de-saisie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Exemple 05 – Le formulaire de saisie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-05b---navigation-dans-un-formulaire-de-saisie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Exemple 05B – Navigation dans un formulaire de saisie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-06---la-session.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Exemple 06 – La session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-07---les-balises-de-formulaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Exemple 07 – Les balises de formulaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-08---les-balises-associees-a-des-listes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Exemple 08 - Les balises associées à des listes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-09---conversion-et-validation-des-nombres-entiers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Exemple 09 - Conversion et validation des nombres entiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-09b---validation-du-modele.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Exemple 09B – Validation du modèle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-10---conversion-et-validation-des-nombres-reels.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Exemple 10 – Conversion et validation des nombres réels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exemple 11 – Conversion et validation de dates
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="exemple-11---conversion-et-validation-de-dates.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exemple 11 – Conversion et validation de dates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#141-le-projet-netbeans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1. Le projet Netbeans
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#142-la-configuration-du-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2. La configuration du projet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#143-les-fichiers-des-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3. Les fichiers des messages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#144-le-formulaire-de-saisie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4. Le formulaire de saisie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#145-la-vue-de-confirmation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5. La vue de confirmation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#146-le-modele-formdatemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6. Le modèle [FormDateModel]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#147-la-validation-du-modele" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7. La validation du modèle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#148-laction-formdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.8. L&#x27;action [FormDate]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#149-derniers-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.9. Derniers détails
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-12---conversions-et-validations-diverses.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Exemple 12 – Conversions et validations diverses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-13--le-contexte-dune-action.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Exemple 13 - le contexte d'une action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-15---integration-struts-2--spring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Exemple 15 – Intégration Struts 2 / Spring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="etude-de-cas-struts-2--tiles--spring--hibernate--mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Etude de cas : Struts 2 / Tiles / Spring / Hibernate / MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="etude-de-cas---version-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Etude de cas – version 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="etude-de-cas---version-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Etude de cas – version 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="refheading91700522158564"></a></p>
+<h1 id="14-exemple-11-conversion-et-validation-de-dates">14. Exemple 11 – Conversion et validation de dates</h1>
+<p>La nouvelle application présente la saisie de dates :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053600000200047A26E8.png" style="display:inline-block; margin:4px;width:17.648cm;height:6.773cm;" class="odt-zoomable" data-zoom-src="images/100000000000053600000200047A26E8.png" /></td></tr></table>
+
+<ul>
+<li>en [1], le formulaire de saisie</li>
+<li>en [2], la réponse renvoyée</li>
+</ul>
+<p>L&#x27;application a un fonctionnement similaire à celui de la saisie des nombres entiers aussi ne commenterons-nous que les points qui diffèrent.</p>
+<p><a id="refheading91702522158564"></a></p>
+<h2 id="141-le-projet-netbeans">14.1. Le projet Netbeans</h2>
+<p>Le projet Netbeans est le suivant :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000347000001CB4C22D6CA.png" style="display:inline-block; margin:4px;width:11.1cm;height:6.073cm;" class="odt-zoomable" data-zoom-src="images/1000000000000347000001CB4C22D6CA.png" /></td></tr></table>
+
+<ul>
+<li>en [1], les vues de l&#x27;application<ul>
+<li>[Accueil.JSP] : la page d&#x27;accueil</li>
+<li>[FormDate.JSP] : le formulaire de saisie</li>
+<li>[ConfirmationFormDate.JSP] : la page de confirmation</li>
+</ul>
+</li>
+<li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts</li>
+<li>en [3] :<ul>
+<li>[FormDate.java] : l&#x27;action qui affiche et traite le formulaire</li>
+<li>[FormDate-validation.xml] : les règles de validation de l&#x27;action [FormDate]. Ce fichier délègue ces validations au modèle.</li>
+<li>[FormDateModel] : le modèle de l&#x27;action [FormDate]</li>
+<li>[ FormDateModel-validation.xml] : les règles de validation du modèle</li>
+<li>[FormDateModel.properties] : le fichier des messages du modèle</li>
+<li>[example.xml] : fichier de configuration secondaire de Struts</li>
+</ul>
+</li>
+</ul>
+<p><a id="refheading91704522158564"></a></p>
+<h2 id="142-la-configuration-du-projet">14.2. La configuration du projet</h2>
+<p>Le projet est principalement configuré par le fichier [example.xml] suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
+<span class="odt-code-line"><span style="color:#008080">&lt;?</span><span style="color:#3f7f7f">xml</span> <span style="color:#7f007f">version</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;1.0&quot;</span> <span style="color:#7f007f">encoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span> <span style="color:#008080">?&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;!</span><span style="color:#3f7f7f">DOCTYPE</span> <span style="color:#008080">struts</span> <span style="color:#808080">PUBLIC</span></span>
+<span class="odt-code-line">        <span style="color:#008080">&quot;-//Apache Software Foundation//DTD Struts Configuration 2.0//EN&quot;</span></span>
+<span class="odt-code-line">        <span style="color:#3f7f5f">&quot;http://struts.apache.org/dtds/struts-2.0.dtd&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">struts</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">package</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;example&quot;</span> <span style="color:#7f007f">namespace</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/example&quot;</span> <span style="color:#7f007f">extends</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;struts-default&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Accueil&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">result</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;success&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">/example/Accueil.JSP</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">result</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">action</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate&quot;</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;example.FormDate&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">result</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;input&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">/example/FormDate.JSP</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">result</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">result</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;cancel&quot;</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;redirect&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">/example/Accueil.JSP</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">result</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">result</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;success&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">/example/ConfirmationFormDate.JSP</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">result</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">action</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">package</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">struts</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<p>Il est analogue à celui qui a été étudié pour la saisie des nombres entiers.</p>
+<p><a id="refheading91706522158564"></a></p>
+<h2 id="143-les-fichiers-des-messages">14.3. Les fichiers des messages</h2>
+<p>Le fichier [messages.properties] est le suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span style="color:#000000">Accueil.titre=</span><span style="color:#2a00ff">Accueil</span></span>
+<span class="odt-code-line"><span style="color:#000000">Accueil.message=</span><span style="color:#2a00ff">Struts</span><span style="color:#000000"> </span><span style="color:#2a00ff">2</span><span style="color:#000000"> </span><span style="color:#2a00ff">-</span><span style="color:#000000"> </span><span style="color:#2a00ff">Conversions</span><span style="color:#000000"> </span><span style="color:#2a00ff">et</span><span style="color:#000000"> </span><span style="color:#2a00ff">validations</span></span>
+<span class="odt-code-line"><span style="color:#000000">Accueil.FormDate=</span><span style="color:#2a00ff">Saisie</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">dates</span></span>
+<span class="odt-code-line"><span style="color:#000000">Form.titre=</span><span style="color:#2a00ff">Conversions</span><span style="color:#000000"> </span><span style="color:#2a00ff">et</span><span style="color:#000000"> </span><span style="color:#2a00ff">validations</span></span>
+<span class="odt-code-line"><span style="color:#000000">FormDate.message=</span><span style="color:#2a00ff">Struts</span><span style="color:#000000"> </span><span style="color:#2a00ff">2</span><span style="color:#000000"> </span><span style="color:#2a00ff">-</span><span style="color:#000000"> </span><span style="color:#2a00ff">Conversion</span><span style="color:#000000"> </span><span style="color:#2a00ff">et</span><span style="color:#000000"> </span><span style="color:#2a00ff">validation</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">dates</span></span>
+<span class="odt-code-line"><span style="color:#000000">FormDate.conseil=</span><span style="color:#2a00ff">Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">les</span><span style="color:#000000"> </span><span style="color:#2a00ff">dates</span><span style="color:#000000"> </span><span style="color:#2a00ff">au</span><span style="color:#000000"> </span><span style="color:#2a00ff">format</span><span style="color:#000000"> </span><span style="color:#2a00ff">JJ/MM/AAAA</span><span style="color:#000000"> </span><span style="color:#2a00ff">comme</span><span style="color:#000000"> </span><span style="color:#2a00ff">dans</span><span style="color:#000000"> </span><span style="color:#2a00ff">12/10/2008</span></span>
+<span class="odt-code-line"><span style="color:#000000">Form.submitText=</span><span style="color:#2a00ff">Valider</span></span>
+<span class="odt-code-line"><span style="color:#000000">Form.cancelText=</span><span style="color:#2a00ff">Annuler</span></span>
+<span class="odt-code-line"><span style="color:#000000">Form.clearModel=</span><span style="color:#2a00ff">Raz</span><span style="color:#000000"> </span><span style="color:#2a00ff">mod\u00e8le</span></span>
+<span class="odt-code-line"><span style="color:#000000">Confirmation.titre=</span><span style="color:#2a00ff">Confirmation</span></span>
+<span class="odt-code-line"><span style="color:#000000">Confirmation.message=</span><span style="color:#2a00ff">Confirmation</span><span style="color:#000000"> </span><span style="color:#2a00ff">des</span><span style="color:#000000"> </span><span style="color:#2a00ff">valeurs</span><span style="color:#000000"> </span><span style="color:#2a00ff">saisies</span></span>
+<span class="odt-code-line"><span style="color:#000000">Confirmation.champ=</span><span style="color:#2a00ff">champ</span></span>
+<span class="odt-code-line"><span style="color:#000000">Confirmation.valeur=</span><span style="color:#2a00ff">valeur</span></span>
+<span class="odt-code-line"><span style="color:#000000">Confirmation.lien=</span><span style="color:#2a00ff">Formulaire</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">test</span></span>
+<span class="odt-code-line"><span style="color:#000000">xwork.default.invalid.fieldvalue=</span><span style="color:#2a00ff">Valeur</span><span style="color:#000000"> </span><span style="color:#2a00ff">invalide</span><span style="color:#000000"> </span><span style="color:#2a00ff">pour</span><span style="color:#000000"> </span><span style="color:#2a00ff">le</span><span style="color:#000000"> </span><span style="color:#2a00ff">champ</span><span style="color:#000000"> </span><span style="color:#2a00ff">&quot;</span><span style="font-weight:bold;color:#7f0055">{0}</span><span style="color:#2a00ff">&quot;.</span></span>
+</code></pre></div>
+
+<p>Le fichier [FormDateModel.properties] est le suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#000000">date.format=</span><span style="color:#2a00ff">{0,date,dd/MM/yyyy}</span></span>
+<span class="odt-code-line"><span style="color:#000000">date1.prompt=</span><span style="color:#2a00ff">1-Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">une</span><span style="color:#000000"> </span><span style="color:#2a00ff">date</span><span style="color:#000000"> </span><span style="color:#2a00ff">au</span><span style="color:#000000"> </span><span style="color:#2a00ff">format</span><span style="color:#000000"> </span><span style="color:#2a00ff">JJ/MM/AAAA</span></span>
+<span class="odt-code-line"><span style="color:#000000">date1.error=</span><span style="color:#2a00ff">Date</span><span style="color:#000000"> </span><span style="color:#2a00ff">erron\u00E9e</span></span>
+<span class="odt-code-line"><span style="color:#000000">date2.prompt=</span><span style="color:#2a00ff">2-Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">une</span><span style="color:#000000"> </span><span style="color:#2a00ff">date</span><span style="color:#000000"> </span><span style="color:#2a00ff">au</span><span style="color:#000000"> </span><span style="color:#2a00ff">format</span><span style="color:#000000"> </span><span style="color:#2a00ff">JJ/MM/AAAA</span></span>
+<span class="odt-code-line"><span style="color:#000000">date2.error=</span><span style="color:#2a00ff">Date</span><span style="color:#000000"> </span><span style="color:#2a00ff">erron\u00E9e</span></span>
+<span class="odt-code-line"><span style="color:#000000">date3.prompt=</span><span style="color:#2a00ff">3-Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">une</span><span style="color:#000000"> </span><span style="color:#2a00ff">date</span><span style="color:#000000"> </span><span style="color:#2a00ff">&gt;=18/05/2000</span></span>
+<span class="odt-code-line"><span style="color:#000000">date3.error=</span><span style="color:#2a00ff">Date</span><span style="color:#000000"> </span><span style="color:#2a00ff">erron\u00E9e</span></span>
+<span class="odt-code-line"><span style="color:#000000">date4.prompt=</span><span style="color:#2a00ff">4-Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">une</span><span style="color:#000000"> </span><span style="color:#2a00ff">date</span><span style="color:#000000"> </span><span style="color:#2a00ff">&lt;=20/06/2001</span></span>
+<span class="odt-code-line"><span style="color:#000000">date4.error=</span><span style="color:#2a00ff">Date</span><span style="color:#000000"> </span><span style="color:#2a00ff">erron\u00E9e</span></span>
+<span class="odt-code-line"><span style="color:#000000">date5.prompt=</span><span style="color:#2a00ff">5-Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">une</span><span style="color:#000000"> </span><span style="color:#2a00ff">date</span><span style="color:#000000"> </span><span style="color:#2a00ff">dans</span><span style="color:#000000"> </span><span style="color:#2a00ff">l&#x27;&#x27;intervalle</span><span style="color:#000000"> </span><span style="color:#2a00ff">[18/05/2000,20/06/2001]</span></span>
+<span class="odt-code-line"><span style="color:#000000">date5.error=</span><span style="color:#2a00ff">Date</span><span style="color:#000000"> </span><span style="color:#2a00ff">errron\u00E9e</span></span>
+<span class="odt-code-line"><span style="color:#000000">date6.prompt=</span><span style="color:#2a00ff">6-Tapez</span><span style="color:#000000"> </span><span style="color:#2a00ff">une</span><span style="color:#000000"> </span><span style="color:#2a00ff">date</span><span style="color:#000000"> </span><span style="color:#2a00ff">dans</span><span style="color:#000000"> </span><span style="color:#2a00ff">l&#x27;&#x27;intervalle</span><span style="color:#000000"> </span><span style="color:#2a00ff">[18/05/2000,20/06/2001]</span></span>
+<span class="odt-code-line"><span style="color:#000000">date6.error=</span><span style="color:#2a00ff">Date</span><span style="color:#000000"> </span><span style="color:#2a00ff">errron\u00E9e</span></span>
+</code></pre></div>
+
+<p>La ligne 1 joue un rôle important. Nous y reviendrons.</p>
+<p><a id="refheading91708522158564"></a></p>
+<h2 id="144-le-formulaire-de-saisie">14.4. Le formulaire de saisie</h2>
+<p>La vue [FormDate.JSP] est la suivante :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
+<span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
+<span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">taglib</span> <span style="color:#7f007f">prefix</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;s&quot;</span> <span style="color:#7f007f">uri</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/struts-tags&quot;</span> <span style="color:#bf5f3f">%&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.titre&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:head</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">body</span> <span style="color:#7f007f">background</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;</span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:url</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/ressources/standard.jpg&quot;</span><span style="color:#008080">/&gt;</span><span style="font-style:italic;color:#2a00ff">&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h2</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate.message&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h2</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h4</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate.conseil&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h4</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:form</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;formulaire&quot;</span> <span style="color:#7f007f">action</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1.prompt&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.prompt&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{#parameters[&#x27;date2&#x27;]!=null ? #parameters[&#x27;date2&#x27;] : date2==null ? &#x27;&#x27; :getText(&#x27;date.format&#x27;,{date2})}&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3.prompt&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{#parameters[&#x27;date3&#x27;]!=null ? #parameters[&#x27;date3&#x27;] : date3==null ? &#x27;&#x27; :getText(&#x27;date.format&#x27;,{date3})}&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4.prompt&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{#parameters[&#x27;date4&#x27;]!=null ? #parameters[&#x27;date4&#x27;] : date4==null ? &#x27;&#x27; :getText(&#x27;date.format&#x27;,{date4})}&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5.prompt&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{#parameters[&#x27;date5&#x27;]!=null ? #parameters[&#x27;date5&#x27;] : date5==null ? &#x27;&#x27; :getText(&#x27;date.format&#x27;,{date5})}&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6.prompt&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:submit</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.submitText&quot;</span> <span style="color:#7f007f">method</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;execute&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:form</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">br</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:url</span> <span style="color:#7f007f">id</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;URL&quot;</span> <span style="color:#7f007f">action</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate&quot;</span> <span style="color:#7f007f">method</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;cancel&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:a</span> <span style="color:#7f007f">href</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{URL}&quot;</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.cancelText&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">s:a</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">br</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:url</span> <span style="color:#7f007f">id</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;URL&quot;</span> <span style="color:#7f007f">action</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate&quot;</span> <span style="color:#7f007f">method</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;clearModel&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:a</span> <span style="color:#7f007f">href</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{URL}&quot;</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.clearModel&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">s:a</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">body</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<p>Les lignes 13 à 18 sont les six zones de saisie de dates. Les champs <em>date2</em> à <em>date5</em> ont un attribut <em>value</em> complexe, le même que pour la saisie des nombres réels. Les mêmes difficultés ayant été rencontrées, on les a résolues de la même façon.</p>
+<p><a id="refheading91710522158564"></a></p>
+<h2 id="145-la-vue-de-confirmation">14.5. La vue de confirmation</h2>
+<p>La vue de confirmation [ConfirmationFormDate.JSP] est la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001E50000012247AE2918.png" style="display:inline-block; margin:4px;width:8.98cm;height:5.369cm;" class="odt-zoomable" data-zoom-src="images/10000000000001E50000012247AE2918.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+
+<p>Son code est le suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
+<span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
+<span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">taglib</span> <span style="color:#7f007f">prefix</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;s&quot;</span> <span style="color:#7f007f">uri</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/struts-tags&quot;</span> <span style="color:#bf5f3f">%&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Confirmation.titre&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:head</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">body</span> <span style="color:#7f007f">background</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;</span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:url</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/ressources/standard.jpg&quot;</span><span style="color:#008080">/&gt;</span><span style="font-style:italic;color:#2a00ff">&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h2</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Confirmation.message&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h2</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">table</span> <span style="color:#7f007f">border</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;1&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">th</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Confirmation.champ&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">th</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">th</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Confirmation.valeur&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">th</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1.prompt&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.prompt&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date.format&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:param</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:text</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3.prompt&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date.format&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:param</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:text</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4.prompt&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date.format&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:param</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:text</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5.prompt&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date.format&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:param</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:text</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6.prompt&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">td</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">tr</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">table</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">br</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:url</span> <span style="color:#7f007f">id</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;URL&quot;</span> <span style="color:#7f007f">action</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;FormDate!input&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:a</span> <span style="color:#7f007f">href</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{URL}&quot;</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Confirmation.lien&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">s:a</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">body</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<p>La vue [ConfirmationFormDate.JSP] se contente d&#x27;afficher le modèle [FormDateModel]. Les lignes 47-49 montrent l&#x27;affichage d&#x27;une date. On veut que cet affichage tienne compte d&#x27;un format de date. Pour cela, on utilise la balise <em>&lt;s:text&gt;</em> qu&#x27;on avait utilisée jusque là pour l&#x27;internationalisation de l&#x27;application.</p>
+<p>Ici, la clé de message utilisée est <em>date.format</em>. Cette clé est trouvée dans le fichier [FormDateModel.properties] :</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#000000">date.format=</span><span style="color:#2a00ff">{0,date,dd/MM/yyyy}</span></span>
+</code></pre></div>
+
+<p>La valeur associée à la clé n&#x27;est pas ici un message, mais un format d&#x27;affichage :</p>
+<ul>
+<li><strong>0</strong> est un paramètre représentant la valeur à afficher. Ici ce sera le champ <em>date5</em> du modèle.</li>
+<li><strong>date</strong> représente une date. Précédemment, on avait <em>number</em> pour un nombre.</li>
+<li><strong>dd/MM/yyyy</strong> représente le format de la date. Ici, on le veut sous la forme jj/mm/aaaa. Le format Java qui convient est dd/MM/yyyy (d : day, M : Month, y : year)</li>
+</ul>
+<p>La balise</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date.format&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">            </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:param</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:text</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">fait afficher le message </span><em><span style="color: #000000">{0, date, dd/MM/yyyy}</span></em><span style="color: #000000"> où le paramètre </span><em><span style="color: #000000">date5</span></em><span style="color: #000000"> (ligne 2) viendra remplacer le paramètre </span><em><span style="color: #000000">0</span></em><span style="color: #000000"> du format. Ainsi, le modèle </span><em><span style="color: #000000">date5</span></em><span style="color: #000000"> sera affiché au format jj/mm/aaaa.</span></p>
+<p><a id="refheading91712522158564"></a></p>
+<h2 id="146-le-modele-formdatemodel">14.6. Le modèle [FormDateModel]</h2>
+<p>Les champs <em>date1</em> à <em>date6</em> du formulaire [FormDate.JSP] sont injectés dans le modèle [FormDateModel] suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> example;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> java.util.Date;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> FormDateModel {</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// constructeur sans paramètre</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> FormDateModel() {</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// champs</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String date1;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> Date date2 = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Date();</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> Date date3 = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Date();</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> Date date4;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> Date date5;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">private</span><span style="color:#000000"> String date6;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// raz modèle</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> clearModel() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    date1 = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    date2 = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    date3 = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    date4 = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    date5 = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    date6 = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f5fbf">// getters et setters</span></span>
+<span class="odt-code-line">...</span>
+<span class="odt-code-line">}</span>
+</code></pre></div>
+
+<ul>
+<li>les champs <em>date1</em> et <em>date6</em> sont de type <em>String</em></li>
+<li>les autres champs sont de type <em>Date</em></li>
+</ul>
+<p><a id="refheading91714522158564"></a></p>
+<h2 id="147-la-validation-du-modele">14.7. La validation du modèle</h2>
+<p>La validation du modèle est contrôlée par deux fichiers : [FormDate-validation.xml] et [FormDateModel-validation.xml].</p>
+<p>Le fichier [FormDate-validation.xml] délègue les validations à [FormDateModel-validation.xml] :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line">&lt;!--</span>
+<span class="odt-code-line">&lt;!DOCTYPE validators PUBLIC &quot;-//OpenSymphony Group//XWork Validator 1.0.2//</span>
+<span class="odt-code-line">EN&quot; &quot;http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd&quot;&gt;</span>
+<span class="odt-code-line">--&gt;</span>
+<span class="odt-code-line"><span style="color:#008080">&lt;!</span><span style="color:#3f7f7f">DOCTYPE</span> <span style="color:#008080">validators</span> <span style="color:#808080">PUBLIC</span> <span style="color:#008080">&quot;-//OpenSymphony Group//XWork Validator 1.0.2//</span></span>
+<span class="odt-code-line"><span style="color:#008080">EN&quot;</span> <span style="color:#3f7f5f">&quot;http://localhost:8084/exemple-10/example/xwork-validator-1.0.2.dtd&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">validators</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;model&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;visitor&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;appendPrefix&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">false</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">validators</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<p>Nous avons déjà rencontré ce fichier.</p>
+<p>Le fichier [FormDateModel-validation.xml] contient les règles de validation suivantes :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">&lt;!--</span>
+<span class="odt-code-line">&lt;!DOCTYPE validators PUBLIC &quot;-//OpenSymphony Group//XWork Validator 1.0.2//</span>
+<span class="odt-code-line">EN&quot; &quot;http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd&quot;&gt;</span>
+<span class="odt-code-line">--&gt;</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;!</span><span style="color:#3f7f7f">DOCTYPE</span> <span style="color:#008080">validators</span> <span style="color:#808080">PUBLIC</span> <span style="color:#008080">&quot;-//OpenSymphony Group//XWork Validator 1.0.2//</span></span>
+<span class="odt-code-line"><span style="color:#008080">EN&quot;</span> <span style="color:#3f7f5f">&quot;http://localhost:8084/exemple-11/example/xwork-validator-1.0.2.dtd&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">validators</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;requiredstring&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;regex&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;expression&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">^\d{2}/\d{2}/\d{4}$</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;trim&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">true</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date1.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;required&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;conversion&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">   </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;required&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;conversion&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;min&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">18/05/2000</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date3.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;required&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;conversion&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;max&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">20/06/2001</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date4.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000"> </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;required&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date2.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;conversion&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;min&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">18/05/2000</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;max&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">20/06/2001</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date5.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6&quot;</span> <span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;requiredstring&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">field-validator</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;regex&quot;</span> <span style="color:#7f007f">short-circuit</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;expression&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">^\d{2}/\d{2}/\d{4}$</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">param</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;trim&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">true</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">param</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">message</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date6.error&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field-validator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">field</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">validators</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<ul>
+<li>la règle des lignes 11-20 vérifie que le champ de saisie <em>date1</em> suit le modèle d&#x27;une expression régulière représentant une  date de la forme jj/mm/aaaa. On notera qu&#x27;on vérifie que la chaîne a la forme d&#x27;une date mais qu&#x27;on ne vérifie pas que c&#x27;est une date valide. Ainsi 29/02/2011 a la forme d&#x27;une date mais n&#x27;est pas une date valide.</li>
+<li>la règle des lignes 22-29 vérifie que le champ de saisie <em>date2</em> est une date valide. </li>
+<li>la règle des lignes 31-42 vérifie que le champ de saisie <em>date3</em> est une date valide &gt;=18/05/2000 </li>
+<li>la règle des lignes 44-55 vérifie que le champ de saisie <em>date4 </em>est une date valide &lt;=20/06/2001. </li>
+<li>la règle des lignes 57-69 vérifie que le champ de saisie <em>date5</em> est une date valide &lt;=20/06/2001 et &gt;=18/05/2000.</li>
+<li>la règle des lignes 71-80 vérifie que le champ <em>date6</em> a la forme d&#x27;une date jj/mm/aaaa.</li>
+</ul>
+<p>Une fois le fichier [FormDateModel-validation.xml] exploité par l&#x27;intercepteur de validation, celui-ci fait exécuter la méthode <em>validate</em> de l&#x27;action [FormDate] si elle existe. Nous allons la présenter en même temps que la totalité de l&#x27;action.</p>
+<p><a id="refheading91716522158564"></a></p>
+<h2 id="148-laction-formdate">14.8. L&#x27;action [FormDate]</h2>
+<p>L&#x27;action [FormDate] est la suivante :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> example;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> com.opensymphony.xwork2.ActionSupport;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> com.opensymphony.xwork2.ModelDriven;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> java.text.SimpleDateFormat;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> java.util.Date;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> java.util.Map;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.apache.struts2.interceptor.SessionAware;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.apache.struts2.interceptor.validation.SkipValidation;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> FormDate </span><span style="font-weight:bold;color:#7f0055">extends</span><span style="color:#000000"> ActionSupport </span><span style="font-weight:bold;color:#7f0055">implements</span><span style="color:#000000"> ModelDriven, SessionAware {</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// constructeur sans paramètre</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> FormDate() {</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// modèle de l&#x27;action</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> Object getModel() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">if</span><span style="color:#000000"> (session.get(</span><span style="color:#2a00ff">&quot;model&quot;</span><span style="color:#000000">) == </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      session.put(</span><span style="color:#2a00ff">&quot;model&quot;</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> FormDateModel());</span></span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> session.get(</span><span style="color:#2a00ff">&quot;model&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#646464">@</span><span style="color:#000000">SkipValidation</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> String clearModel() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// raz du modèle</span></span>
+<span class="odt-code-line">    ((FormDateModel) getModel()).clearModel();</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// résultat</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> INPUT;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> String cancel() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// on nettoie le modèle</span></span>
+<span class="odt-code-line">    ((FormDateModel) getModel()).clearModel();</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// résultat</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> </span><span style="color:#2a00ff">&quot;cancel&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// SessionAware</span></span>
+<span class="odt-code-line">  Map&lt;String, Object&gt; session;</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> setSession(Map&lt;String, Object&gt; session) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.session = session;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// validation</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#646464">@</span><span style="color:#000000">Override</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> validate() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// formatage des dates</span></span>
+<span class="odt-code-line"><span style="color:#000000">    SimpleDateFormat formateurDate = </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> SimpleDateFormat(</span><span style="color:#2a00ff">&quot;dd/MM/yyyy&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    formateurDate.setLenient(</span><span style="font-weight:bold;color:#7f0055">false</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// saisie date1 valide ?</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">if</span><span style="color:#000000"> (getFieldErrors().get(</span><span style="color:#2a00ff">&quot;date1&quot;</span><span style="color:#000000">) == </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#3f7f5f">// vérification validité date</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">try</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line">        formateurDate.parse(((FormDateModel) getModel()).getDate1());</span>
+<span class="odt-code-line"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">catch</span><span style="color:#000000"> (Exception e) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        addFieldError(</span><span style="color:#2a00ff">&quot;date1&quot;</span><span style="color:#000000">, getText(</span><span style="color:#2a00ff">&quot;date1.error&quot;</span><span style="color:#000000">));</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// saisie date6 valide ?</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">if</span><span style="color:#000000"> (getFieldErrors().get(</span><span style="color:#2a00ff">&quot;date6&quot;</span><span style="color:#000000">) == </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      Date d = </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">try</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#3f7f5f">// vérification validité date</span></span>
+<span class="odt-code-line">        d = formateurDate.parse(((FormDateModel) getModel()).getDate6());</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#3f7f5f">// vérification bornes</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">if</span><span style="color:#000000"> (d.after(formateurDate.parse(</span><span style="color:#2a00ff">&quot;20/06/2001&quot;</span><span style="color:#000000">)) || d.before(formateurDate.parse(</span><span style="color:#2a00ff">&quot;18/05/2000&quot;</span><span style="color:#000000">))) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">          addFieldError(</span><span style="color:#2a00ff">&quot;date6&quot;</span><span style="color:#000000">, getText(</span><span style="color:#2a00ff">&quot;date6.error&quot;</span><span style="color:#000000">));</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">        }</span>
+<span class="odt-code-line"><span style="color:#000000">      } </span><span style="font-weight:bold;color:#7f0055">catch</span><span style="color:#000000"> (Exception e) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        addFieldError(</span><span style="color:#2a00ff">&quot;date6&quot;</span><span style="color:#000000">, getText(</span><span style="color:#2a00ff">&quot;date6.error&quot;</span><span style="color:#000000">));</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line">}</span>
+</code></pre></div>
+
+<p>L&#x27;action [FormDate] est bâtie sur le même modèle que l&#x27;action [FormInt]. Nous ne commenterons que la méthode <em>validate</em>. On rappelle que la méthode <em>validate</em> est exécutée après exploitation du fichier de validation [FormDateModel-validation.xml] et avant l&#x27;exécution de la méthode <em>execute</em>.</p>
+<ul>
+<li>la méthode <em>validate</em> complète la validation des dates <em>date1</em> et <em>date6</em>. Le fichier de validation [FormDateModel-validation.xml] avait vérifié que les chaînes saisies avaient la forme d&#x27;une date. On vérifie maintenant que ce sont bien des dates valides. On rappelle également que <em>date1</em> et <em>date6</em> étaient les deux seuls champs du modèle à être de type <em>String</em>.</li>
+<li>ligne 50 : on crée un format de date jj/mm/aaaa afin de vérifier que les chaînes de ce type sont bien des dates valides.</li>
+<li>ligne 51 : <em>setLenient(false)</em> permet d&#x27;éviter que la date invalide 32/01/2012 soit interprétée comme la date valide 01/02/2012.</li>
+<li>ligne 53 : on ne valide <em>date1</em> que si les précédentes validations n&#x27;ont pas eu d&#x27;erreurs sur ce champ.</li>
+<li>ligne 56 : on vérifie que <em>date1</em> est une date valide au format jj/mm/aaaa.</li>
+<li>ligne 58 : si ce n&#x27;est pas le cas, on associe un message d&#x27;erreur au champ <em>date1</em>.</li>
+<li>ligne 62 : on ne valide <em>date6</em> que si ce champ a passé les précédentes validations.</li>
+<li>ligne 66 : on vérifie que <em>date6</em> est une date valide</li>
+<li>ligne 68 : si <em>date6</em> est &lt;18/05/2000 ou date6&gt;20/06/2001 alors <em>date6</em> est incorrect.</li>
+</ul>
+<p><a id="refheading91718522158564"></a></p>
+<h2 id="149-derniers-details">14.9. Derniers détails</h2>
+<p>Le formulaire précédent présente des failles comme le montre l&#x27;exemple suivant :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053F000001C014F88B05.png" style="display:inline-block; margin:4px;width:17.768cm;height:5.927cm;" class="odt-zoomable" data-zoom-src="images/100000000000053F000001C014F88B05.png" /></td></tr></table>
+
+<ul>
+<li>en [1], on rentre une date invalide</li>
+<li>en [2], elle a été acceptée. Seuls les premiers caractères jj/mm/aaaa ont été pris en compte.</li>
+</ul>
+<p>Les champs <em>date2</em> à <em>date5</em> qui sont liés à des modèles de type <em>Date</em> ont tous ce problème. Là encore, peut-être ai-je raté quelque chose dans la documentation. Les champs <em>date1</em> et <em>date6</em> qui sont liés à des modèles de type <em>String</em> n&#x27;ont pas ce problème. </p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://tahe.developpez.com" target="_blank">
+          https://tahe.developpez.com
+        </a>
+        <br>
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
+        Partage dans les Mêmes Conditions 3.0 non transposé</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>

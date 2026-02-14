@@ -1,0 +1,1307 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduction à STRUTS 2 par l'exemple">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/struts2-janv-2012/exemple-13--le-contexte-dune-action.html">
+      
+      
+        <link rel="prev" href="exemple-12---conversions-et-validations-diverses.html">
+      
+      
+        <link rel="next" href="exemple-15---integration-struts-2--spring.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>16. Exemple 13 - le contexte d'une action - Introduction à STRUTS 2 par l'exemple</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introduction à STRUTS 2 par l'exemple";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#16-exemple-13-le-contexte-dune-action" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduction à STRUTS 2 par l&#39;exemple" class="md-header__button md-logo" aria-label="Introduction à STRUTS 2 par l'exemple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduction à STRUTS 2 par l'exemple
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              16. Exemple 13 - le contexte d'une action
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer au mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer au mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/struts2-janv-2012" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduction à STRUTS 2 par l&#39;exemple" class="md-nav__button md-logo" aria-label="Introduction à STRUTS 2 par l'exemple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduction à STRUTS 2 par l'exemple
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/struts2-janv-2012" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="un-premier-exemple.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Un premier exemple
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-02---injection-de-parametres-dans-laction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Exemple 02 – Injection de paramètres dans l'action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-03---les-cles-de-navigation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Exemple 03 – Les clés de navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-04---internationalisation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Exemple 04 – Internationalisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-05---le-formulaire-de-saisie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Exemple 05 – Le formulaire de saisie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-05b---navigation-dans-un-formulaire-de-saisie.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Exemple 05B – Navigation dans un formulaire de saisie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-06---la-session.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Exemple 06 – La session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-07---les-balises-de-formulaire.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Exemple 07 – Les balises de formulaire
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-08---les-balises-associees-a-des-listes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Exemple 08 - Les balises associées à des listes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-09---conversion-et-validation-des-nombres-entiers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Exemple 09 - Conversion et validation des nombres entiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-09b---validation-du-modele.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Exemple 09B – Validation du modèle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-10---conversion-et-validation-des-nombres-reels.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Exemple 10 – Conversion et validation des nombres réels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-11---conversion-et-validation-de-dates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Exemple 11 – Conversion et validation de dates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-12---conversions-et-validations-diverses.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Exemple 12 – Conversions et validations diverses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Exemple 13 - le contexte d'une action
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="exemple-13--le-contexte-dune-action.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Exemple 13 - le contexte d'une action
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#161-le-projet-netbeans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.1. Le projet Netbeans
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#162-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.2. Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#163-laction-action1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.3. L&#x27;action [Action1]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#164-le-fichier-des-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.4. Le fichier des messages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#165-la-vue-contextjsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.5. La vue [Context.JSP]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#166-les-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.6. Les tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#167-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16.7. Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exemple-15---integration-struts-2--spring.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Exemple 15 – Intégration Struts 2 / Spring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="etude-de-cas-struts-2--tiles--spring--hibernate--mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Etude de cas : Struts 2 / Tiles / Spring / Hibernate / MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="etude-de-cas---version-1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Etude de cas – version 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="etude-de-cas---version-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Etude de cas – version 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Conclusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="refheading91738522158564"></a></p>
+<h1 id="16-exemple-13-le-contexte-dune-action">16. Exemple 13 - le contexte d&#x27;une action</h1>
+<p>Cette application vise à montrer qu&#x27;une action a accès :</p>
+<ul>
+<li>aux paramètres de la requête</li>
+<li>aux attributs de la requête</li>
+<li>aux attributs de la session de l&#x27;utilisateur</li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001D1000001B754472AEB.png" style="display:inline-block; margin:4px;width:8.641cm;height:8.158cm;" class="odt-zoomable" data-zoom-src="images/10000000000001D1000001B754472AEB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+
+<p><a id="refheading91740522158564"></a></p>
+<h2 id="161-le-projet-netbeans">16.1. Le projet Netbeans</h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000015A000001DDCC02FDDD.png" style="display:inline-block; margin:4px;width:4.577cm;height:6.311cm;" class="odt-zoomable" data-zoom-src="images/100000000000015A000001DDCC02FDDD.png" /></td></tr></table>
+
+<p>Le projet Netbeans est le suivant :</p>
+<ul>
+<li>en [1], la vue [Context.JSP]</li>
+<li>en [2], l&#x27;action [Action1.java] et le fichier de configuration Struts [example.xml]</li>
+</ul>
+<p><a id="refheading91742522158564"></a></p>
+<h2 id="162-configuration">16.2. Configuration</h2>
+<p>La configuration du projet est faite dans [example.xml] :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
+<span class="odt-code-line"><span style="color:#008080">&lt;?</span><span style="color:#3f7f7f">xml</span> <span style="color:#7f007f">version</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;1.0&quot;</span> <span style="color:#7f007f">encoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span> <span style="color:#008080">?&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;!</span><span style="color:#3f7f7f">DOCTYPE</span> <span style="color:#008080">struts</span> <span style="color:#808080">PUBLIC</span></span>
+<span class="odt-code-line">        <span style="color:#008080">&quot;-//Apache Software Foundation//DTD Struts Configuration 2.0//EN&quot;</span></span>
+<span class="odt-code-line">        <span style="color:#3f7f5f">&quot;http://struts.apache.org/dtds/struts-2.0.dtd&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">struts</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">package</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;example&quot;</span> <span style="color:#7f007f">namespace</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/example&quot;</span> <span style="color:#7f007f">extends</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;struts-default&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Action1&quot;</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;example.Action1&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">result</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;success&quot;</span><span style="color:#008080">&gt;</span><span style="color:#000000">/example/Context.JSP</span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">result</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">action</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">package</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">struts</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<ul>
+<li>ligne 8 : la demande de l&#x27;URL [/example/Action1] va provoquer l&#x27;instanciation de la classe [example.Action]. Comme aucune méthode n&#x27;est précisée, ce sera la méthode <em>execute</em> qui sera exécutée.</li>
+<li>ligne 9 : une seule clé est acceptée. La clé <em>success</em> conduit à l&#x27;affichage de la vue [Context.JSP].</li>
+</ul>
+<p>L&#x27;architecture simplifiée de traitement d&#x27;une requête va être la suivante :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004B10000017DE770B7FC.png" style="display:inline-block; margin:4px;width:15.889cm;height:5.041cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B10000017DE770B7FC.png" /></td></tr></table>
+
+<p>La requête va être traitée par deux éléments de l&#x27;application web : l&#x27;action [Action1] [1] et la vue [Context.JSP] [2]. Ces deux éléments ont accès à des données de différentes natures :</p>
+<ul>
+<li>des données de portée <em>Application</em> [3], c.a.d. des données accessibles à toutes les requêtes de tous les utilisateurs. Elles sont quasiment tout le temps en lecture seule. On trouve souvent dans ces données, la configuration initiale de l&#x27;application. Ici [Action1] et [Context.JSP] ont accès à ces données.</li>
+<li>des données de portée <em>Session</em> [4], c.a.d. des données accessibles à toutes les requêtes d&#x27;un même utilisateur. Elles sont en lecture / écriture. Ici [Action1] utilisera la session en lecture / écriture, alors que [Context.JSP] l&#x27;utilisera en lecture.</li>
+<li>des données de portée <em>Requête</em> [5], accessibles à tous les éléments qui traitent la requête. Ici [Action1] mettra une donnée dans cette mémoire et [Context.JSP] la récupèrera. Les données de portée Requête permettent à un élément N de transmettre de l&#x27;information à l&#x27;élément N+1.</li>
+<li>les paramètres de la requête [6] envoyés par le client. Ils sont utilisés en lecture seule par les éléments qui traitent la requête.</li>
+</ul>
+<p><a id="refheading91744522158564"></a></p>
+<h2 id="163-laction-action1">16.3. L&#x27;action [Action1]</h2>
+<p>Le code de la classe [Action1] est la suivante :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> example;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> com.opensymphony.xwork2.ActionSupport;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> java.util.Map;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> java.util.Set;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.apache.struts2.interceptor.ParameterAware;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.apache.struts2.interceptor.RequestAware;</span></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">import</span><span style="color:#000000"> org.apache.struts2.interceptor.SessionAware;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">class</span><span style="color:#000000"> Action1 </span><span style="font-weight:bold;color:#7f0055">extends</span><span style="color:#000000"> ActionSupport </span><span style="font-weight:bold;color:#7f0055">implements</span><span style="color:#000000"> SessionAware, RequestAware, ParameterAware {</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// constructeur sans paramètre</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> Action1() {</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// Session, Request, Parametres</span></span>
+<span class="odt-code-line">  Map&lt;String, Object&gt; session;</span>
+<span class="odt-code-line">  Map&lt;String, Object&gt; request;</span>
+<span class="odt-code-line">  Map&lt;String, String[]&gt; parameters;</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#646464">@</span><span style="color:#000000">Override</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> String execute() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// liste des paramètres</span></span>
+<span class="odt-code-line"><span style="color:#000000">    System.out.println(</span><span style="color:#2a00ff">&quot;Paramètres...&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">    Set&lt;String&gt; clés = parameters.keySet();</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (String clé : clés) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="font-weight:bold;color:#7f0055">for</span><span style="color:#000000"> (String valeur : parameters.get(clé)) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        System.out.println(String.format(</span><span style="color:#2a00ff">&quot;[%s,%s]&quot;</span><span style="color:#000000">, clé, valeur));</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// session</span></span>
+<span class="odt-code-line"><span style="color:#000000">    System.out.println(</span><span style="color:#2a00ff">&quot;Session...&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">if</span><span style="color:#000000"> (session.get(</span><span style="color:#2a00ff">&quot;compteur&quot;</span><span style="color:#000000">) == </span><span style="font-weight:bold;color:#7f0055">null</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      session.put(</span><span style="color:#2a00ff">&quot;compteur&quot;</span><span style="color:#000000">, </span><span style="font-weight:bold;color:#7f0055">new</span><span style="color:#000000"> Integer(0));</span></span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    Integer compteur = (Integer) session.get(</span><span style="color:#2a00ff">&quot;compteur&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">    compteur = compteur + 1;</span>
+<span class="odt-code-line"><span style="color:#000000">    session.put(</span><span style="color:#2a00ff">&quot;compteur&quot;</span><span style="color:#000000">, compteur);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    System.out.println(String.format(</span><span style="color:#2a00ff">&quot;compteur=%s&quot;</span><span style="color:#000000">, compteur));</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// requête</span></span>
+<span class="odt-code-line"><span style="color:#000000">    request.put(</span><span style="color:#2a00ff">&quot;info1&quot;</span><span style="color:#000000">, </span><span style="color:#2a00ff">&quot;information1&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f7f5f">// affichage page JSP</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">return</span><span style="color:#000000"> SUCCESS;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// session</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> setSession(Map&lt;String, Object&gt; session) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.session = session;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// requête</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> setRequest(Map&lt;String, Object&gt; request) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.request = request;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#3f7f5f">// paramètres</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> </span><span style="font-weight:bold;color:#7f0055">void</span><span style="color:#000000"> setParameters(Map&lt;String, String[]&gt; parameters) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="font-weight:bold;color:#7f0055">this</span><span style="color:#000000">.parameters = parameters;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line">}</span>
+</code></pre></div>
+
+<ul>
+<li>ligne 10 : la classe implémente les interfaces suivantes <ul>
+<li><strong>SessionAware </strong>: pour avoir accès au dictionnaire des attributs de la session (ligne 16). Cette interface n&#x27;a qu&#x27;une méthode, celle de la ligne 46.</li>
+<li><strong>RequestAware </strong>: pour avoir accès au dictionnaire des attributs de la requête (ligne 17). Cette interface n&#x27;a qu&#x27;une méthode, celle de la ligne 51.</li>
+<li><strong>ParameterAware </strong>: pour avoir accès au dictionnaire des paramètres de la requête (ligne 18). On remarquera qu&#x27;à une clé (le nom du paramètre) correspond un tableau de valeurs. Ceci est nécessaire pour prendre en compte les zones de saisie qui postent plusieurs valeurs comme par exemple une liste à sélection multiple. L&#x27;interface <strong>ParameterAware</strong> n&#x27;a qu&#x27;une méthode, celle de la ligne 56.</li>
+</ul>
+</li>
+<li>ligne 21 : la méthode <em>execute</em> qui est exécutée lorsqu&#x27;on demande l&#x27;action [Action1]. Lorsqu&#x27;elle s&#x27;exécute, les intercepteurs ont fait leur travail :<ul>
+<li>la méthode <strong>setParameters</strong> (ligne 56) a été appelée et le dictionnaire <strong>parameters</strong> de la ligne 18 contient tous les paramètres de la requête.</li>
+<li>la méthode <strong>setSession</strong> (ligne 46) a été appelée et le dictionnaire <strong>session</strong> de la ligne 16 contient tous les attributs de la session.</li>
+<li>la méthode <strong>setRequest</strong> (ligne 51) a été appelée et le dictionnaire <strong>request</strong> de la ligne 17 contient tous les attributs de la requête.</li>
+</ul>
+</li>
+<li>lignes 31-38 : on écrit la valeur associée à la clé <em>compteur</em> dans la session</li>
+<li>lignes 32-34 : la clé <em>compteur</em> est cherchée dans la session. Si elle ne s&#x27;y trouve pas, on l&#x27;y met associée à la valeur entière 0.</li>
+<li>lignes 35-37 : la clé <em>compteur</em> est cherchée dans la session, sa valeur est incrémentée puis la clé est remise dans la session. </li>
+<li>ligne 38 : la valeur associée à la clé <em>compteur</em> est affichée. L&#x27;incrément étant fait à chaque requête sur l&#x27;action [Action1], on devrait voir la valeur du compteur augmenter au fil des requêtes.</li>
+<li>ligne 40 : on insère dans le dictionnaire des attributs de la requête un attribut de clé <em>info1</em> et de valeur <em>information1</em>. Les attributs d&#x27;une requête sont différents de ses paramètres. Les paramètres sont envoyés par le client de l&#x27;application web. Les attributs de la requête eux permettent la communication entre les différents éléments de l&#x27;application web qui la traitent. Ainsi, après l&#x27;exécution de [Action1], la vue [Context.JSP] va être affichée. Nous allons voir qu&#x27;elle est capable de récupérer les attributs de la requête.</li>
+<li>ligne 42 : la méthode <em>execute</em> rend la clé <em>succes</em>.</li>
+</ul>
+<p><a id="refheading91746522158564"></a></p>
+<h2 id="164-le-fichier-des-messages">16.4. Le fichier des messages</h2>
+<p>Le fichier [messages.properties] est le suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#000000">Context.titre=</span><span style="color:#2a00ff">Contexte</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">l&#x27;&#x27;action</span></span>
+<span class="odt-code-line"><span style="color:#000000">Context.message=</span><span style="color:#2a00ff">Contexte</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">l&#x27;&#x27;action</span></span>
+<span class="odt-code-line"><span style="color:#000000">Context.parameters=</span><span style="color:#2a00ff">Param\u00E8tres</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">l&#x27;&#x27;action</span></span>
+<span class="odt-code-line"><span style="color:#000000">Context.session=</span><span style="color:#2a00ff">Elements</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">session</span></span>
+<span class="odt-code-line"><span style="color:#000000">Context.request=</span><span style="color:#2a00ff">Attributs</span><span style="color:#000000"> </span><span style="color:#2a00ff">de</span><span style="color:#000000"> </span><span style="color:#2a00ff">requ\u00EAte</span></span>
+</code></pre></div>
+
+<p><a id="refheading91748522158564"></a></p>
+<h2 id="165-la-vue-contextjsp">16.5. La vue [Context.JSP]</h2>
+<p>La vue [Context.JSP] a pour rôle d&#x27;afficher : </p>
+<ul>
+<li>certains paramètres de la requête</li>
+<li>la valeur de la clé <em>compteur</em> dans la session</li>
+<li>la valeur de la clé <em>info1</em> dans la requête</li>
+</ul>
+<p>Son code est le suivant :</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
+<span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
+<span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">taglib</span> <span style="color:#7f007f">prefix</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;s&quot;</span> <span style="color:#7f007f">uri</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/struts-tags&quot;</span> <span style="color:#bf5f3f">%&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Context.titre&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">title</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:head</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">head</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">body</span> <span style="color:#7f007f">background</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;</span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:url</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/ressources/standard.jpg&quot;</span><span style="color:#008080">/&gt;</span><span style="font-style:italic;color:#2a00ff">&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h2</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Context.message&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h2</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h3</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Context.parameters&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h3</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:iterator</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;#parameters[&#x27;nom&#x27;]&quot;</span> <span style="color:#7f007f">var</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;nom&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      nom : </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:property</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;nom&quot;</span><span style="color:#008080">/&gt;&lt;</span><span style="color:#3f7f7f">br</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:iterator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:iterator</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;#parameters[&#x27;prenom&#x27;]&quot;</span> <span style="color:#7f007f">var</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;prenom&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      prenom : </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:property</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;prenom&quot;</span><span style="color:#008080">/&gt;&lt;</span><span style="color:#3f7f7f">br</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:iterator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:iterator</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;#parameters[&#x27;age&#x27;]&quot;</span> <span style="color:#7f007f">var</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;age&quot;</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      âge : </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:property</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;age&quot;</span><span style="color:#008080">/&gt;&lt;</span><span style="color:#3f7f7f">br</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">s:iterator</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h3</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Context.session&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h3</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    compteur : </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:property</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;#session[&#x27;compteur&#x27;]&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h3</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Context.request&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h3</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    info1 : </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:property</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;#request[&#x27;info1&#x27;]&quot;</span><span style="color:#008080">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">body</span><span style="color:#008080">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
+</code></pre></div>
+
+<ul>
+<li>lignes 12-14 : affichent toutes les valeurs associées au paramètre <em>nom</em></li>
+<li>lignes 15-17 : affichent toutes les valeurs associées au paramètre <em>prenom</em></li>
+<li>lignes 18-20 : affichent toutes les valeurs associées au paramètre <em>age</em></li>
+<li>ligne 22 : affiche la valeur associée à la clé <em>compteur</em> dans la session</li>
+<li>ligne 24 : affiche la valeur associée à la clé <em>info1</em> dans la requête</li>
+</ul>
+<p><a id="refheading91750522158564"></a></p>
+<h2 id="166-les-tests">16.6. Les tests</h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002360000020948DA9C15.png" style="display:inline-block; margin:4px;width:7.488cm;height:6.893cm;" class="odt-zoomable" data-zoom-src="images/10000000000002360000020948DA9C15.png" /></td></tr></table>
+
+<ul>
+<li>en [1], <em>Action1</em> est demandée sans paramètres</li>
+<li>en [2], [Context.JSP] n&#x27;a pas trouvé de paramètres</li>
+<li>en [3], [Context.JSP] a trouvé la clé <em>compteur</em> dans la session</li>
+<li>en [4], [Context.JSP] a trouvé la clé <em>info1</em> dans la requête</li>
+</ul>
+<p>Faisons un autre test :</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003550000027C124BE9F7.png" style="display:inline-block; margin:4px;width:11.285cm;height:8.414cm;" class="odt-zoomable" data-zoom-src="images/10000000000003550000027C124BE9F7.png" /></td></tr></table>
+
+<ul>
+<li>en [1], <em>Action1</em> est demandée avec des paramètres</li>
+<li>en [2], [Context.JSP] affiche ces paramètres</li>
+<li>en [3], [Context.JSP] a trouvé la clé <em>compteur</em> dans la session. Le compteur a bien été incrémenté de 1 montrant par là qu&#x27;il y bien eu mémorisation entre les deux requêtes.</li>
+<li>en [4], [Context.JSP] a trouvé la clé <em>info1</em> dans la requête</li>
+</ul>
+<p>On se rappelle que la méthode [Action1.execute] écrivait sur la console du serveur web. Voilà un exemple :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Paramètres...
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>[prenom,y]
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>[prenom,y2]
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>[age,z]
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>[nom,x]
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>Session...
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>compteur=2
+</code></pre></div></td></tr></table></div>
+<p><a id="refheading91752522158564"></a></p>
+<h2 id="167-conclusion">16.7. Conclusion</h2>
+<p>On se rappellera les points suivants :</p>
+<ul>
+<li>pour mémoriser des informations à partager par toutes les requêtes de tous les utilisateurs, on utilisera la mémoire de l&#x27;application. Nous allons en montrer un exemple bientôt.</li>
+<li>pour mémoriser des informations à partager par toutes les requêtes d&#x27;un même utilisateur, on utilisera la session de celui-ci.</li>
+<li>pour mémoriser des informations à partager par tous les éléments traitant une requête, on utilisera la mémoire de la requête.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://tahe.developpez.com" target="_blank">
+          https://tahe.developpez.com
+        </a>
+        <br>
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
+        Partage dans les Mêmes Conditions 3.0 non transposé</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
