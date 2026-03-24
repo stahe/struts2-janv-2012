@@ -1005,11 +1005,16 @@
 
 <p>Les éléments du projet sont les suivants :</p>
 <ul>
-<li>[DoSomething.JSP] : l&#x27;unique vue de l&#x27;application qui présente les trois boutons de navigation ainsi qu&#x27;un lien.</li>
-<li>[DoSomething.java] et [DoSomethingElse.java] : les deux actions du projet</li>
-<li>[messages.properties] : le fichier des messages internationalisés</li>
-<li>[struts.xml] : le fichier de configuration Struts 2</li>
+  <li>[DoSomething.JSP] : l&#x27;unique vue de l&#x27;application qui présente les trois boutons de navigation ainsi qu&#x27;un lien.
+  </li>
+  <li>[DoSomething.java] et [DoSomethingElse.java] : les deux actions du projet
+  </li>
+  <li>[messages.properties] : le fichier des messages internationalisés
+  </li>
+  <li>[struts.xml] : le fichier de configuration Struts 2
+  </li>
 </ul>
+
 <p><a id="refheading91618522158564"></a></p>
 <h2 id="72-configuration">7.2. Configuration</h2>
 <p>Le fichier [struts.xml] suivant configure l&#x27;application :</p>
@@ -1032,9 +1037,12 @@
 </code></pre></div>
 
 <ul>
-<li>l&#x27;action [/actions/DoSomething] provoquera l&#x27;instanciation de la classe [actions.DoSomething] et sa méthode <em>execute</em> sera exécutée par défaut. Ce défaut peut être annulé si les paramètres passés à l&#x27;action [Something] précisent une autre méthode. Quelque soit la méthode exécutée, elle devra rendre la clé de navigation <em>success</em> puisque seule cette clé a été définie. La vue [DoSomething.JSP] sera alors affichée.</li>
-<li>la configuration de l&#x27;action [/actions/DoSomethingElse] est identique.</li>
+  <li>l&#x27;action [/actions/DoSomething] provoquera l&#x27;instanciation de la classe [actions.DoSomething] et sa méthode <i>execute</i> sera exécutée par défaut. Ce défaut peut être annulé si les paramètres passés à l&#x27;action [Something] précisent une autre méthode. Quelque soit la méthode exécutée, elle devra rendre la clé de navigation <i>success</i> puisque seule cette clé a été définie. La vue [DoSomething.JSP] sera alors affichée.
+  </li>
+  <li>la configuration de l&#x27;action [/actions/DoSomethingElse] est identique.
+  </li>
 </ul>
+
 <p><a id="refheading91620522158564"></a></p>
 <h2 id="73-le-fichier-des-messages">7.3. Le fichier des messages</h2>
 <p>Le fichier des messages [messages.properties] est le suivant :</p>
@@ -1076,12 +1084,18 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 11 : le formulaire sera posté à l&#x27;action [DoSomething]. Cela ne veut pas forcément dire que c&#x27;est cette action qui va être déclenchée. Cela dépend du bouton <em>submit</em> utilisé pour le POST.</li>
-<li>ligne 12 : le bouton <em>submit</em> ne précise ni action, ni méthode. Ce sera l&#x27;action [DoSomething] précisée par la balise &lt;form&gt; qui sera instanciée. La méthode exécutée sera celle définie dans le fichier [struts.xml], la méthode <em>execute</em>.</li>
-<li>ligne 13 : le bouton <em>submit</em> précise une méthode. Ce sera l&#x27;action [DoSomething] précisée par la balise &lt;form&gt; qui sera instanciée. La méthode exécutée sera la méthode <em>action1</em>.</li>
-<li>ligne 14 : le bouton <em>submit</em> précise une action et une méthode. Ce sera l&#x27;action [DoSomethingElse] qui sera instanciée. La méthode exécutée sera la méthode <em>action2</em>.</li>
-<li>lignes 16-17 : un lien vers l&#x27;action [DoSomething] et la méthode <em>action3</em>. L&#x27;action [DoSomething] sera instanciée et sa méthode <em>action3</em> exécutée. Contrairement aux boutons <em>submit</em>, le clic sur le lien ne provoque pas un POST mais un GET. Il n&#x27;y a donc aucun paramètre posté.</li>
+  <li>ligne 11 : le formulaire sera posté à l&#x27;action [DoSomething]. Cela ne veut pas forcément dire que c&#x27;est cette action qui va être déclenchée. Cela dépend du bouton <i>submit</i> utilisé pour le POST.
+  </li>
+  <li>ligne 12 : le bouton <i>submit</i> ne précise ni action, ni méthode. Ce sera l&#x27;action [DoSomething] précisée par la balise &lt;form&gt; qui sera instanciée. La méthode exécutée sera celle définie dans le fichier [struts.xml], la méthode <i>execute</i>.
+  </li>
+  <li>ligne 13 : le bouton <i>submit</i> précise une méthode. Ce sera l&#x27;action [DoSomething] précisée par la balise &lt;form&gt; qui sera instanciée. La méthode exécutée sera la méthode <i>action1</i>.
+  </li>
+  <li>ligne 14 : le bouton <i>submit</i> précise une action et une méthode. Ce sera l&#x27;action [DoSomethingElse] qui sera instanciée. La méthode exécutée sera la méthode <i>action2</i>.
+  </li>
+  <li>lignes 16-17 : un lien vers l&#x27;action [DoSomething] et la méthode <i>action3</i>. L&#x27;action [DoSomething] sera instanciée et sa méthode <i>action3</i> exécutée. Contrairement aux boutons <i>submit</i>, le clic sur le lien ne provoque pas un POST mais un GET. Il n&#x27;y a donc aucun paramètre posté.
+  </li>
 </ul>
+
 <p>Le code Html généré par ce code, lorsqu&#x27;on demande l&#x27;URL [http://localhost:8084/exemple-05B/actions/DoSomething.action] est le suivant :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -1126,13 +1140,20 @@
 <a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>ligne 9 : la balise <em>form</em> du formulaire Html. L&#x27;attribut <em>action</em> indique l&#x27;URL à laquelle seront postés les paramètres du formulaire. Cette URL est celle de l&#x27;action [DoSomething].</li>
-<li>lignes 11, 13, 15 : les attributs <em>name</em> des boutons seront postés à l&#x27;action cible du bouton <em>submit</em>. C&#x27;est ce qui permet à Struts de déterminer l&#x27;action à instancier et la méthode à exécuter.</li>
-<li>ligne 13 : l&#x27;attribut <em>name=method:action1</em> indique que la méthode <em>DoSomething.action1</em> doit être exécutée.</li>
-<li>ligne 15 : l&#x27;attribut <em>name= action:DoSomethingElse!action2</em> indique que la méthode <em>DoSomethingElse.action2</em> doit être exécutée.</li>
-<li>ligne 11 : l&#x27;attribut <em>name= formulaire.execute</em> ne précise ni action, ni méthode. C&#x27;est donc la méthode <em>DoSomething.execute</em> qui sera exécutée.</li>
-<li>ligne 19 : le lien demande explicitement l&#x27;exécution de la méthode <em>DoSomething.action3</em></li>
+  <li>ligne 9 : la balise <i>form</i> du formulaire Html. L&#x27;attribut <i>action</i> indique l&#x27;URL à laquelle seront postés les paramètres du formulaire. Cette URL est celle de l&#x27;action [DoSomething].
+  </li>
+  <li>lignes 11, 13, 15 : les attributs <i>name</i> des boutons seront postés à l&#x27;action cible du bouton <i>submit</i>. C&#x27;est ce qui permet à Struts de déterminer l&#x27;action à instancier et la méthode à exécuter.
+  </li>
+  <li>ligne 13 : l&#x27;attribut <i>name=method:action1</i> indique que la méthode <i>DoSomething.action1</i> doit être exécutée.
+  </li>
+  <li>ligne 15 : l&#x27;attribut <i>name= action:DoSomethingElse!action2</i> indique que la méthode <i>DoSomethingElse.action2</i> doit être exécutée.
+  </li>
+  <li>ligne 11 : l&#x27;attribut <i>name= formulaire.execute</i> ne précise ni action, ni méthode. C&#x27;est donc la méthode <i>DoSomething.execute</i> qui sera exécutée.
+  </li>
+  <li>ligne 19 : le lien demande explicitement l&#x27;exécution de la méthode <i>DoSomething.action3</i>
+  </li>
 </ul>
+
 <p><a id="refheading91624522158564"></a></p>
 <h2 id="75-les-actions">7.5. Les actions</h2>
 <p>L&#x27;action [DoSomething] est la suivante :</p>
@@ -1166,9 +1187,12 @@
 </code></pre></div>
 
 <ul>
-<li>les méthodes <em>execute</em>, <em>action1</em> et <em>action3</em> écrivent sur la console du serveur web et rendent la clé de navigation <em>success</em>.</li>
-<li>ligne 8 : le constructeur écrit également sur la console du serveur web</li>
+  <li>les méthodes <i>execute</i>, <i>action1</i> et <i>action3</i> écrivent sur la console du serveur web et rendent la clé de navigation <i>success</i>.
+  </li>
+  <li>ligne 8 : le constructeur écrit également sur la console du serveur web
+  </li>
 </ul>
+
 <p>Les différentes écritures sur la console permettent de savoir quelles méthodes sont exécutées lors d&#x27;une requête.</p>
 <p>L&#x27;action [DoSomethingElse] est similaire :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
@@ -1199,10 +1223,14 @@
 <h2 id="76-les-tests">7.6. Les tests</h2>
 <p>Les tests montrent les résultats suivants (sur la console du serveur web) :</p>
 <ul>
-<li>lors d&#x27;un clic sur le bouton [DoSomething.execute], l&#x27;action [DoSomething] est instanciée et sa méthode <em>execute</em> exécutée.</li>
-<li>lors d&#x27;un clic sur le bouton [DoSomething.action1], l&#x27;action [DoSomething] est instanciée et sa méthode <em>action1</em> exécutée.</li>
-<li>lors d&#x27;un clic sur le bouton [DoSomethingElse.action2], l&#x27;action [DoSomethingElse] est instanciée et sa méthode <em>action2</em> exécutée.</li>
-<li>lors d&#x27;un clic sur le lien [DoSomething.action3], l&#x27;action [DoSomething] est instanciée et sa méthode <em>action3</em> exécutée.</li>
+  <li>lors d&#x27;un clic sur le bouton [DoSomething.execute], l&#x27;action [DoSomething] est instanciée et sa méthode <i>execute</i> exécutée.
+  </li>
+  <li>lors d&#x27;un clic sur le bouton [DoSomething.action1], l&#x27;action [DoSomething] est instanciée et sa méthode <i>action1</i> exécutée.
+  </li>
+  <li>lors d&#x27;un clic sur le bouton [DoSomethingElse.action2], l&#x27;action [DoSomethingElse] est instanciée et sa méthode <i>action2</i> exécutée.
+  </li>
+  <li>lors d&#x27;un clic sur le lien [DoSomething.action3], l&#x27;action [DoSomething] est instanciée et sa méthode <i>action3</i> exécutée.
+  </li>
 </ul>
 
 

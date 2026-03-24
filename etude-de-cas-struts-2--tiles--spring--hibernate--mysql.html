@@ -1016,29 +1016,41 @@
 
 <p>Nous présenterons les éléments suivants des couches [metier, dao, jpa] :</p>
 <ul>
-<li>la couche [web] s&#x27;adresse à l&#x27;interface de la couche [métier]. Nous présenterons cette interface.</li>
-<li>la couche [jpa] accède à une base de données. Nous la présenterons.</li>
-<li>la couche [jpa] transforme les lignes des tables de la base de données en entités Jpa manipulées par toutes les couches de l&#x27;application. Nous les présenterons.</li>
-<li>les couches [metier, dao, jpa] sont instanciées par Spring. Nous présenterons le fichier de configuration qui réalise cette instanciation et cette intégration.</li>
+  <li>la couche [web] s&#x27;adresse à l&#x27;interface de la couche [métier]. Nous présenterons cette interface.
+  </li>
+  <li>la couche [jpa] accède à une base de données. Nous la présenterons.
+  </li>
+  <li>la couche [jpa] transforme les lignes des tables de la base de données en entités Jpa manipulées par toutes les couches de l&#x27;application. Nous les présenterons.
+  </li>
+  <li>les couches [metier, dao, jpa] sont instanciées par Spring. Nous présenterons le fichier de configuration qui réalise cette instanciation et cette intégration.
+  </li>
 </ul>
+
 <p><a id="refheading87351112820228"></a></p>
 <h2 id="182-la-base-de-donnees">18.2. La base de données</h2>
 <p>Nous utiliserons la base de données MySQL [dbpam_hibernate] suivante :</p>
 <p><img src="images/10000000000001130000016A3B1E492F.png" style="width:3.639cm;height:4.789cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001130000016A3B1E492F.png" /></p>
 <ul>
-<li>en [1], la base a trois tables :<ul>
-<li>[employes] : une table qui enregistre les employées d&#x27;une crèche</li>
-<li>[cotisations] : une table qui enregistre des taux de cotisations sociales</li>
-<li>[indemnites] : une table qui enregistre des informations permettant de calculer la paie des employées</li>
+  <li>en [1], la base a trois tables :
+    <ul>
+      <li>[employes] : une table qui enregistre les employées d&#x27;une crèche
+      </li>
+      <li>[cotisations] : une table qui enregistre des taux de cotisations sociales
+      </li>
+      <li>[indemnites] : une table qui enregistre des informations permettant de calculer la paie des employées
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><strong>Table [employes]</strong></p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004C20000015AB83A53B5.png" style="display:inline-block; margin:4px;width:16.113cm;height:4.577cm;" class="odt-zoomable" data-zoom-src="images/10000000000004C20000015AB83A53B5.png" /></td></tr></table>
 
 <ul>
-<li>en [2], la table des employés et en [3], la signification de ses champs</li>
+  <li>en [2], la table des employés et en [3], la signification de ses champs
+  </li>
 </ul>
+
 <p>Le contenu de la table pourrait être le suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002D500000045B8BBDC06.png" style="display:inline-block; margin:4px;width:13.212cm;height:1.256cm;" class="odt-zoomable" data-zoom-src="images/10000000000002D500000045B8BBDC06.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
@@ -1046,8 +1058,10 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053700000171BCB3C6F5.png" style="display:inline-block; margin:4px;width:17.662cm;height:4.882cm;" class="odt-zoomable" data-zoom-src="images/100000000000053700000171BCB3C6F5.png" /></td></tr></table>
 
 <ul>
-<li>en [4], la table des cotisations et en [5], la signification de ses champs</li>
+  <li>en [4], la table des cotisations et en [5], la signification de ses champs
+  </li>
 </ul>
+
 <p>Le contenu de la table pourrait être le suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001CF000000305ED6EA6C.png" style="display:inline-block; margin:4px;width:8.571cm;height:0.891cm;" class="odt-zoomable" data-zoom-src="images/10000000000001CF000000305ED6EA6C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
@@ -1055,8 +1069,10 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000535000001129FCCE31E.png" style="display:inline-block; margin:4px;width:17.635cm;height:3.625cm;" class="odt-zoomable" data-zoom-src="images/1000000000000535000001129FCCE31E.png" /></td></tr></table>
 
 <ul>
-<li>en [6], la table des indemnités et en [7], la signification de ses champs</li>
+  <li>en [6], la table des indemnités et en [7], la signification de ses champs
+  </li>
 </ul>
+
 <p>Le contenu de la table pourrait être le suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002C300000042137D36D7.png" style="display:inline-block; margin:4px;width:13.09cm;height:1.221cm;" class="odt-zoomable" data-zoom-src="images/10000000000002C300000042137D36D7.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
@@ -1169,28 +1185,28 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000163000000CBCEC3582C.png" style="display:inline-block; margin:4px;width:6.57cm;height:3.761cm;" class="odt-zoomable" data-zoom-src="images/1000000000000163000000CBCEC3582C.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ID
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">clé primaire de type autoincrement</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">clé primaire de type autoincrement</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>VERSION
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">n° de version de l&#x27;enregistrement</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">n° de version de l&#x27;enregistrement</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>PRENOM
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">prénom de l&#x27;employée</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">prénom de l&#x27;employée</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>NOM
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">son nom</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">son nom</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ADRESSE
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">son adresse</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">son adresse</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>CP
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">son code postal</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">son code postal</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>VILLE
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">sa ville</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">sa ville</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>INDEMNITE_ID
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">clé étrangère sur INDEMNITES(ID)</p></td></tr></table></td></tr></table>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">clé étrangère sur INDEMNITES(ID)</div></td></tr></table></td></tr></table>
 
 <p>L&#x27;entité [Employe] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
@@ -1262,22 +1278,22 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000019D0000009D663003AE.png" style="display:inline-block; margin:4px;width:7.04cm;height:2.679cm;" class="odt-zoomable" data-zoom-src="images/100000000000019D0000009D663003AE.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ID
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">clé primaire de type autoincrement</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">clé primaire de type autoincrement</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>VERSION
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">n° de version de l&#x27;enregistrement</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">n° de version de l&#x27;enregistrement</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>BASE_HEURE
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">coût en euro d&#x27;une heure de garde</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">coût en euro d&#x27;une heure de garde</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ENTRETIEN_JOUR
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">indemnité en euro par jour de garde</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">indemnité en euro par jour de garde</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>REPAS_JOUR
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">indemnité de repas en euro par jour de garde</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">indemnité de repas en euro par jour de garde</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>INDEMNITES_CP
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">indemnités de congés payés. C&#x27;est un pourcentage</p><p style="margin:0;"> à appliquer au salaire de base.</p></td></tr></table></td></tr></table>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">indemnités de congés payés. C&#x27;est un pourcentage</div><div style="margin:0 0 0.5em 0"> à appliquer au salaire de base.</div></td></tr></table></td></tr></table>
 
 <p>L&#x27;entité [Indemnite] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
@@ -1339,22 +1355,22 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000017C000000916AACFD59.png" style="display:inline-block; margin:4px;width:7.04cm;height:2.679cm;" class="odt-zoomable" data-zoom-src="images/100000000000017C000000916AACFD59.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ID
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">clé primaire de type autoincrement</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">clé primaire de type autoincrement</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>VERSION
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">n° de version de l&#x27;enregistrement</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">n° de version de l&#x27;enregistrement</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>SECU
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">taux (pourcentage) de cotisation pour la sécurité</p><p style="margin:0;"> sociale</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">taux (pourcentage) de cotisation pour la sécurité</div><div style="margin:0 0 0.5em 0"> sociale</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>RETRAITE
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">taux de cotisation pour la retraite</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">taux de cotisation pour la retraite</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>CSGD
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">taux de cotisation pour la contribution sociale</p><p style="margin:0;"> généralisée déductible</p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">taux de cotisation pour la contribution sociale</div><div style="margin:0 0 0.5em 0"> généralisée déductible</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>CSGRDS
 </code></pre></div>
-</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">taux de cotisation pour la contribution sociale</p><p style="margin:0;"> généralisée et la contribution au remboursement</p><p style="margin:0;"> de la dette sociale</p></td></tr></table></td></tr></table>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">taux de cotisation pour la contribution sociale</div><div style="margin:0 0 0.5em 0"> généralisée et la contribution au remboursement</div><div style="margin:0 0 0.5em 0"> de la dette sociale</div></td></tr></table></td></tr></table>
 
 <p>L&#x27;entité [Cotisation] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
@@ -1403,23 +1419,28 @@
 </code></pre></div>
 
 <p>Les différents champs de la classe reflètent les différentes colonnes de la table [INDEMNITES].</p>
-<p><a id="refheading87353112820228"></a>
-<a id="mode-calcul-salaire"></a></p>
+<p><a id="mode-calcul-salaire"></a>
+<a id="refheading87353112820228"></a></p>
 <h2 id="184-mode-de-calcul-du-salaire-dune-assistante-maternelle">18.4. Mode de calcul du salaire d&#x27;une assistante maternelle</h2>
 <p>L&#x27;application web que nous allons écrire va nous permettre de calculer le salaire d&#x27;une employée à partir de trois informations :</p>
 <ul>
-<li>l&#x27;indice de l&#x27;employée</li>
-<li>le nombre de jours travaillés</li>
-<li>le nombre d&#x27;heures travaillées</li>
+  <li>l&#x27;indice de l&#x27;employée
+  </li>
+  <li>le nombre de jours travaillés
+  </li>
+  <li>le nombre d&#x27;heures travaillées
+  </li>
 </ul>
+
 <p>Voici une copie d&#x27;écran de calcul d&#x27;un salaire :</p>
 <p><img src="images/100000000000031A00000345E4F75BE3.png" style="width:14.711cm;height:15.499cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000031A00000345E4F75BE3.png" /></p>
 <p>Nous présentons maintenant le mode de calcul du salaire mensuel d&#x27;une assistante maternelle. Il ne prétend pas être celui utilisé dans la réalité. Nous prenons pour exemple, le salaire de Mme Marie Jouveinal qui a travaillé 150 h sur 20 jours pendant le mois à payer.</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">Les éléments suivants sont pris en compte :</p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Les éléments suivants sont pris en compte :</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>[TOTALHEURES]: total des heures
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a> travaillées dans le mois
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>[TOTALJOURS]: total des jours
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a> travaillés dans le mois
 </code></pre></div>
@@ -1427,7 +1448,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>[TOTALHEURES]=150
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>[TOTALJOURS]= 20
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">Le salaire de base de l&#x27;assistante</p><p style="margin:0;">maternelle est donné par la formule</p><p style="margin:0;"> suivante :</p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Le salaire de base de l&#x27;assistante</div><div style="margin:0 0 0.5em 0">maternelle est donné par la formule</div><div style="margin:0 0 0.5em 0"> suivante :</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>[SALAIREBASE]=([TOTALHEURES]
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>*[BASEHEURE])*(1+[INDEMNITESCP]/
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>100)
@@ -1436,53 +1457,59 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>[SALAIREBASE]=(150*[2.1])
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>*(1+0.15)= 362,25
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">Un certain nombre de cotisations sociales</p><p style="margin:0;">doivent être prélevées sur ce salaire de</p><p style="margin:0;">base :</p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Un certain nombre de cotisations sociales</div><div style="margin:0 0 0.5em 0">doivent être prélevées sur ce salaire de</div><div style="margin:0 0 0.5em 0">base :</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Contribution sociale généralisée
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a> et contribution au remboursement
 <a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a> de la dette sociale :
 <a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a> [SALAIREBASE]*[CSGRDS/100]
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Contribution sociale généralisée
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a> déductible :
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a> [SALAIREBASE]*[CSGD/100]
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>Sécurité sociale, veuvage,
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a> vieillesse :
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a> [SALAIREBASE]*[SECU/100]
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Retraite Complémentaire + AGPF + 
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>Assurance Chômage : [SALAIREBASE]*[RETRAITE/100]
 </code></pre></div>
 </div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>CSGRDS : 12,64
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>CSGD : 22,28
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Sécurité sociale : 34,02
 </code></pre></div>
-</div><div markdown="block">
+</div>
+<div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>Retraite : 28,55
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">Total des cotisations sociales :</p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Total des cotisations sociales :</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>[COTISATIONSSOCIALES]=[SALAIREBASE]
 <a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>*(CSGRDS+CSGD+SECU+RETRAITE)/100
 </code></pre></div>
 </div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>[COTISATIONSSOCIALES]=97,48
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">Par ailleurs, l&#x27;assistante maternelle a droit,</p><p style="margin:0;">chaque jour travaillé, à une indemnité</p><p style="margin:0;">d&#x27;entretien ainsi qu&#x27;à une indemnité de</p><p style="margin:0;">repas. A ce titre elle reçoit les indemnités</p><p style="margin:0;"> suivantes :</p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Par ailleurs, l&#x27;assistante maternelle a droit,</div><div style="margin:0 0 0.5em 0">chaque jour travaillé, à une indemnité</div><div style="margin:0 0 0.5em 0">d&#x27;entretien ainsi qu&#x27;à une indemnité de</div><div style="margin:0 0 0.5em 0">repas. A ce titre elle reçoit les indemnités</div><div style="margin:0 0 0.5em 0"> suivantes :</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>[Indemnités]=[TOTALJOURS]
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>*(ENTRETIENJOUR+REPASJOUR)
 </code></pre></div>
 </div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>[INDEMNITES]=104
 </code></pre></div>
-</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;">Au final, le salaire net à payer à l&#x27;assistante maternelle est le suivant :</p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0">Au final, le salaire net à payer à l&#x27;assistante maternelle est le suivant :</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>[SALAIREBASE]-
 <a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>[COTISATIONSSOCIALES]+[INDEMNITÉS]
 </code></pre></div>
@@ -1512,9 +1539,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 8 : la méthode qui nous permettra de calculer le salaire d&#x27;un employé</li>
-<li>ligne 10 : la méthode qui nous permettra de remplir le combo des employés</li>
+  <li>ligne 8 : la méthode qui nous permettra de calculer le salaire d&#x27;un employé
+  </li>
+  <li>ligne 10 : la méthode qui nous permettra de remplir le combo des employés
+  </li>
 </ul>
+
 <p>La méthode <em>calculerFeuillesalaire</em> rend une instance de la classe [FeuilleSalaire] suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> metier;</span></span>
@@ -1555,10 +1585,14 @@
 
 <p>La feuille de salaire encapsule les informations suivantes :</p>
 <ul>
-<li>ligne 10 : des informations sur l&#x27;employé dont on calcule le salaire</li>
-<li>ligne 11 : les différents taux de cotisations</li>
-<li>ligne 12 : des éléments du salaire</li>
+  <li>ligne 10 : des informations sur l&#x27;employé dont on calcule le salaire
+  </li>
+  <li>ligne 11 : les différents taux de cotisations
+  </li>
+  <li>ligne 12 : des éléments du salaire
+  </li>
 </ul>
+
 <p>La classe [ElementsSalaire] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> metier;</span></span>
@@ -1603,8 +1637,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 8-12 : les éléments du salaire</li>
+  <li>lignes 8-12 : les éléments du salaire
+  </li>
 </ul>
+
 <p><a id="refheading91778522158564"></a></p>
 <h2 id="186-le-fichier-de-configuration-de-spring">18.6. Le fichier de configuration de Spring</h2>
 <p>L&#x27;intégration des couches [métier, dao, jpa] est assurée par le fichier de configuration Spring suivant :</p>

@@ -1030,11 +1030,16 @@
 
 <p>En [1], le projet :</p>
 <ul>
-<li>les vues [Saisie.JSP], [Confirmation.JSP]</li>
-<li>le fichier de configuration [struts.xml]</li>
-<li>le fichier des messages [messages.properties]</li>
-<li>l&#x27;action [Confirmer.java]</li>
+  <li>les vues [Saisie.JSP], [Confirmation.JSP]
+  </li>
+  <li>le fichier de configuration [struts.xml]
+  </li>
+  <li>le fichier des messages [messages.properties]
+  </li>
+  <li>l&#x27;action [Confirmer.java]
+  </li>
 </ul>
+
 <p>En [2], la page de saisie</p>
 <p><a id="refheading100231454977699"></a></p>
 <h2 id="62-configuration">6.2. Configuration</h2>
@@ -1071,10 +1076,14 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 20 : le package des actions d&#x27;URL <em>/actions/Action</em>.</li>
-<li>lignes 21-23 : définissent l&#x27;action [Saisir]. Aucune classe ne lui est associée. La réponse est toujours la vue [/vues/Saisie.JSP]</li>
-<li>lignes 24-26 : définissent l&#x27;action [Confirmer]. La classe [actions.Confirmer] lui est associée. La réponse est toujours la vue [/vues/Confirmation.JSP]</li>
+  <li>ligne 20 : le package des actions d&#x27;URL <i>/actions/Action</i>.
+  </li>
+  <li>lignes 21-23 : définissent l&#x27;action [Saisir]. Aucune classe ne lui est associée. La réponse est toujours la vue [/vues/Saisie.JSP]
+  </li>
+  <li>lignes 24-26 : définissent l&#x27;action [Confirmer]. La classe [actions.Confirmer] lui est associée. La réponse est toujours la vue [/vues/Confirmation.JSP]
+  </li>
 </ul>
+
 <p><a id="refheading100251454977699"></a></p>
 <h2 id="63-laction-confirmer">6.3. L&#x27;action [Confirmer]</h2>
 <p>Son code est le suivant :</p>
@@ -1146,12 +1155,18 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 7 : affiche le message de clé <em>saisie.titre1</em> (Saisie) [1].</li>
-<li>ligne 10 : affiche le message de clé <em>saisie.titre2</em> (Saisie) [2].</li>
-<li>lignes 11, 14 : la balise <em>&lt;s:form&gt;</em> introduit un formulaire Html. Toutes les saisies à l&#x27;intérieur de ce formulaire seront envoyées au serveur web. On dit qu&#x27;elles sont <em>postées</em>, car l&#x27;opération Http qui intervient dans cet envoi de données au serveur s&#x27;appelle POST. Les données envoyées le sont sous forme de chaîne de caractères <em>param1=valeur1&amp;param2=valeur2&amp;</em>... Nous avons déjà rencontré cette chaîne paragraphe <a href="exemple-02---injection-de-parametres-dans-laction.html#parametres-get">3.5</a> dans l&#x27;exemple 02. Dans les deux cas, la chaîne des paramètres est traitée de la même façon par Struts 2. Les valeurs <em>valeuri</em> des paramètres <em>parami</em> sont injectées dans l&#x27;action exécutée, dans des champs portant les mêmes noms que les paramètres <em>parami</em>. A qui sont envoyées les données postées ? Par défaut, à l&#x27;action qui a affiché le formulaire, ici l&#x27;action <em>Saisir</em> [5]. On peut également utiliser l&#x27;attribut <strong>action</strong> pour préciser une autre action, ici l&#x27;action [Confirmer]. </li>
-<li>ligne 12 : la balise <strong>&lt;s:textfield ...&gt;</strong> affiche le champ de saisie [3]. Son attribut <em>key</em> désigne la clé du libellé à afficher à gauche du champ de saisie. Le libellé est donc cherché dans le fichier [messages.properties]. L&#x27;attribut <em>name</em> est le nom du paramètre qui sera posté. La valeur associée à ce paramètre sera le texte saisi dans le champ de saisie.</li>
-<li>ligne 13 : la balise <strong>&lt;s:submit ...&gt;</strong> affiche le bouton [4]. Son attribut <em>key</em> désigne la clé du libellé à afficher sur le bouton. Le libellé est donc cherché dans le fichier [messages.properties]. Un bouton de type <em>submit</em> provoque le POST du formulaire vers une action. Nous avons dit plus haut que celle-ci était l&#x27;action [Confirmer] à cause de l&#x27;attribut <em>action</em> de la balise <em>&lt;s:form&gt;</em>. L&#x27;attribut <em>action</em> de la balise <em>&lt;s:submit&gt;</em> permet de préciser éventuellement une autre action. Ici nous avons remis l&#x27;action [Confirmer]. Le bouton a un nom de paramètre par défaut : <em>action:nom_action</em>, ici <em>action:Confirmer</em>. La valeur associée à ce paramètre est le libellé du bouton. Au final, la chaîne de paramètres postée à l&#x27;action [Confirmer] lorsque l&#x27;utilisateur cliquera sur le bouton [Valider] sera :</li>
+  <li>ligne 7 : affiche le message de clé <i>saisie.titre1</i> (Saisie) [1].
+  </li>
+  <li>ligne 10 : affiche le message de clé <i>saisie.titre2</i> (Saisie) [2].
+  </li>
+  <li>lignes 11, 14 : la balise <i>&lt;s:form&gt;</i> introduit un formulaire Html. Toutes les saisies à l&#x27;intérieur de ce formulaire seront envoyées au serveur web. On dit qu&#x27;elles sont <i>postées</i>, car l&#x27;opération Http qui intervient dans cet envoi de données au serveur s&#x27;appelle POST. Les données envoyées le sont sous forme de chaîne de caractères <i>param1=valeur1&amp;param2=valeur2&amp;</i>... Nous avons déjà rencontré cette chaîne paragraphe <a href="exemple-02---injection-de-parametres-dans-laction.html#parametres-get">3.5</a> dans l&#x27;exemple 02. Dans les deux cas, la chaîne des paramètres est traitée de la même façon par Struts 2. Les valeurs <i>valeuri</i> des paramètres <i>parami</i> sont injectées dans l&#x27;action exécutée, dans des champs portant les mêmes noms que les paramètres <i>parami</i>. A qui sont envoyées les données postées ? Par défaut, à l&#x27;action qui a affiché le formulaire, ici l&#x27;action <i>Saisir</i> [5]. On peut également utiliser l&#x27;attribut <b>action</b> pour préciser une autre action, ici l&#x27;action [Confirmer]. 
+  </li>
+  <li>ligne 12 : la balise <b>&lt;s:textfield ...&gt;</b> affiche le champ de saisie [3]. Son attribut <i>key</i> désigne la clé du libellé à afficher à gauche du champ de saisie. Le libellé est donc cherché dans le fichier [messages.properties]. L&#x27;attribut <i>name</i> est le nom du paramètre qui sera posté. La valeur associée à ce paramètre sera le texte saisi dans le champ de saisie.
+  </li>
+  <li>ligne 13 : la balise <b>&lt;s:submit ...&gt;</b> affiche le bouton [4]. Son attribut <i>key</i> désigne la clé du libellé à afficher sur le bouton. Le libellé est donc cherché dans le fichier [messages.properties]. Un bouton de type <i>submit</i> provoque le POST du formulaire vers une action. Nous avons dit plus haut que celle-ci était l&#x27;action [Confirmer] à cause de l&#x27;attribut <i>action</i> de la balise <i>&lt;s:form&gt;</i>. L&#x27;attribut <i>action</i> de la balise <i>&lt;s:submit&gt;</i> permet de préciser éventuellement une autre action. Ici nous avons remis l&#x27;action [Confirmer]. Le bouton a un nom de paramètre par défaut : <i>action:nom_action</i>, ici <i>action:Confirmer</i>. La valeur associée à ce paramètre est le libellé du bouton. Au final, la chaîne de paramètres postée à l&#x27;action [Confirmer] lorsque l&#x27;utilisateur cliquera sur le bouton [Valider] sera :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="font-weight:bold;font-style:italic">?nom=xx&amp;action:Confirmer=Valider</span>.</span>
 </code></pre></div>
@@ -1187,11 +1202,16 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 7 : affiche le libellé de clé <em>confirm.titre1</em> trouvé dans le fichier des messages [1]</li>
-<li>ligne 10 : affiche le libellé de clé <em>confirm.titre2</em> trouvé dans le fichier des messages [3]</li>
-<li>ligne 12 : affiche la propriété <em>nom </em>de l&#x27;action [Confirmer] qui a été exécutée.</li>
-<li>ligne 14 : crée un lien vers l&#x27;action [Saisir]. La balise <em>&lt;s:url&gt;,</em> déjà rencontrée, va être générée à partir de l&#x27;URL [2] du navigateur. Le chemin sera celui de [2] <em>http://localhost:8084/exemple-05/actions</em> et l&#x27;action celle de l&#x27;attribut <em>action</em>, ici <em>Saisir</em>. L&#x27;URL du lien sera donc <em>http://localhost:8084/exemple-05/actions/Saisir.action</em>. Le texte du lien sera le libellé associé à la clé <em>confirm.retour</em> [4].</li>
+  <li>ligne 7 : affiche le libellé de clé <i>confirm.titre1</i> trouvé dans le fichier des messages [1]
+  </li>
+  <li>ligne 10 : affiche le libellé de clé <i>confirm.titre2</i> trouvé dans le fichier des messages [3]
+  </li>
+  <li>ligne 12 : affiche la propriété <i>nom </i>de l&#x27;action [Confirmer] qui a été exécutée.
+  </li>
+  <li>ligne 14 : crée un lien vers l&#x27;action [Saisir]. La balise <i>&lt;s:url&gt;,</i> déjà rencontrée, va être générée à partir de l&#x27;URL [2] du navigateur. Le chemin sera celui de [2] <i>http://localhost:8084/exemple-05/actions</i> et l&#x27;action celle de l&#x27;attribut <i>action</i>, ici <i>Saisir</i>. L&#x27;URL du lien sera donc <i>http://localhost:8084/exemple-05/actions/Saisir.action</i>. Le texte du lien sera le libellé associé à la clé <i>confirm.retour</i> [4].
+  </li>
 </ul>
+
 <p><a id="refheading100351454977699"></a></p>
 <h2 id="66-les-tests">6.6. Les tests</h2>
 <p>Voici deux requêtes :</p>
@@ -1236,13 +1256,20 @@
 <p>En ligne 12, le champ de saisie est affiché. Son contenu est initialisé avec la propriété <em>nom</em> (<em>name</em>). Rappelons ce qui avait été écrit plus haut sur le fonctionnement de la balise <em>&lt;s:property&gt;</em> :</p>
 <p>La balise <strong>&lt;s:property name=&quot;propriété&quot;&gt;</strong> permet d&#x27;écrire la valeur d&#x27;une propriété d&#x27;un objet appelé <em>ActionContext</em>. On trouve dans cet objet :</p>
 <ol>
-<li>les propriétés de la classe associée à l&#x27;action qui a été exécutée.</li>
-<li>les attributs de la requête courante notés <em>&lt;s:property name=&quot;#request[&#x27;clé&#x27;]&quot;&gt;</em></li>
-<li>les attributs de la session de l&#x27;utilisateur notés <em>&lt;s:property name=&quot;#session[&#x27;clé&#x27;]&quot;&gt;</em></li>
-<li>les attributs de l&#x27;application elle-même notés <em>&lt;s:property name=&quot;#application[&#x27;clé&#x27;]&quot;&gt;</em></li>
-<li>les paramètres envoyés par le navigateur client notés <em>&lt;s:property name=&quot;#parameters[&#x27;clé&#x27;]&quot;&gt;</em></li>
-<li>la notation <em>&lt;s:property name=&quot;#attr[&#x27;clé&#x27;]&quot;&gt;</em> affiche la valeur d&#x27;un objet cherché dans la page, la requête, la session, l&#x27;application dans cet ordre.</li>
+  <li>les propriétés de la classe associée à l&#x27;action qui a été exécutée.
+  </li>
+  <li>les attributs de la requête courante notés <i>&lt;s:property name=&quot;#request[&#x27;clé&#x27;]&quot;&gt;</i>
+  </li>
+  <li>les attributs de la session de l&#x27;utilisateur notés <i>&lt;s:property name=&quot;#session[&#x27;clé&#x27;]&quot;&gt;</i>
+  </li>
+  <li>les attributs de l&#x27;application elle-même notés <i>&lt;s:property name=&quot;#application[&#x27;clé&#x27;]&quot;&gt;</i>
+  </li>
+  <li>les paramètres envoyés par le navigateur client notés <i>&lt;s:property name=&quot;#parameters[&#x27;clé&#x27;]&quot;&gt;</i>
+  </li>
+  <li>la notation <i>&lt;s:property name=&quot;#attr[&#x27;clé&#x27;]&quot;&gt;</i> affiche la valeur d&#x27;un objet cherché dans la page, la requête, la session, l&#x27;application dans cet ordre.
+  </li>
 </ol>
+
 <p>On est ici dans le cas 1. L&#x27;action [Saisir] n&#x27;a pas de classe associée. La propriété <em>nom</em> n&#x27;existe donc pas. Une chaîne vide est alors affichée dans le champ de saisie.</p>
 <p>Pour afficher en [4] le nom qui a été saisi en [1], nous utiliserons la session de l&#x27;utilisateur.</p>
 

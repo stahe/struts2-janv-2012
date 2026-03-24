@@ -899,16 +899,24 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004C2000002AE3E61B19A.png" style="display:inline-block; margin:4px;width:16.113cm;height:9.075cm;" class="odt-zoomable" data-zoom-src="images/10000000000004C2000002AE3E61B19A.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on copie le nouveau projet</li>
-<li>en [2], on nomme le nouveau projet [pam-02] et on précise son dossier</li>
-<li>en [3], le nouveau projet [pam-02]</li>
+  <li>en [1], on copie le nouveau projet
+  </li>
+  <li>en [2], on nomme le nouveau projet [pam-02] et on précise son dossier
+  </li>
+  <li>en [3], le nouveau projet [pam-02]
+  </li>
 </ul>
+
 <p>Pour &quot; brancher &quot; la vraie couche [metier] sur la couche web que nous avons construite, il faut faire trois choses :</p>
 <ol>
-<li>supprimer la couche [metier] simulée que nous avions créée</li>
-<li>configurer Spring pour qu&#x27;il instancie la vraie couche [metier] qui se trouve dans l&#x27;archive [pam-spring-metier-dao-jpa-hibernate.jar].</li>
-<li>ajouter au projet toutes les archives nécessaires (Spring, Hibernate, Jpa, pilote Jdbc de MySQL).</li>
+  <li>supprimer la couche [metier] simulée que nous avions créée
+  </li>
+  <li>configurer Spring pour qu&#x27;il instancie la vraie couche [metier] qui se trouve dans l&#x27;archive [pam-spring-metier-dao-jpa-hibernate.jar].
+  </li>
+  <li>ajouter au projet toutes les archives nécessaires (Spring, Hibernate, Jpa, pilote Jdbc de MySQL).
+  </li>
 </ol>
+
 <p>Le fichier de configuration de Spring [WEB-INF/applicationContext.xml] devient le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
 <span class="odt-code-line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>

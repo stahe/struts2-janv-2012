@@ -991,10 +991,14 @@
 
 <p>On y trouve :</p>
 <ul>
-<li>une vue [Page1.JSP]</li>
-<li>deux fichiers de messages [messages*.properties]</li>
-<li>pas d&#x27;actions</li>
+  <li>une vue [Page1.JSP]
+  </li>
+  <li>deux fichiers de messages [messages*.properties]
+  </li>
+  <li>pas d&#x27;actions
+  </li>
 </ul>
+
 <p><a id="refheading100111454977699"></a></p>
 <h2 id="52-configuration-du-projet">5.2. Configuration du projet</h2>
 <p>Le fichier [struts.xml] est le suivant :</p>
@@ -1027,9 +1031,12 @@
 </code></pre></div>
 
 <ul>
-<li>la ligne 8 définit une constante Struts, celle qui fixe le nom du fichier des messages internationalisés, ici <em>messages</em>. Les fichiers [messages_xx.properties] seront cherchés dans le <em>ClassPath</em> du projet. Pour cette raison, ils ont été placés ici à la racine de [Source Packages] [1].</li>
-<li>lignes 21-23 : définissent une action [Action1] sans classe associée. Une classe par défaut de Struts sera alors utilisée dont la méthode <em>execute</em> rend la clé <em>success</em>. La vue [/vues/Page1.JSP] sera alors renvoyée au client. Il est important de comprendre que cela ne revient pas au même que d&#x27;appeler directement la vue [/vues/Page1.JSP]. En effet, l&#x27;appel d&#x27;une action déclenche l&#x27;exécution des intercepteurs ce que ne fait pas l&#x27;appel direct à une vue. L&#x27;un des intercepteurs gère l&#x27;internationalisation.</li>
+  <li>la ligne 8 définit une constante Struts, celle qui fixe le nom du fichier des messages internationalisés, ici <i>messages</i>. Les fichiers [messages_xx.properties] seront cherchés dans le <i>ClassPath</i> du projet. Pour cette raison, ils ont été placés ici à la racine de [Source Packages] [1].
+  </li>
+  <li>lignes 21-23 : définissent une action [Action1] sans classe associée. Une classe par défaut de Struts sera alors utilisée dont la méthode <i>execute</i> rend la clé <i>success</i>. La vue [/vues/Page1.JSP] sera alors renvoyée au client. Il est important de comprendre que cela ne revient pas au même que d&#x27;appeler directement la vue [/vues/Page1.JSP]. En effet, l&#x27;appel d&#x27;une action déclenche l&#x27;exécution des intercepteurs ce que ne fait pas l&#x27;appel direct à une vue. L&#x27;un des intercepteurs gère l&#x27;internationalisation.
+  </li>
 </ul>
+
 <p><a id="refheading100131454977699"></a></p>
 <h2 id="53-les-fichiers-de-messages">5.3. Les fichiers de messages</h2>
 <p><u><strong>messages.properties</strong></u></p>
@@ -1048,9 +1055,12 @@
 
 <p>Ils définissent trois clés <em>page.texte</em>, <em>page.titre1</em>, <em>page.titre2</em>. Le fichier [messages_<strong>en</strong>.properties] sera utilisé si la langue de la page est l&#x27;anglais (<strong>en</strong>). Le fichier [messages.properties] sera utilisé pour toutes les autres langues. C&#x27;est le fichier de messages par défaut. La langue utilisée est soit :</p>
 <ul>
-<li>celle du navigateur client dans ses préférences envoyées au serveur</li>
-<li>celle demandée par une requête du client avec le paramètre <em>request_locale=xx</em>.</li>
+  <li>celle du navigateur client dans ses préférences envoyées au serveur
+  </li>
+  <li>celle demandée par une requête du client avec le paramètre <i>request_locale=xx</i>.
+  </li>
 </ul>
+
 <p><a id="refheading100151454977699"></a></p>
 <h2 id="54-la-vue-page1jsp">5.4. La vue [Page1.JSP]</h2>
 <p>La vue est la suivante :</p>
@@ -1071,19 +1081,26 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 7 : affiche le message de clé <em>page.titre1</em></li>
-<li>ligne 10 : affiche le message de clé <em>page.titre2</em></li>
-<li>ligne 11 : affiche le message de clé <em>page.texte</em></li>
+  <li>ligne 7 : affiche le message de clé <i>page.titre1</i>
+  </li>
+  <li>ligne 10 : affiche le message de clé <i>page.titre2</i>
+  </li>
+  <li>ligne 11 : affiche le message de clé <i>page.texte</i>
+  </li>
 </ul>
+
 <p><a id="refheading100171454977699"></a></p>
 <h2 id="55-les-tests">5.5. Les tests</h2>
 <p>Exécutons le projet :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000052B00000140CE7B3713.png" style="display:inline-block; margin:4px;width:17.503cm;height:4.233cm;" class="odt-zoomable" data-zoom-src="images/100000000000052B00000140CE7B3713.png" /></td></tr></table>
 
 <ul>
-<li>en [1], la page s&#x27;est affichée en français. C&#x27;est le fichier [messages.properties] qui a été utilisé parce que le navigateur utilisé avait le Français comme langue préférée.</li>
-<li>en [3], la page s&#x27;est affichée en anglais. C&#x27;est le fichier [messages_<strong>en</strong>.properties] qui a été utilisé parce que l&#x27;URL [2] a utilisé le paramètre <em>request_locale=</em><strong><em>en</em></strong>.</li>
+  <li>en [1], la page s&#x27;est affichée en français. C&#x27;est le fichier [messages.properties] qui a été utilisé parce que le navigateur utilisé avait le Français comme langue préférée.
+  </li>
+  <li>en [3], la page s&#x27;est affichée en anglais. C&#x27;est le fichier [messages_<b>en</b>.properties] qui a été utilisé parce que l&#x27;URL [2] a utilisé le paramètre <i>request_locale=</i><i><b>en</b></i>.
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000051A000001B3528BAD60.png" style="display:inline-block; margin:4px;width:17.277cm;height:5.756cm;" class="odt-zoomable" data-zoom-src="images/100000000000051A000001B3528BAD60.png" /></td></tr></table>
 
 <p>En [4], c&#x27;est une page en allemand (de) qui est demandée. Comme il n&#x27;existe pas de fichier [messages_de.properties], c&#x27;est le fichier par défaut [messages.properties] qui est utilisé [5].</p>

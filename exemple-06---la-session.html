@@ -1007,9 +1007,12 @@
 
 <p>Le projet [exemple-06] est obtenue par recopie du projet [exemple-05]. Nous allons changer quelques éléments pour </p>
 <ul>
-<li>bénéficier de la session de l&#x27;utilisateur.</li>
-<li>ajouter une nouvelle action [Effacer] [1] pour effacer le champ de saisie.</li>
+  <li>bénéficier de la session de l&#x27;utilisateur.
+  </li>
+  <li>ajouter une nouvelle action [Effacer] [1] pour effacer le champ de saisie.
+  </li>
 </ul>
+
 <p><a id="refheading100431454977699"></a></p>
 <h2 id="83-configuration">8.3. Configuration</h2>
 <p>Le fichier [struts.xml] évolue de la façon suivante :</p>
@@ -1092,9 +1095,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 7 : la classe [Confirmer] implémente l&#x27;interface <strong>SessionAware</strong>. Cette interface n&#x27;a qu&#x27;une méthode, la méthode <strong>setSession</strong> des lignes 25-27. Avant l&#x27;appel de la méthode <em>execute</em>, l&#x27;un des intercepteurs de la requête va injecter, via la méthode <em>setSession</em>, la session de l&#x27;utilisateur sous la forme d&#x27;un dictionnaire <em>Map&lt;String, Object&gt;</em> (ligne 25). Nous choisissons de mémoriser ce dictionnaire dans le champ <em>session</em> de la ligne 12.</li>
-<li>lignes 30-34 : la méthode <em>execute</em> de l&#x27;action. Lorsqu&#x27;elle s&#x27;exécute, le champ <em>session</em> a été initialisé par l&#x27;un des intercepteurs ainsi que le champ <em>nom</em> par un autre intercepteur. On utilise ce dictionnaire <em>session</em> pour y stocker le champ <em>nom</em>. Ainsi le nom va-t-il faire partie de la mémoire de l&#x27;utilisateur et être disponible à toutes les requêtes de celui-ci.</li>
+  <li>ligne 7 : la classe [Confirmer] implémente l&#x27;interface <b>SessionAware</b>. Cette interface n&#x27;a qu&#x27;une méthode, la méthode <b>setSession</b> des lignes 25-27. Avant l&#x27;appel de la méthode <i>execute</i>, l&#x27;un des intercepteurs de la requête va injecter, via la méthode <i>setSession</i>, la session de l&#x27;utilisateur sous la forme d&#x27;un dictionnaire <i>Map&lt;String, Object&gt;</i> (ligne 25). Nous choisissons de mémoriser ce dictionnaire dans le champ <i>session</i> de la ligne 12.
+  </li>
+  <li>lignes 30-34 : la méthode <i>execute</i> de l&#x27;action. Lorsqu&#x27;elle s&#x27;exécute, le champ <i>session</i> a été initialisé par l&#x27;un des intercepteurs ainsi que le champ <i>nom</i> par un autre intercepteur. On utilise ce dictionnaire <i>session</i> pour y stocker le champ <i>nom</i>. Ainsi le nom va-t-il faire partie de la mémoire de l&#x27;utilisateur et être disponible à toutes les requêtes de celui-ci.
+  </li>
 </ul>
+
 <p><a id="refheading100471454977699"></a></p>
 <h2 id="85-les-vues-confirmationjsp-et-saisiejsp">8.5. Les vues [Confirmation.JSP] et [Saisie.JSP]</h2>
 <p>La vue [Confirmation.JSP] reste inchangée. La vue [Saisie.JSP] évolue comme suit :</p>
@@ -1119,14 +1125,18 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 12 : nous introduisons un attribut <em>value</em> à la balise <em>&lt;s:textfield&gt;.</em> Cet attribut fixe la valeur à afficher dans la zone de saisie. En l&#x27;absence de cet attribut, <em>value</em> = <em>name</em>. Ici, la valeur de l&#x27;attribut est une expression OGNL (Object-Graph Navigation Language) de la forme <em>%{expression_à_évaluer}</em>. Ici, l&#x27;expression à évaluer est <em>#attr[&#x27;nom&#x27;]</em>. L&#x27;attribut <em>nom</em> sera cherché dans l&#x27;action courante, la page, la requête, la session, l&#x27;application dans cet ordre. Comme l&#x27;action [Confirmer] met l&#x27;attribut <em>nom</em> dans la session, il sera trouvé là. C&#x27;est ce que montre la requête suivante :</li>
+  <li>ligne 12 : nous introduisons un attribut <i>value</i> à la balise <i>&lt;s:textfield&gt;.</i> Cet attribut fixe la valeur à afficher dans la zone de saisie. En l&#x27;absence de cet attribut, <i>value</i> = <i>name</i>. Ici, la valeur de l&#x27;attribut est une expression OGNL (Object-Graph Navigation Language) de la forme <i>%{expression_à_évaluer}</i>. Ici, l&#x27;expression à évaluer est <i>#attr[&#x27;nom&#x27;]</i>. L&#x27;attribut <i>nom</i> sera cherché dans l&#x27;action courante, la page, la requête, la session, l&#x27;application dans cet ordre. Comme l&#x27;action [Confirmer] met l&#x27;attribut <i>nom</i> dans la session, il sera trouvé là. C&#x27;est ce que montre la requête suivante :
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004BC0000019860FC6267.png" style="display:inline-block; margin:4px;width:16.034cm;height:5.398cm;" class="odt-zoomable" data-zoom-src="images/10000000000004BC0000019860FC6267.png" /></td></tr></table>
 
 <p>En [1], le nom saisi a été <em>ST</em>. On sait que l&#x27;action [Confirmer] a mis ce nom dans la session. Le lien [2] nous mène à l&#x27;URL [3]. La vue [Saisie.JSP] est affichée. Pour le champ de saisie, l&#x27;attribut <em>%{#attr[&#x27;nom&#x27;]}</em> permet de retrouver le nom dans la session.</p>
 <ul>
-<li>ligne 14 : le bouton [Effacer] qui va déclencher l&#x27;exécution de l&#x27;action [Effacer] et l&#x27;affichage de la vue [Saisie.JSP]</li>
+  <li>ligne 14 : le bouton [Effacer] qui va déclencher l&#x27;exécution de l&#x27;action [Effacer] et l&#x27;affichage de la vue [Saisie.JSP]
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#800080">&lt;action</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">name</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">Effacer</span><span style="color:#800080">&quot;</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">class</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">actions.Effacer</span><span style="color:#800080">&quot;&gt;</span></span>
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#800080">&lt;result</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">name</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">success</span><span style="color:#800080">&quot;&gt;</span><span style="color:#000000">/vues/Saisie.JSP</span><span style="color:#800080">&lt;/result&gt;</span></span>
@@ -1168,9 +1178,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 7 : la classe [Effacer] implémente l&#x27;interface [SessionAware] comme le faisait l&#x27;action [Confirmer].</li>
-<li>ligne 13 : l&#x27;action [Effacer] doit effacer le contenu du champ de saisie du nom dans la vue [Saisie.JSP]. On sait que cette vue va chercher ce nom dans la session. On doit donc enlever le nom de la session. C&#x27;est ce que fait la méthode <em>execute</em>.</li>
+  <li>ligne 7 : la classe [Effacer] implémente l&#x27;interface [SessionAware] comme le faisait l&#x27;action [Confirmer].
+  </li>
+  <li>ligne 13 : l&#x27;action [Effacer] doit effacer le contenu du champ de saisie du nom dans la vue [Saisie.JSP]. On sait que cette vue va chercher ce nom dans la session. On doit donc enlever le nom de la session. C&#x27;est ce que fait la méthode <i>execute</i>.
+  </li>
 </ul>
+
 <p>Voyons ce que ça donne :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005120000019296DA5187.png" style="display:inline-block; margin:4px;width:17.171cm;height:5.318cm;" class="odt-zoomable" data-zoom-src="images/10000000000005120000019296DA5187.png" /></td></tr></table>
 
@@ -1196,11 +1209,16 @@
 <p>Celle-ci qui affiche le nom de la session affiche alors une chaîne vide [3].</p>
 <p>Nous avons écrit plusieurs exemples simples afin d&#x27;introduire des concepts importants de Struts 2 :</p>
 <ul>
-<li>l&#x27;internationalisation des pages</li>
-<li>l&#x27;injection de paramètres postés dans les champs des actions</li>
-<li>la notion de session</li>
-<li>l&#x27;articulation entre Actions et Vues</li>
+  <li>l&#x27;internationalisation des pages
+  </li>
+  <li>l&#x27;injection de paramètres postés dans les champs des actions
+  </li>
+  <li>la notion de session
+  </li>
+  <li>l&#x27;articulation entre Actions et Vues
+  </li>
 </ul>
+
 <p>Avec ces concepts acquis, nous sommes capables maintenant d&#x27;aborder des exemples plus complexes. Nous commençons par présenter les différentes balises utilisables dans un formulaire.</p>
 
 

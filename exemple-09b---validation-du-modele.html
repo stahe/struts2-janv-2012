@@ -894,23 +894,33 @@
 <h1 id="12-exemple-09b-validation-du-modele">12. Exemple 09B – Validation du modèle</h1>
 <p><span style="color: #000000">L&#x27;application qui suit est une variante de la précédente. Précédemment, pour l&#x27;action <strong>A</strong> :</span></p>
 <ul>
-<li>le fichier des règles de validation s&#x27;appelait <strong>A-validation.xml</strong></li>
-<li>le fichier des messages d&#x27;erreurs de la validation s&#x27;appelait <strong>A.properties</strong></li>
+  <li>le fichier des règles de validation s&#x27;appelait <b>A-validation.xml</b>
+  </li>
+  <li>le fichier des messages d&#x27;erreurs de la validation s&#x27;appelait <b>A.properties</b>
+  </li>
 </ul>
+
 <p>Ici, pour l&#x27;action <strong>A</strong> de modèle <strong>M</strong> :</p>
 <ul>
-<li>le fichier des règles de validation s&#x27;appelle <strong>M-validation.xml</strong></li>
-<li>le fichier des messages d&#x27;erreurs de la validation s&#x27;appelle <strong>M.properties</strong></li>
-<li>le fichier <strong>A-validation.xml</strong> existe toujours mais avec un contenu qui redirige les règles de validation sur le fichier <strong>M-validation.xml</strong>.</li>
+  <li>le fichier des règles de validation s&#x27;appelle <b>M-validation.xml</b>
+  </li>
+  <li>le fichier des messages d&#x27;erreurs de la validation s&#x27;appelle <b>M.properties</b>
+  </li>
+  <li>le fichier <b>A-validation.xml</b> existe toujours mais avec un contenu qui redirige les règles de validation sur le fichier <b>M-validation.xml</b>.
+  </li>
 </ul>
+
 <p>Ce sont les seuls changements que nous apporterons à la version précédente.</p>
 <p>Le projet Netbeans est le suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001830000017319E91CC2.png" style="display:inline-block; margin:4px;width:5.121cm;height:4.909cm;" class="odt-zoomable" data-zoom-src="images/10000000000001830000017319E91CC2.png" /></td></tr></table>
 
 <ul>
-<li>en [1], l&#x27;action [FormInt] et son fichier de validation</li>
-<li>en [2], son modèle [FormIntModel], le fichier de validation de ce modèle et les messages associés à ce modèle.</li>
+  <li>en [1], l&#x27;action [FormInt] et son fichier de validation
+  </li>
+  <li>en [2], son modèle [FormIntModel], le fichier de validation de ce modèle et les messages associés à ce modèle.
+  </li>
 </ul>
+
 <p>Tout le reste est identique à la version précédente.</p>
 <p>Le fichier [FormInt-validation.xml] est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">

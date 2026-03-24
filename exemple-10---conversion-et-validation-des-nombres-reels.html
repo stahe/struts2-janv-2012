@@ -1043,9 +1043,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000054C00000277A87223F0.png" style="display:inline-block; margin:4px;width:17.939cm;height:8.348cm;" class="odt-zoomable" data-zoom-src="images/100000000000054C00000277A87223F0.png" /></td></tr></table>
 
 <ul>
-<li>en [1], le formulaire de saisie</li>
-<li>en [2], la réponse renvoyée</li>
+  <li>en [1], le formulaire de saisie
+  </li>
+  <li>en [2], la réponse renvoyée
+  </li>
 </ul>
+
 <p>L&#x27;application a un fonctionnement similaire à celui de la saisie des nombres entiers aussi ne commenterons-nous que les points qui diffèrent.</p>
 <p><a id="refheading91680522158564"></a></p>
 <h2 id="131-le-projet-netbeans">13.1. Le projet Netbeans</h2>
@@ -1053,23 +1056,36 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000348000001E496895BF8.png" style="display:inline-block; margin:4px;width:11.113cm;height:6.403cm;" class="odt-zoomable" data-zoom-src="images/1000000000000348000001E496895BF8.png" /></td></tr></table>
 
 <ul>
-<li>en [1], les vues de l&#x27;application<ul>
-<li>[Accueil.JSP] : la page d&#x27;accueil</li>
-<li>[FormDouble.JSP] : le formulaire de saisie</li>
-<li>[ConfirmationDouble.JSP] : la page de confirmation</li>
+  <li>en [1], les vues de l&#x27;application
+    <ul>
+      <li>[Accueil.JSP] : la page d&#x27;accueil
+      </li>
+      <li>[FormDouble.JSP] : le formulaire de saisie
+      </li>
+      <li>[ConfirmationDouble.JSP] : la page de confirmation
+      </li>
+    </ul>
+  </li>
+  <li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts
+    <ul>
+      <li>en [3] :
+      </li>
+      <li>[FormDouble.java] : l&#x27;action qui affiche et traite le formulaire
+      </li>
+      <li>[FormDouble-validation.xml] : les règles de validation de l&#x27;action [FormDouble]. Ce fichier délègue ces validation au modèle selon la méthode qui vient d&#x27;être vue.
+      </li>
+      <li>[FormDoubleModel] : le modèle de l&#x27;action [FormDouble]
+      </li>
+      <li>[FormDoubleModel-validation.xml] : les règles de validation du modèle
+      </li>
+      <li>[FormDoubleModel.properties] : le fichier des messages du modèle
+      </li>
+      <li>[example.xml] : fichier de configuration secondaire de Struts
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts<ul>
-<li>en [3] :</li>
-<li>[FormDouble.java] : l&#x27;action qui affiche et traite le formulaire</li>
-<li>[FormDouble-validation.xml] : les règles de validation de l&#x27;action [FormDouble]. Ce fichier délègue ces validation au modèle selon la méthode qui vient d&#x27;être vue.</li>
-<li>[FormDoubleModel] : le modèle de l&#x27;action [FormDouble]</li>
-<li>[FormDoubleModel-validation.xml] : les règles de validation du modèle</li>
-<li>[FormDoubleModel.properties] : le fichier des messages du modèle</li>
-<li>[example.xml] : fichier de configuration secondaire de Struts</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheading91682522158564"></a></p>
 <h2 id="132-la-configuration-du-projet">13.2. La configuration du projet</h2>
 <p>Le projet est principalement configuré par le fichier [example.xml] suivant :</p>
@@ -1256,9 +1272,12 @@
 
 <p>La valeur associée à la clé n&#x27;est pas ici un message, mais un format d&#x27;affichage :</p>
 <ul>
-<li><strong>0</strong> est un paramètre représentant la valeur à afficher. Ici ce sera le champ <em>double5</em> du modèle.</li>
-<li><strong>number</strong> représente le format numérique. Il sera adapté à chaque pays. Sans ce format, le nombre 10.7 sera toujours affiché 10.7 quelque soit le pays.</li>
+  <li><b>0</b> est un paramètre représentant la valeur à afficher. Ici ce sera le champ <i>double5</i> du modèle.
+  </li>
+  <li><b>number</b> représente le format numérique. Il sera adapté à chaque pays. Sans ce format, le nombre 10.7 sera toujours affiché 10.7 quelque soit le pays.
+  </li>
 </ul>
+
 <p>La balise </p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">         </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;double.format&quot;</span><span style="color:#008080">&gt;</span></span>
@@ -1302,9 +1321,12 @@
 </code></pre></div>
 
 <ul>
-<li>les champs <em>double1</em> et <em>double6</em> sont de type <em>String</em></li>
-<li>les autres champs sont de type <em>Double</em></li>
+  <li>les champs <i>double1</i> et <i>double6</i> sont de type <i>String</i>
+  </li>
+  <li>les autres champs sont de type <i>Double</i>
+  </li>
 </ul>
+
 <p><a id="refheading91692522158564"></a></p>
 <h2 id="137-la-validation-du-modele">13.7. La validation du modèle</h2>
 <p>La validation du modèle est contrôlée par deux fichiers : [FormDouble-validation.xml] et [FormDoubleModel-validation.xml].</p>
@@ -1415,13 +1437,20 @@
 </code></pre></div>
 
 <ul>
-<li>la règle des lignes 12-21 vérifie que le champ de saisie <em>double1</em> suit le modèle d&#x27;une expression régulière représentant un nombre réel.</li>
-<li>la règle des lignes 23-30 vérifie que le champ de saisie <em>double2</em> peut être converti en un réel double. </li>
-<li>la règle des lignes 32-43 vérifie que le champ de saisie <em>double3</em> peut être converti en un réel double &gt;=2.64. On notera qu&#x27;il faut utiliser la notation anglo-saxonne des réels. </li>
-<li>la règle des lignes 45-56 vérifie que le champ de saisie <em>double4 </em>peut être converti en un réel double &lt;8.32. </li>
-<li>la règle des lignes 58-70 vérifie que le champ de saisie <em>double5</em> peut être converti en un réel double dans l&#x27;intervalle [2.64,8.32[.</li>
-<li>la règle des lignes 72-80 vérifie que le champ <em>double6</em> suit le modèle d&#x27;une expression régulière représentant un nombre réel.</li>
+  <li>la règle des lignes 12-21 vérifie que le champ de saisie <i>double1</i> suit le modèle d&#x27;une expression régulière représentant un nombre réel.
+  </li>
+  <li>la règle des lignes 23-30 vérifie que le champ de saisie <i>double2</i> peut être converti en un réel double. 
+  </li>
+  <li>la règle des lignes 32-43 vérifie que le champ de saisie <i>double3</i> peut être converti en un réel double &gt;=2.64. On notera qu&#x27;il faut utiliser la notation anglo-saxonne des réels. 
+  </li>
+  <li>la règle des lignes 45-56 vérifie que le champ de saisie <i>double4 </i>peut être converti en un réel double &lt;8.32. 
+  </li>
+  <li>la règle des lignes 58-70 vérifie que le champ de saisie <i>double5</i> peut être converti en un réel double dans l&#x27;intervalle [2.64,8.32[.
+  </li>
+  <li>la règle des lignes 72-80 vérifie que le champ <i>double6</i> suit le modèle d&#x27;une expression régulière représentant un nombre réel.
+  </li>
 </ul>
+
 <p>Une fois le fichier [FormDoubleModel-validation.xml] exploité par l&#x27;intercepteur de validation, celui-ci fait exécuter la méthode <em>validate</em> de l&#x27;action [FormDouble] si elle existe. Nous allons la présenter en même temps que la totalité de l&#x27;action.</p>
 <p><a id="refheading91694522158564"></a></p>
 <h2 id="138-laction-formdouble">13.8. L&#x27;action [FormDouble]</h2>
@@ -1490,12 +1519,18 @@
 
 <p>L&#x27;action [FormDouble] est bâtie sur le même modèle que l&#x27;action [FormInt]. Nous ne commenterons que la méthode <em>validate</em>. On rappelle que la méthode <em>validate</em> est exécutée après exploitation du fichier de validation [FormDoubleModel-validation.xml] et avant l&#x27;exécution de la méthode <em>execute</em>.</p>
 <ul>
-<li>ligne 48 : s&#x27;il y a déjà des erreurs sur le champ <em>double6</em>, on ne fait rien de plus.</li>
-<li>ligne 50 : on a eu une chaîne de la forme 45,67. Elle a été stockée dans le champ <em>double6</em> du modèle. On remplace la virgule par le point pour avoir 45.67.</li>
-<li>ligne 52 : la chaîne 45.67 est transformée en réel double. Ca doit marcher puisque la chaîne <em>double6</em> respecte le format d&#x27;un nombre réel.</li>
-<li>ligne 54 : on vérifie que le réel double obtenu est dans l&#x27;intervalle [2.64, 8.32].</li>
-<li>ligne 55 : si ce n&#x27;est pas le cas, le message d&#x27;erreur de clé <em>double6.error</em> est attaché au champ <em>double6</em>. Ce message sera trouvé dans le fichier [FormDoubleModel.properties]. Il sera affiché quand le formulaire erroné sera réaffiché.</li>
+  <li>ligne 48 : s&#x27;il y a déjà des erreurs sur le champ <i>double6</i>, on ne fait rien de plus.
+  </li>
+  <li>ligne 50 : on a eu une chaîne de la forme 45,67. Elle a été stockée dans le champ <i>double6</i> du modèle. On remplace la virgule par le point pour avoir 45.67.
+  </li>
+  <li>ligne 52 : la chaîne 45.67 est transformée en réel double. Ca doit marcher puisque la chaîne <i>double6</i> respecte le format d&#x27;un nombre réel.
+  </li>
+  <li>ligne 54 : on vérifie que le réel double obtenu est dans l&#x27;intervalle [2.64, 8.32].
+  </li>
+  <li>ligne 55 : si ce n&#x27;est pas le cas, le message d&#x27;erreur de clé <i>double6.error</i> est attaché au champ <i>double6</i>. Ce message sera trouvé dans le fichier [FormDoubleModel.properties]. Il sera affiché quand le formulaire erroné sera réaffiché.
+  </li>
 </ul>
+
 <p><a id="refheading91696522158564"></a></p>
 <h2 id="139-derniers-details">13.9. Derniers détails</h2>
 <p>Maintenant, retour à la complexité des champs de saisie du formulaire [FormDouble.JSP]. On va raisonner sur le champ <em>double2</em>. Le raisonnement s&#x27;étend aux champs <em>double3</em> à <em>double5</em> qui ont un modèle de type <em>Double</em>. Pour les champs <em>double1</em> et <em>double6</em> qui ont un modèle de type <em>String</em>, il n&#x27;y a pas de problème.</p>
@@ -1509,26 +1544,38 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053600000204582EE55E.png" style="display:inline-block; margin:4px;width:17.648cm;height:6.826cm;" class="odt-zoomable" data-zoom-src="images/100000000000053600000204582EE55E.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on valide le nombre <em>double2</em> correct. Sur la copie d&#x27;écran, ça ne se voit pas très bien mais on tapé le nombre avec une virgule.</li>
-<li>en [2], la vue de confirmation. La saisie <em>double2</em> a passé les tests de validation. Le nombre est affiché avec une virgule.</li>
+  <li>en [1], on valide le nombre <i>double2</i> correct. Sur la copie d&#x27;écran, ça ne se voit pas très bien mais on tapé le nombre avec une virgule.
+  </li>
+  <li>en [2], la vue de confirmation. La saisie <i>double2</i> a passé les tests de validation. Le nombre est affiché avec une virgule.
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053000000255C2760C27.png" style="display:inline-block; margin:4px;width:17.568cm;height:7.899cm;" class="odt-zoomable" data-zoom-src="images/100000000000053000000255C2760C27.png" /></td></tr></table>
 
 <ul>
-<li>en [3], on revient au formulaire</li>
-<li>en [4], le formulaire. Ce que montre mal la copie d&#x27;écran c&#x27;est que nombre <em>double2</em> qui était initialement 4,32 est devenu 4.32 avec un point décimal.</li>
+  <li>en [3], on revient au formulaire
+  </li>
+  <li>en [4], le formulaire. Ce que montre mal la copie d&#x27;écran c&#x27;est que nombre <i>double2</i> qui était initialement 4,32 est devenu 4.32 avec un point décimal.
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053800000217971BFC5D.png" style="display:inline-block; margin:4px;width:17.674cm;height:7.078cm;" class="odt-zoomable" data-zoom-src="images/100000000000053800000217971BFC5D.png" /></td></tr></table>
 
 <ul>
-<li>en [5], on revalide le formulaire sans rien changer</li>
-<li>en [6], une erreur est signalée sur le champ <em>double2</em>.</li>
+  <li>en [5], on revalide le formulaire sans rien changer
+  </li>
+  <li>en [6], une erreur est signalée sur le champ <i>double2</i>.
+  </li>
 </ul>
+
 <p>Le problème est le suivant :</p>
 <ul>
-<li>initialement dans [1], la chaîne de saisie &quot;4,32&quot; a été transformée avec succès en nombre réel 4.32. Ce qui veut dire que l&#x27;opération <em>String --&gt; Double</em> a réussi et que donc dans ce sens Struts tient compte de la locale, ici la France.</li>
-<li>le nouveau formulaire [4] affiche dans le champ <em>double2</em> la valeur du réel 4.32. Comme on n&#x27;a pas localisé l&#x27;affichage, il l&#x27;affiche par défaut à l&#x27;anglo-saxonne, c.a.d. avec un point décimal. Donc dans le sens <em>Double --&gt; String</em>, Struts ne tient plus compte de la locale sinon il aurait affiché 4,32 avec une virgule.</li>
+  <li>initialement dans [1], la chaîne de saisie &quot;4,32&quot; a été transformée avec succès en nombre réel 4.32. Ce qui veut dire que l&#x27;opération <i>String --&gt; Double</i> a réussi et que donc dans ce sens Struts tient compte de la locale, ici la France.
+  </li>
+  <li>le nouveau formulaire [4] affiche dans le champ <i>double2</i> la valeur du réel 4.32. Comme on n&#x27;a pas localisé l&#x27;affichage, il l&#x27;affiche par défaut à l&#x27;anglo-saxonne, c.a.d. avec un point décimal. Donc dans le sens <i>Double --&gt; String</i>, Struts ne tient plus compte de la locale sinon il aurait affiché 4,32 avec une virgule.
+  </li>
 </ul>
+
 <p>C&#x27;est pour le moins incohérent. Mais qu&#x27;à cela ne tienne, on va localiser l&#x27;affichage du nombre 4.32. La balise de saisie devient la suivante :</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;double2&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;double2.prompt&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{getText(&#x27;double.format&#x27;,{double2})}&quot;</span><span style="color:#008080">/&gt;</span></span>
@@ -1565,17 +1612,24 @@
 
 <p>Les écrans [1] à [4] montrent que le problème que l&#x27;on cherchait à résoudre est résolu :</p>
 <ul>
-<li>en [1], on saisit 4,67</li>
-<li>en [2], ce nombre a été accepté</li>
-<li>en [3], il est réaffiché comme 4,67 avec la virgule ce qui est confirmé par [4].</li>
+  <li>en [1], on saisit 4,67
+  </li>
+  <li>en [2], ce nombre a été accepté
+  </li>
+  <li>en [3], il est réaffiché comme 4,67 avec la virgule ce qui est confirmé par [4].
+  </li>
 </ul>
+
 <p>Malheureusement, les problèmes ne s&#x27;arrêtent pas là. Regardons la séquence suivante :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000537000001D4E9A6E430.png" style="display:inline-block; margin:4px;width:17.662cm;height:6.191cm;" class="odt-zoomable" data-zoom-src="images/1000000000000537000001D4E9A6E430.png" /></td></tr></table>
 
 <ul>
-<li>en [5], on ajoute un caractère pour invalider <em>double2</em></li>
-<li>en [6], les tests de validation ont fait leur travail et l&#x27;erreur est signalée. Seulement la chaîne affichée en [6] n&#x27;est pas la chaîne erronée mais l&#x27;actuelle valeur du modèle <em>double2</em>. On a perdu la valeur saisie.</li>
+  <li>en [5], on ajoute un caractère pour invalider <i>double2</i>
+  </li>
+  <li>en [6], les tests de validation ont fait leur travail et l&#x27;erreur est signalée. Seulement la chaîne affichée en [6] n&#x27;est pas la chaîne erronée mais l&#x27;actuelle valeur du modèle <i>double2</i>. On a perdu la valeur saisie.
+  </li>
 </ul>
+
 <p>Lorsqu&#x27;on passe de [5] à [6] la requête ne va pas jusqu&#x27;à son terme. Elle est arrêtée par l&#x27;intercepteur de validation. En [6] on a affiché la valeur du modèle <em>double2</em> qui n&#x27;a pas reçu de nouvelle valeur à cause de cet arrêt. C&#x27;est donc sa précédente valeur qui est affichée alors qu&#x27;il aurait fallu afficher la chaîne saisie. Les paramètres d&#x27;une requête sont disponibles à une vue via la notation <strong>#parameters[&#x27;param&#x27;]</strong>. On fait évoluer le champ de saisie <em>double2</em> de la façon suivante :</p>
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:textfield</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;double2&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;double2.prompt&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;%{#parameters[&#x27;double2&#x27;]!=null ? #parameters[&#x27;double2&#x27;] : double2==null ? &#x27;&#x27; : getText(&#x27;double.format&#x27;,{double2})}&quot;</span><span style="color:#008080">/&gt;</span></span>

@@ -993,8 +993,10 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000193000002333ADF6161.png" style="display:inline-block; margin:4px;width:5.332cm;height:7.449cm;" class="odt-zoomable" data-zoom-src="images/1000000000000193000002333ADF6161.png" /></td></tr></table>
 
 <ul>
-<li>en [1] l&#x27;action et en [2] la vue associée.</li>
+  <li>en [1] l&#x27;action et en [2] la vue associée.
+  </li>
 </ul>
+
 <p>Le fichier [example/example.xml] configure l&#x27;application :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
 <span class="odt-code-line"><span style="color:#008080">&lt;?</span><span style="color:#3f7f7f">xml</span> <span style="color:#7f007f">version</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;1.0&quot;</span> <span style="color:#7f007f">encoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span> <span style="color:#008080">?&gt;</span></span>
@@ -1151,8 +1153,10 @@
 
 <p>Examinons les différentes balises de saisie du formulaire :</p>
 <ul>
-<li>ligne 27 : la balise &lt;s:select&gt; :</li>
+  <li>ligne 27 : la balise &lt;s:select&gt; :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:select</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;select1&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;{&#x27;vert&#x27;,&#x27;jaune&#x27;,&#x27;rouge&#x27;}&quot;</span> <span style="color:#7f007f">size</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;1&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.select1&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1175,8 +1179,10 @@
 
 <p>Ce champ est associé en lecture et écriture à la balise nommée <em>select1</em>. En <strong>écriture</strong>, la valeur de l&#x27;option sélectionnée sera injectée dans le champ <em>select1</em>. En <strong>lecture</strong>, la valeur du champ <em>select1</em> sert à déterminer l&#x27;option sélectionnée. Ici, la valeur <em>jaune</em> du champ <em>select1</em> sert à sélectionner l&#x27;option de la balise <em>select1</em> qui a la valeur jaune. C&#x27;est pourquoi, ligne 3, l&#x27;option est sélectionnée.</p>
 <ul>
-<li>ligne 28</li>
+  <li>ligne 28
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:select</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;select2&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;{&#x27;vert&#x27;,&#x27;jaune&#x27;,&#x27;rouge&#x27;}&quot;</span> <span style="color:#7f007f">size</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;3&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.select2&quot;</span> <span style="color:#7f007f">multiple</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1188,8 +1194,10 @@
 
 <p>C&#x27;est bien un tableau. Sa valeur initiale sert à sélectionner les options dont les valeurs sont présentes dans le tableau.</p>
 <ul>
-<li>ligne 29</li>
+  <li>ligne 29
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:select</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;select3&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;</span>#{&#x27;01&#x27;:&#x27;vert(01)&#x27;,&#x27;02&#x27;:&#x27;jaune(02)&#x27;,&#x27;03&#x27;:&#x27;rouge(03)&#x27;,&#x27;04&#x27;:&#x27;blanc(04)&#x27;,&#x27;05&#x27;:&#x27;noir(05)&#x27;}<span style="font-style:italic;color:#2a00ff">&quot;</span> <span style="color:#7f007f">size</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;3&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.select3&quot;</span> <span style="color:#7f007f">multiple</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1216,8 +1224,10 @@
 
 <p>On a de nouveau un tableau de valeurs car la balise associée est à choix multiple. Les valeurs initiales du tableau expliquent pourquoi les options des lignes 2 et 4 sont initialement sélectionnées.</p>
 <ul>
-<li>ligne 30</li>
+  <li>ligne 30
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:select</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;select4&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;dico&quot;</span> <span style="color:#7f007f">size</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;3&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.select4&quot;</span> <span style="color:#7f007f">multiple</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1234,8 +1244,10 @@
 
 <p><span style="color: #000000">C&#x27;est un tableau de valeurs qui recevra les valeurs postées par la balise </span><em><span style="color: #000000">select4</span></em><span style="color: #000000">.</span></p>
 <ul>
-<li><span style="color: #000000">ligne 31</span></li>
+  <li><span style="color: #000000">ligne 31</span>
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:select</span><span style="color:#000000"> </span><span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;select5&quot;</span><span style="color:#000000"> </span><span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;couleurs&quot;</span><span style="color:#000000"> </span><span style="color:#7f007f">listKey</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;id&quot;</span><span style="color:#000000"> </span><span style="color:#7f007f">listValue</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;nom&quot;</span><span style="color:#000000"> </span><span style="color:#7f007f">size</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;3&quot;</span><span style="color:#000000"> </span><span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.select5&quot;</span><span style="color:#000000"> </span><span style="color:#7f007f">multiple</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;true&quot;</span><span style="color:#000000"> </span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1270,8 +1282,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 32</li>
+  <li>ligne 32
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:checkboxlist</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;checkboxlist1&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;</span>#{&#x27;01&#x27;:&#x27;vert(01)&#x27;,&#x27;02&#x27;:&#x27;jaune(02)&#x27;,&#x27;03&#x27;:&#x27;rouge(03)&#x27;,&#x27;04&#x27;:&#x27;blanc(04)&#x27;,&#x27;05&#x27;:&#x27;noir(05)&#x27;}<span style="font-style:italic;color:#2a00ff">&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.checkboxlist1&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1303,8 +1317,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 33</li>
+  <li>ligne 33
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:checkboxlist</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;checkboxlist2&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;dico&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.checkboxlist2&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1315,8 +1331,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 34</li>
+  <li>ligne 34
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:checkboxlist</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;checkboxlist3&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;couleurs&quot;</span> <span style="color:#7f007f">listKey</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;id&quot;</span> <span style="color:#7f007f">listValue</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;nom&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.checkboxlist3&quot;</span> <span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1327,8 +1345,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 35</li>
+  <li>ligne 35
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:radio</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;radio1&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;</span>#{&#x27;01&#x27;:&#x27;vert(01)&#x27;,&#x27;02&#x27;:&#x27;jaune(02)&#x27;,&#x27;03&#x27;:&#x27;rouge(03)&#x27;,&#x27;04&#x27;:&#x27;blanc(04)&#x27;,&#x27;05&#x27;:&#x27;noir(05)&#x27;}<span style="font-style:italic;color:#2a00ff">&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.radio1&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1350,8 +1370,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 36</li>
+  <li>ligne 36
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:radio</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;radio2&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;dico&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.radio2&quot;</span><span style="color:#008080">/&gt;</span></span>
 </code></pre></div>
@@ -1362,8 +1384,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 37</li>
+  <li>ligne 37
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:radio</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;radio3&quot;</span> <span style="color:#7f007f">list</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;couleurs&quot;</span> <span style="color:#7f007f">listKey</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;id&quot;</span> <span style="color:#7f007f">listValue</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;nom&quot;</span> <span style="color:#7f007f">key</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Form.radio3&quot;</span> <span style="color:#008080">/&gt;</span></span>
 </code></pre></div>

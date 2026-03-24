@@ -1008,10 +1008,14 @@
 <h1 id="16-exemple-13-le-contexte-dune-action">16. Exemple 13 - le contexte d&#x27;une action</h1>
 <p>Cette application vise à montrer qu&#x27;une action a accès :</p>
 <ul>
-<li>aux paramètres de la requête</li>
-<li>aux attributs de la requête</li>
-<li>aux attributs de la session de l&#x27;utilisateur</li>
+  <li>aux paramètres de la requête
+  </li>
+  <li>aux attributs de la requête
+  </li>
+  <li>aux attributs de la session de l&#x27;utilisateur
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001D1000001B754472AEB.png" style="display:inline-block; margin:4px;width:8.641cm;height:8.158cm;" class="odt-zoomable" data-zoom-src="images/10000000000001D1000001B754472AEB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
 <p><a id="refheading91740522158564"></a></p>
@@ -1020,9 +1024,12 @@
 
 <p>Le projet Netbeans est le suivant :</p>
 <ul>
-<li>en [1], la vue [Context.JSP]</li>
-<li>en [2], l&#x27;action [Action1.java] et le fichier de configuration Struts [example.xml]</li>
+  <li>en [1], la vue [Context.JSP]
+  </li>
+  <li>en [2], l&#x27;action [Action1.java] et le fichier de configuration Struts [example.xml]
+  </li>
 </ul>
+
 <p><a id="refheading91742522158564"></a></p>
 <h2 id="162-configuration">16.2. Configuration</h2>
 <p>La configuration du projet est faite dans [example.xml] :</p>
@@ -1042,19 +1049,27 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 8 : la demande de l&#x27;URL [/example/Action1] va provoquer l&#x27;instanciation de la classe [example.Action]. Comme aucune méthode n&#x27;est précisée, ce sera la méthode <em>execute</em> qui sera exécutée.</li>
-<li>ligne 9 : une seule clé est acceptée. La clé <em>success</em> conduit à l&#x27;affichage de la vue [Context.JSP].</li>
+  <li>ligne 8 : la demande de l&#x27;URL [/example/Action1] va provoquer l&#x27;instanciation de la classe [example.Action]. Comme aucune méthode n&#x27;est précisée, ce sera la méthode <i>execute</i> qui sera exécutée.
+  </li>
+  <li>ligne 9 : une seule clé est acceptée. La clé <i>success</i> conduit à l&#x27;affichage de la vue [Context.JSP].
+  </li>
 </ul>
+
 <p>L&#x27;architecture simplifiée de traitement d&#x27;une requête va être la suivante :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004B10000017DE770B7FC.png" style="display:inline-block; margin:4px;width:15.889cm;height:5.041cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B10000017DE770B7FC.png" /></td></tr></table>
 
 <p>La requête va être traitée par deux éléments de l&#x27;application web : l&#x27;action [Action1] [1] et la vue [Context.JSP] [2]. Ces deux éléments ont accès à des données de différentes natures :</p>
 <ul>
-<li>des données de portée <em>Application</em> [3], c.a.d. des données accessibles à toutes les requêtes de tous les utilisateurs. Elles sont quasiment tout le temps en lecture seule. On trouve souvent dans ces données, la configuration initiale de l&#x27;application. Ici [Action1] et [Context.JSP] ont accès à ces données.</li>
-<li>des données de portée <em>Session</em> [4], c.a.d. des données accessibles à toutes les requêtes d&#x27;un même utilisateur. Elles sont en lecture / écriture. Ici [Action1] utilisera la session en lecture / écriture, alors que [Context.JSP] l&#x27;utilisera en lecture.</li>
-<li>des données de portée <em>Requête</em> [5], accessibles à tous les éléments qui traitent la requête. Ici [Action1] mettra une donnée dans cette mémoire et [Context.JSP] la récupèrera. Les données de portée Requête permettent à un élément N de transmettre de l&#x27;information à l&#x27;élément N+1.</li>
-<li>les paramètres de la requête [6] envoyés par le client. Ils sont utilisés en lecture seule par les éléments qui traitent la requête.</li>
+  <li>des données de portée <i>Application</i> [3], c.a.d. des données accessibles à toutes les requêtes de tous les utilisateurs. Elles sont quasiment tout le temps en lecture seule. On trouve souvent dans ces données, la configuration initiale de l&#x27;application. Ici [Action1] et [Context.JSP] ont accès à ces données.
+  </li>
+  <li>des données de portée <i>Session</i> [4], c.a.d. des données accessibles à toutes les requêtes d&#x27;un même utilisateur. Elles sont en lecture / écriture. Ici [Action1] utilisera la session en lecture / écriture, alors que [Context.JSP] l&#x27;utilisera en lecture.
+  </li>
+  <li>des données de portée <i>Requête</i> [5], accessibles à tous les éléments qui traitent la requête. Ici [Action1] mettra une donnée dans cette mémoire et [Context.JSP] la récupèrera. Les données de portée Requête permettent à un élément N de transmettre de l&#x27;information à l&#x27;élément N+1.
+  </li>
+  <li>les paramètres de la requête [6] envoyés par le client. Ils sont utilisés en lecture seule par les éléments qui traitent la requête.
+  </li>
 </ul>
+
 <p><a id="refheading91744522158564"></a></p>
 <h2 id="163-laction-action1">16.3. L&#x27;action [Action1]</h2>
 <p>Le code de la classe [Action1] est la suivante :</p>
@@ -1121,25 +1136,40 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 10 : la classe implémente les interfaces suivantes <ul>
-<li><strong>SessionAware </strong>: pour avoir accès au dictionnaire des attributs de la session (ligne 16). Cette interface n&#x27;a qu&#x27;une méthode, celle de la ligne 46.</li>
-<li><strong>RequestAware </strong>: pour avoir accès au dictionnaire des attributs de la requête (ligne 17). Cette interface n&#x27;a qu&#x27;une méthode, celle de la ligne 51.</li>
-<li><strong>ParameterAware </strong>: pour avoir accès au dictionnaire des paramètres de la requête (ligne 18). On remarquera qu&#x27;à une clé (le nom du paramètre) correspond un tableau de valeurs. Ceci est nécessaire pour prendre en compte les zones de saisie qui postent plusieurs valeurs comme par exemple une liste à sélection multiple. L&#x27;interface <strong>ParameterAware</strong> n&#x27;a qu&#x27;une méthode, celle de la ligne 56.</li>
+  <li>ligne 10 : la classe implémente les interfaces suivantes 
+    <ul>
+      <li><b>SessionAware </b>: pour avoir accès au dictionnaire des attributs de la session (ligne 16). Cette interface n&#x27;a qu&#x27;une méthode, celle de la ligne 46.
+      </li>
+      <li><b>RequestAware </b>: pour avoir accès au dictionnaire des attributs de la requête (ligne 17). Cette interface n&#x27;a qu&#x27;une méthode, celle de la ligne 51.
+      </li>
+      <li><b>ParameterAware </b>: pour avoir accès au dictionnaire des paramètres de la requête (ligne 18). On remarquera qu&#x27;à une clé (le nom du paramètre) correspond un tableau de valeurs. Ceci est nécessaire pour prendre en compte les zones de saisie qui postent plusieurs valeurs comme par exemple une liste à sélection multiple. L&#x27;interface <b>ParameterAware</b> n&#x27;a qu&#x27;une méthode, celle de la ligne 56.
+      </li>
+    </ul>
+  </li>
+  <li>ligne 21 : la méthode <i>execute</i> qui est exécutée lorsqu&#x27;on demande l&#x27;action [Action1]. Lorsqu&#x27;elle s&#x27;exécute, les intercepteurs ont fait leur travail :
+    <ul>
+      <li>la méthode <b>setParameters</b> (ligne 56) a été appelée et le dictionnaire <b>parameters</b> de la ligne 18 contient tous les paramètres de la requête.
+      </li>
+      <li>la méthode <b>setSession</b> (ligne 46) a été appelée et le dictionnaire <b>session</b> de la ligne 16 contient tous les attributs de la session.
+      </li>
+      <li>la méthode <b>setRequest</b> (ligne 51) a été appelée et le dictionnaire <b>request</b> de la ligne 17 contient tous les attributs de la requête.
+      </li>
+    </ul>
+  </li>
+  <li>lignes 31-38 : on écrit la valeur associée à la clé <i>compteur</i> dans la session
+  </li>
+  <li>lignes 32-34 : la clé <i>compteur</i> est cherchée dans la session. Si elle ne s&#x27;y trouve pas, on l&#x27;y met associée à la valeur entière 0.
+  </li>
+  <li>lignes 35-37 : la clé <i>compteur</i> est cherchée dans la session, sa valeur est incrémentée puis la clé est remise dans la session. 
+  </li>
+  <li>ligne 38 : la valeur associée à la clé <i>compteur</i> est affichée. L&#x27;incrément étant fait à chaque requête sur l&#x27;action [Action1], on devrait voir la valeur du compteur augmenter au fil des requêtes.
+  </li>
+  <li>ligne 40 : on insère dans le dictionnaire des attributs de la requête un attribut de clé <i>info1</i> et de valeur <i>information1</i>. Les attributs d&#x27;une requête sont différents de ses paramètres. Les paramètres sont envoyés par le client de l&#x27;application web. Les attributs de la requête eux permettent la communication entre les différents éléments de l&#x27;application web qui la traitent. Ainsi, après l&#x27;exécution de [Action1], la vue [Context.JSP] va être affichée. Nous allons voir qu&#x27;elle est capable de récupérer les attributs de la requête.
+  </li>
+  <li>ligne 42 : la méthode <i>execute</i> rend la clé <i>succes</i>.
+  </li>
 </ul>
-</li>
-<li>ligne 21 : la méthode <em>execute</em> qui est exécutée lorsqu&#x27;on demande l&#x27;action [Action1]. Lorsqu&#x27;elle s&#x27;exécute, les intercepteurs ont fait leur travail :<ul>
-<li>la méthode <strong>setParameters</strong> (ligne 56) a été appelée et le dictionnaire <strong>parameters</strong> de la ligne 18 contient tous les paramètres de la requête.</li>
-<li>la méthode <strong>setSession</strong> (ligne 46) a été appelée et le dictionnaire <strong>session</strong> de la ligne 16 contient tous les attributs de la session.</li>
-<li>la méthode <strong>setRequest</strong> (ligne 51) a été appelée et le dictionnaire <strong>request</strong> de la ligne 17 contient tous les attributs de la requête.</li>
-</ul>
-</li>
-<li>lignes 31-38 : on écrit la valeur associée à la clé <em>compteur</em> dans la session</li>
-<li>lignes 32-34 : la clé <em>compteur</em> est cherchée dans la session. Si elle ne s&#x27;y trouve pas, on l&#x27;y met associée à la valeur entière 0.</li>
-<li>lignes 35-37 : la clé <em>compteur</em> est cherchée dans la session, sa valeur est incrémentée puis la clé est remise dans la session. </li>
-<li>ligne 38 : la valeur associée à la clé <em>compteur</em> est affichée. L&#x27;incrément étant fait à chaque requête sur l&#x27;action [Action1], on devrait voir la valeur du compteur augmenter au fil des requêtes.</li>
-<li>ligne 40 : on insère dans le dictionnaire des attributs de la requête un attribut de clé <em>info1</em> et de valeur <em>information1</em>. Les attributs d&#x27;une requête sont différents de ses paramètres. Les paramètres sont envoyés par le client de l&#x27;application web. Les attributs de la requête eux permettent la communication entre les différents éléments de l&#x27;application web qui la traitent. Ainsi, après l&#x27;exécution de [Action1], la vue [Context.JSP] va être affichée. Nous allons voir qu&#x27;elle est capable de récupérer les attributs de la requête.</li>
-<li>ligne 42 : la méthode <em>execute</em> rend la clé <em>succes</em>.</li>
-</ul>
+
 <p><a id="refheading91746522158564"></a></p>
 <h2 id="164-le-fichier-des-messages">16.4. Le fichier des messages</h2>
 <p>Le fichier [messages.properties] est le suivant :</p>
@@ -1155,10 +1185,14 @@
 <h2 id="165-la-vue-contextjsp">16.5. La vue [Context.JSP]</h2>
 <p>La vue [Context.JSP] a pour rôle d&#x27;afficher : </p>
 <ul>
-<li>certains paramètres de la requête</li>
-<li>la valeur de la clé <em>compteur</em> dans la session</li>
-<li>la valeur de la clé <em>info1</em> dans la requête</li>
+  <li>certains paramètres de la requête
+  </li>
+  <li>la valeur de la clé <i>compteur</i> dans la session
+  </li>
+  <li>la valeur de la clé <i>info1</i> dans la requête
+  </li>
 </ul>
+
 <p>Son code est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -1190,31 +1224,47 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 12-14 : affichent toutes les valeurs associées au paramètre <em>nom</em></li>
-<li>lignes 15-17 : affichent toutes les valeurs associées au paramètre <em>prenom</em></li>
-<li>lignes 18-20 : affichent toutes les valeurs associées au paramètre <em>age</em></li>
-<li>ligne 22 : affiche la valeur associée à la clé <em>compteur</em> dans la session</li>
-<li>ligne 24 : affiche la valeur associée à la clé <em>info1</em> dans la requête</li>
+  <li>lignes 12-14 : affichent toutes les valeurs associées au paramètre <i>nom</i>
+  </li>
+  <li>lignes 15-17 : affichent toutes les valeurs associées au paramètre <i>prenom</i>
+  </li>
+  <li>lignes 18-20 : affichent toutes les valeurs associées au paramètre <i>age</i>
+  </li>
+  <li>ligne 22 : affiche la valeur associée à la clé <i>compteur</i> dans la session
+  </li>
+  <li>ligne 24 : affiche la valeur associée à la clé <i>info1</i> dans la requête
+  </li>
 </ul>
+
 <p><a id="refheading91750522158564"></a></p>
 <h2 id="166-les-tests">16.6. Les tests</h2>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002360000020948DA9C15.png" style="display:inline-block; margin:4px;width:7.488cm;height:6.893cm;" class="odt-zoomable" data-zoom-src="images/10000000000002360000020948DA9C15.png" /></td></tr></table>
 
 <ul>
-<li>en [1], <em>Action1</em> est demandée sans paramètres</li>
-<li>en [2], [Context.JSP] n&#x27;a pas trouvé de paramètres</li>
-<li>en [3], [Context.JSP] a trouvé la clé <em>compteur</em> dans la session</li>
-<li>en [4], [Context.JSP] a trouvé la clé <em>info1</em> dans la requête</li>
+  <li>en [1], <i>Action1</i> est demandée sans paramètres
+  </li>
+  <li>en [2], [Context.JSP] n&#x27;a pas trouvé de paramètres
+  </li>
+  <li>en [3], [Context.JSP] a trouvé la clé <i>compteur</i> dans la session
+  </li>
+  <li>en [4], [Context.JSP] a trouvé la clé <i>info1</i> dans la requête
+  </li>
 </ul>
+
 <p>Faisons un autre test :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003550000027C124BE9F7.png" style="display:inline-block; margin:4px;width:11.285cm;height:8.414cm;" class="odt-zoomable" data-zoom-src="images/10000000000003550000027C124BE9F7.png" /></td></tr></table>
 
 <ul>
-<li>en [1], <em>Action1</em> est demandée avec des paramètres</li>
-<li>en [2], [Context.JSP] affiche ces paramètres</li>
-<li>en [3], [Context.JSP] a trouvé la clé <em>compteur</em> dans la session. Le compteur a bien été incrémenté de 1 montrant par là qu&#x27;il y bien eu mémorisation entre les deux requêtes.</li>
-<li>en [4], [Context.JSP] a trouvé la clé <em>info1</em> dans la requête</li>
+  <li>en [1], <i>Action1</i> est demandée avec des paramètres
+  </li>
+  <li>en [2], [Context.JSP] affiche ces paramètres
+  </li>
+  <li>en [3], [Context.JSP] a trouvé la clé <i>compteur</i> dans la session. Le compteur a bien été incrémenté de 1 montrant par là qu&#x27;il y bien eu mémorisation entre les deux requêtes.
+  </li>
+  <li>en [4], [Context.JSP] a trouvé la clé <i>info1</i> dans la requête
+  </li>
 </ul>
+
 <p>On se rappelle que la méthode [Action1.execute] écrivait sur la console du serveur web. Voilà un exemple :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
@@ -1234,9 +1284,12 @@
 <h2 id="167-conclusion">16.7. Conclusion</h2>
 <p>On se rappellera les points suivants :</p>
 <ul>
-<li>pour mémoriser des informations à partager par toutes les requêtes de tous les utilisateurs, on utilisera la mémoire de l&#x27;application. Nous allons en montrer un exemple bientôt.</li>
-<li>pour mémoriser des informations à partager par toutes les requêtes d&#x27;un même utilisateur, on utilisera la session de celui-ci.</li>
-<li>pour mémoriser des informations à partager par tous les éléments traitant une requête, on utilisera la mémoire de la requête.</li>
+  <li>pour mémoriser des informations à partager par toutes les requêtes de tous les utilisateurs, on utilisera la mémoire de l&#x27;application. Nous allons en montrer un exemple bientôt.
+  </li>
+  <li>pour mémoriser des informations à partager par toutes les requêtes d&#x27;un même utilisateur, on utilisera la session de celui-ci.
+  </li>
+  <li>pour mémoriser des informations à partager par tous les éléments traitant une requête, on utilisera la mémoire de la requête.
+  </li>
 </ul>
 
 

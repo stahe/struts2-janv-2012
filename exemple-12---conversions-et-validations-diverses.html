@@ -1021,9 +1021,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005380000016C9E6FB150.png" style="display:inline-block; margin:4px;width:17.674cm;height:4.815cm;" class="odt-zoomable" data-zoom-src="images/10000000000005380000016C9E6FB150.png" /></td></tr></table>
 
 <ul>
-<li>en [1], le formulaire de saisie</li>
-<li>en [2], la confirmation des saisies</li>
+  <li>en [1], le formulaire de saisie
+  </li>
+  <li>en [2], la confirmation des saisies
+  </li>
 </ul>
+
 <p>L&#x27;application a un fonctionnement similaire aux précédentes aussi ne commenterons-nous que les points qui diffèrent.</p>
 <p><a id="refheading91722522158564"></a></p>
 <h2 id="151-le-projet-netbeans">15.1. Le projet Netbeans</h2>
@@ -1031,23 +1034,36 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000358000001C5801738C9.png" style="display:inline-block; margin:4px;width:11.324cm;height:5.994cm;" class="odt-zoomable" data-zoom-src="images/1000000000000358000001C5801738C9.png" /></td></tr></table>
 
 <ul>
-<li>en [1], les vues de l&#x27;application<ul>
-<li>[Accueil.JSP] : la page d&#x27;accueil</li>
-<li>[FormDivers.JSP] : le formulaire de saisie</li>
-<li>[ConfirmationFormDivers.JSP] : la page de confirmation</li>
+  <li>en [1], les vues de l&#x27;application
+    <ul>
+      <li>[Accueil.JSP] : la page d&#x27;accueil
+      </li>
+      <li>[FormDivers.JSP] : le formulaire de saisie
+      </li>
+      <li>[ConfirmationFormDivers.JSP] : la page de confirmation
+      </li>
+    </ul>
+  </li>
+  <li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts
+  </li>
+  <li>en [3] :
+    <ul>
+      <li>[FormDivers.java] : l&#x27;action qui affiche et traite le formulaire
+      </li>
+      <li>[FormDivers-validation.xml] : les règles de validation de l&#x27;action [FormDivers]. Ce fichier délègue ces validations au modèle.
+      </li>
+      <li>[FormDiversModel] : le modèle de l&#x27;action [FormDivers]
+      </li>
+      <li>[ FormDiversModel-validation.xml] : les règles de validation du modèle
+      </li>
+      <li>[FormDiversModel.properties] : le fichier des messages du modèle
+      </li>
+      <li>[example.xml] : fichier de configuration secondaire de Struts
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts</li>
-<li>en [3] :<ul>
-<li>[FormDivers.java] : l&#x27;action qui affiche et traite le formulaire</li>
-<li>[FormDivers-validation.xml] : les règles de validation de l&#x27;action [FormDivers]. Ce fichier délègue ces validations au modèle.</li>
-<li>[FormDiversModel] : le modèle de l&#x27;action [FormDivers]</li>
-<li>[ FormDiversModel-validation.xml] : les règles de validation du modèle</li>
-<li>[FormDiversModel.properties] : le fichier des messages du modèle</li>
-<li>[example.xml] : fichier de configuration secondaire de Struts</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheading91724522158564"></a></p>
 <h2 id="152-la-configuration-du-projet">15.2. La configuration du projet</h2>
 <p>Le projet est principalement configuré par le fichier [example.xml] suivant :</p>
@@ -1269,13 +1285,20 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 11-18 : vérifient la validité du champ <em>email</em></li>
-<li>lignes 15-17 : vérifient que la chaîne <em>email</em> est une adresse électronique valide</li>
-<li>lignes 20-27 : vérifient la validité du champ <em>URL1</em></li>
-<li>lignes 24-26 : vérifient que la chaîne <em>URL1</em> est une URL valide</li>
-<li>lignes 29-38 : vérifient la validité du champ <em>chaine</em></li>
-<li>lignes 33-37 : vérifient que la chaîne <em>chaine</em> a 5 caractères exactement.</li>
+  <li>lignes 11-18 : vérifient la validité du champ <i>email</i>
+  </li>
+  <li>lignes 15-17 : vérifient que la chaîne <i>email</i> est une adresse électronique valide
+  </li>
+  <li>lignes 20-27 : vérifient la validité du champ <i>URL1</i>
+  </li>
+  <li>lignes 24-26 : vérifient que la chaîne <i>URL1</i> est une URL valide
+  </li>
+  <li>lignes 29-38 : vérifient la validité du champ <i>chaine</i>
+  </li>
+  <li>lignes 33-37 : vérifient que la chaîne <i>chaine</i> a 5 caractères exactement.
+  </li>
 </ul>
+
 <p><a id="refheading91736522158564"></a></p>
 <h2 id="158-laction-formdivers">15.8. L&#x27;action [FormDivers]</h2>
 <p>L&#x27;action [FormDivers] est la suivante :</p>

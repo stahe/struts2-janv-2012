@@ -1217,50 +1217,77 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 11 : la classe [MetierSimule] implémente l&#x27;interface [IMetier] que la véritable couche [metier] implémente.</li>
-<li>ligne 14 : un dictionnaire des employés indexés par leur n° INSEE</li>
-<li>ligne15 : la liste des employes</li>
-<li>lignes 27-39 : implémentation de la méthode <em>findAllEmployes</em> de l&#x27;interface [IMetier].</li>
-<li>lignes 30-33 : création d&#x27;une liste de deux employés</li>
-<li>lignes 34-36 : création du dictionnaire des employés indexé par le n° INSEE</li>
-<li>lignes 18-24 : implémentation de la méthode <em>calculerSalaire</em> de l&#x27;interface [IMetier]. Ici on rend une feuille de salaire fictive.</li>
+  <li>ligne 11 : la classe [MetierSimule] implémente l&#x27;interface [IMetier] que la véritable couche [metier] implémente.
+  </li>
+  <li>ligne 14 : un dictionnaire des employés indexés par leur n° INSEE
+  </li>
+  <li>ligne15 : la liste des employes
+  </li>
+  <li>lignes 27-39 : implémentation de la méthode <i>findAllEmployes</i> de l&#x27;interface [IMetier].
+  </li>
+  <li>lignes 30-33 : création d&#x27;une liste de deux employés
+  </li>
+  <li>lignes 34-36 : création du dictionnaire des employés indexé par le n° INSEE
+  </li>
+  <li>lignes 18-24 : implémentation de la méthode <i>calculerSalaire</i> de l&#x27;interface [IMetier]. Ici on rend une feuille de salaire fictive.
+  </li>
 </ul>
+
 <p><a id="refheading91784522158564"></a></p>
 <h2 id="192-le-projet-netbeans">19.2. Le projet Netbeans</h2>
 <p>Le projet Netbeans est le suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004B30000018CD7CF1825.png" style="display:inline-block; margin:4px;width:15.916cm;height:5.239cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B30000018CD7CF1825.png" /></td></tr></table>
 
 <ul>
-<li>en [1] :<ul>
-<li>[applicationContext.xml] est le fichier de configuration de Spring</li>
-<li>[tiles.xml] est le fichier de configuration d&#x27;un framework appelé <strong>Tiles</strong>.</li>
-<li>[web.xml] est le fichier de configuration de l&#x27;application web</li>
+  <li>en [1] :
+    <ul>
+      <li>[applicationContext.xml] est le fichier de configuration de Spring
+      </li>
+      <li>[tiles.xml] est le fichier de configuration d&#x27;un framework appelé <b>Tiles</b>.
+      </li>
+      <li>[web.xml] est le fichier de configuration de l&#x27;application web
+      </li>
+    </ul>
+  </li>
+  <li>en [2] : les différentes vues de l&#x27;application
+  </li>
+  <li>en [3] :
+    <ul>
+      <li>[messages.properties] : le fichier des messages
+      </li>
+      <li>[struts.xml] : le fichier de configuration de Struts
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>en [2] : les différentes vues de l&#x27;application</li>
-<li>en [3] :<ul>
-<li>[messages.properties] : le fichier des messages</li>
-<li>[struts.xml] : le fichier de configuration de Struts</li>
-</ul>
-</li>
-</ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000052A0000027F79A2363B.png" style="display:inline-block; margin:4px;width:17.489cm;height:8.454cm;" class="odt-zoomable" data-zoom-src="images/100000000000052A0000027F79A2363B.png" /></td></tr></table>
 
 <ul>
-<li>en [4] : les codes source de l&#x27;application. Les actions Struts sont dans le package [web.actions].</li>
-<li>en [5] : la couche [metier] simulée</li>
-<li>en [6] : les archives utilisées. On trouve les archives des différents outils utilisés : Spring, Tiles, Struts 2, le plugin d&#x27;intégration Struts 2 / Spring, le plugin d&#x27;intégration Struts 2 / Tiles.</li>
-<li>en [7] : l&#x27;archive de la couche [metier, dao, jpa] véritable. Elle nous permet d&#x27;avoir accès aux entités Jpa, à l&#x27;interface [IMetier], aux classes [FeuilleSalaire] et [ElementsSalaire]. Tous ces éléments sont en effet utilisés par notre classe [MetierSimule].</li>
+  <li>en [4] : les codes source de l&#x27;application. Les actions Struts sont dans le package [web.actions].
+  </li>
+  <li>en [5] : la couche [metier] simulée
+  </li>
+  <li>en [6] : les archives utilisées. On trouve les archives des différents outils utilisés : Spring, Tiles, Struts 2, le plugin d&#x27;intégration Struts 2 / Spring, le plugin d&#x27;intégration Struts 2 / Tiles.
+  </li>
+  <li>en [7] : l&#x27;archive de la couche [metier, dao, jpa] véritable. Elle nous permet d&#x27;avoir accès aux entités Jpa, à l&#x27;interface [IMetier], aux classes [FeuilleSalaire] et [ElementsSalaire]. Tous ces éléments sont en effet utilisés par notre classe [MetierSimule].
+  </li>
 </ul>
+
 <p><a id="refheading91786522158564"></a></p>
 <h2 id="193-configuration-du-projet">19.3. Configuration du projet</h2>
 <p>Le projet est configuré par différents fichiers :</p>
 <ul>
-<li>[web.xml] qui configure l&#x27;application web</li>
-<li>[struts.xml] qui configure le framework Struts</li>
-<li>[applicationContext.xml] qui configure le framework Spring</li>
-<li>[tiles.xml] qui configure le framework Tiles</li>
+  <li>[web.xml] qui configure l&#x27;application web
+  </li>
+  <li>[struts.xml] qui configure le framework Struts
+  </li>
+  <li>[applicationContext.xml] qui configure le framework Spring
+  </li>
+  <li>[tiles.xml] qui configure le framework Tiles
+  </li>
 </ul>
+
 <p><a id="refheading91788522158564"></a></p>
 <h3 id="1931-configuration-de-lapplication-web">19.3.1. Configuration de l&#x27;application web</h3>
 <p>Le fichier [web.xml] est le suivant :</p>
@@ -1293,16 +1320,24 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 13-20 : configurent le filtre Struts 2 – déjà vu</li>
-<li>lignes 22-24 : configurent le listener de Spring – déjà vu</li>
-<li>lignes 9-11 :  configurent le listener <strong>Tiles</strong>. La classe [<span style="color: #000000">org.apache.struts2.tiles.StrutsTilesListener] va être instanciée au démarrage de l&#x27;application web. Elle va alors exploiter son fichier de configuration. Celui-ci est défini par les lignes 5-8. Le fichier de configuration de Tiles est donc le fichier [WEB-INF/tiles.xml].</span></li>
+  <li>lignes 13-20 : configurent le filtre Struts 2 – déjà vu
+  </li>
+  <li>lignes 22-24 : configurent le listener de Spring – déjà vu
+  </li>
+  <li>lignes 9-11 :  configurent le listener <b>Tiles</b>. La classe [<span style="color: #000000">org.apache.struts2.tiles.StrutsTilesListener] va être instanciée au démarrage de l&#x27;application web. Elle va alors exploiter son fichier de configuration. Celui-ci est défini par les lignes 5-8. Le fichier de configuration de Tiles est donc le fichier [WEB-INF/tiles.xml].</span>
+  </li>
 </ul>
+
 <p><span style="color: #000000">Au final, au démarrage de l&#x27;application Struts, trois classes sont instanciées :</span></p>
 <ul>
-<li><span style="color: #000000">l&#x27;une pour le filtre Struts 2. C&#x27;est elle qui assure le C de MVC.</span></li>
-<li><span style="color: #000000">une autre pour le listener Spring. Spring va exploiter le fichier [applicationContext.xml] pour instancier les couches [métier, dao, jpa] de l&#x27;application. Spring va également instancier, comme dans un exemple précédent, une classe [Config] qui contiendra les données de portée Application. Enfin Spring injectera dans chaque action Struts qui en a besoin, une référence sur cette unique instance [Config].</span></li>
-<li><span style="color: #000000">une autre pour le listener Tiles. Ce framework va assurer la gestion des vues. Nous y reviendrons bientôt.</span></li>
+  <li><span style="color: #000000">l&#x27;une pour le filtre Struts 2. C&#x27;est elle qui assure le C de MVC.</span>
+  </li>
+  <li><span style="color: #000000">une autre pour le listener Spring. Spring va exploiter le fichier [applicationContext.xml] pour instancier les couches [métier, dao, jpa] de l&#x27;application. Spring va également instancier, comme dans un exemple précédent, une classe [Config] qui contiendra les données de portée Application. Enfin Spring injectera dans chaque action Struts qui en a besoin, une référence sur cette unique instance [Config].</span>
+  </li>
+  <li><span style="color: #000000">une autre pour le listener Tiles. Ce framework va assurer la gestion des vues. Nous y reviendrons bientôt.</span>
+  </li>
 </ul>
+
 <p><a id="refheading91790522158564"></a></p>
 <h3 id="1932-configuration-du-framework-struts">19.3.2. <span style="color: #000000">Configuration du framework Struts</span></h3>
 <p><span style="color: #000000">Le framework Struts est configuré par le fichier [struts.xml] suivant :</span></p>
@@ -1375,10 +1410,14 @@
 
 <p><span style="color: #000000">Nous commenterons les différentes actions Struts au fur et à mesure où nous les étudierons. Pour l&#x27;instant, on peut noter les points suivants :</span></p>
 <ul>
-<li><span style="color: #000000">ligne 8 : définit le fichier des messages</span></li>
-<li><span style="color: #000000">ligne 10 : définit le mode d&#x27;injection des beans Spring dans les actions Struts. L&#x27;injection se fait selon le nom du bean. Il faut que le champ de l&#x27;action Struts qui doit être initialisé par Spring porte le nom du bean à injecter.</span></li>
-<li><span style="color: #000000">ligne 25 : définit la vue à afficher pour la clé de navigation </span><em><span style="color: #000000">success</span></em><span style="color: #000000"> de l&#x27;action [Formulaire]. On voit que le résultat </span><em><span style="color: #000000">&lt;result&gt;</span></em><span style="color: #000000"> a un attribut </span><em><span style="color: #000000">type=&#x27;tiles&#x27;</span></em><span style="color: #000000"> que nous ne connaissons pas. Nous connaissions le type </span><em><span style="color: #000000">redirect</span></em><span style="color: #000000"> qui permet de rediriger le client vers une vue. Ici la vue de type </span><em><span style="color: #000000">tiles</span></em><span style="color: #000000"> est gérée par le framework </span><em><span style="color: #000000">Tiles</span></em><span style="color: #000000">. Le type </span><em><span style="color: #000000">tiles</span></em><span style="color: #000000"> est défini dans le fichier [struts-plugin.xml] de l&#x27;archive [struts2-tiles-plugin-2.2.3.1.jar] :</span></li>
+  <li><span style="color: #000000">ligne 8 : définit le fichier des messages</span>
+  </li>
+  <li><span style="color: #000000">ligne 10 : définit le mode d&#x27;injection des beans Spring dans les actions Struts. L&#x27;injection se fait selon le nom du bean. Il faut que le champ de l&#x27;action Struts qui doit être initialisé par Spring porte le nom du bean à injecter.</span>
+  </li>
+  <li><span style="color: #000000">ligne 25 : définit la vue à afficher pour la clé de navigation </span><i><span style="color: #000000">success</span></i><span style="color: #000000"> de l&#x27;action [Formulaire]. On voit que le résultat </span><i><span style="color: #000000">&lt;result&gt;</span></i><span style="color: #000000"> a un attribut </span><i><span style="color: #000000">type=&#x27;tiles&#x27;</span></i><span style="color: #000000"> que nous ne connaissons pas. Nous connaissions le type </span><i><span style="color: #000000">redirect</span></i><span style="color: #000000"> qui permet de rediriger le client vers une vue. Ici la vue de type </span><i><span style="color: #000000">tiles</span></i><span style="color: #000000"> est gérée par le framework </span><i><span style="color: #000000">Tiles</span></i><span style="color: #000000">. Le type </span><i><span style="color: #000000">tiles</span></i><span style="color: #000000"> est défini dans le fichier [struts-plugin.xml] de l&#x27;archive [struts2-tiles-plugin-2.2.3.1.jar] :</span>
+  </li>
 </ul>
+
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span>
@@ -1394,14 +1433,17 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="s">&lt;/struts&gt;</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li><span style="color: #000000">lignes 3-5 : la définition du type de résultat </span><em><span style="color: #000000">tiles</span></em><span style="color: #000000">.</span></li>
-<li>
-<p><span style="color: #000000">ligne 2 : ce type est défini dans le package [tiles-default] qui étend le package [struts-default].</span></p>
-</li>
-<li>
-<p><span style="color: #000000">ligne 14 : définit le package [default] dans lequel seront toutes les actions de l&#x27;application. Pour profiter de la définition du type de vue </span><em><span style="color: #000000">tiles</span></em><span style="color: #000000">, le package étend [tiles-default].</span></p>
-</li>
+  <li><span style="color: #000000">lignes 3-5 : la définition du type de résultat </span><i><span style="color: #000000">tiles</span></i><span style="color: #000000">.</span>
+  </li>
+  <li><span style="color: #000000">ligne 2 : ce type est défini dans le package [tiles-default] qui étend le package [struts-default].</span>
+  </li>
 </ul>
+
+<ul>
+  <li><span style="color: #000000">ligne 14 : définit le package [default] dans lequel seront toutes les actions de l&#x27;application. Pour profiter de la définition du type de vue </span><i><span style="color: #000000">tiles</span></i><span style="color: #000000">, le package étend [tiles-default].</span>
+  </li>
+</ul>
+
 <p><a id="refheading91792522158564"></a></p>
 <h3 id="1933-configuration-du-framework-spring">19.3.3. <span style="color: #000000">Configuration du framework Spring</span></h3>
 <p><span style="color: #000000">Le framework Spring est configuré par le fichier [WEB-INF/applicationContext.xml] suivant :</span></p>
@@ -1424,9 +1466,12 @@
 </code></pre></div>
 
 <ul>
-<li><span style="color: #000000">ligne 13 : la couche [metier] simulée instanciée par la classe [metier.MetierSimule]</span></li>
-<li><span style="color: #000000">lignes 9-11 : configurent un bean nommé </span><em><span style="color: #000000">config</span></em><span style="color: #000000">. Comme dans un exemple précédemment étudié, ce bean servira à encapsuler les informations de portée </span><em><span style="color: #000000">Application</span></em><span style="color: #000000">. La classe associée à ce bean est la classe [Config] suivante :</span></li>
+  <li><span style="color: #000000">ligne 13 : la couche [metier] simulée instanciée par la classe [metier.MetierSimule]</span>
+  </li>
+  <li><span style="color: #000000">lignes 9-11 : configurent un bean nommé </span><i><span style="color: #000000">config</span></i><span style="color: #000000">. Comme dans un exemple précédemment étudié, ce bean servira à encapsuler les informations de portée </span><i><span style="color: #000000">Application</span></i><span style="color: #000000">. La classe associée à ce bean est la classe [Config] suivante :</span>
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web;</span></span>
 <span class="odt-code-line"></span>
@@ -1516,15 +1561,21 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 8 : la méthode permet de calculer le salaire d&#x27;un employé</li>
-<li>ligne 10 : la méthode permet d&#x27;obtenir la liste des employés</li>
+  <li>ligne 8 : la méthode permet de calculer le salaire d&#x27;un employé
+  </li>
+  <li>ligne 10 : la méthode permet d&#x27;obtenir la liste des employés
+  </li>
 </ul>
+
 <p>On voit que la méthode <em>init</em> demande la liste des employés à la couche [métier]. Cette liste est enregistrée dans le champ de la ligne 4. S&#x27;il se produit une exception, celle-ci est mémorisée dans le champ de la ligne 6.</p>
 <p>Pour conclure, l&#x27;objet unique [Config] contient :</p>
 <ul>
-<li>une référence sur la couche [métier]</li>
-<li>la liste des employés</li>
+  <li>une référence sur la couche [métier]
+  </li>
+  <li>la liste des employés
+  </li>
 </ul>
+
 <p><a id="refheading91794522158564"></a></p>
 <h2 id="194-generation-des-vues-tiles">19.4. Génération des vues Tiles</h2>
 <p>On l&#x27;a vu dans le fichier de configuration de Struts, les vues vont être générées par le framework <em>Tiles</em>. Nous n&#x27;allons expliquer que le strict nécessaire utile à l&#x27;écriture de notre application.</p>
@@ -1582,7 +1633,7 @@
 <span class="odt-code-line"><span style="color:#008080">&lt;/</span><span style="color:#3f7f7f">html</span><span style="color:#008080">&gt;</span></span>
 </code></pre></div>
 
-<p>La page maître est un conteneur de fragments JSP. Ici, elle est l&#x27;assemblage de six fragments, ceux des lignes 17 à 23. A la génération, il peut y avoir de 0 à 6 fragments assemblés dans la page maître. Cette génération est gouvernée par le fichier [WEB-INF/tiles.xml] qui définit les vues <em>Tiles </em>:</p>
+<p>La page maître est un conteneur de fragments JSP. Ici, elle est l&#x27;assemblage de six fragments, ceux des lignes 17 à 23. A la génération, il peut y avoir de 0 à 6 fragments assemblés dans la page maître. Cette génération est gouvernée par le fichier [WEB-INF/tiles.xml] qui définit les vues <em>Tiles</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
 <span class="odt-code-line"><span style="color:#008080">&lt;?</span><span style="color:#3f7f7f">xml</span> <span style="color:#7f007f">version</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;1.0&quot;</span> <span style="color:#7f007f">encoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span> <span style="color:#008080">?&gt;</span></span>
 <span class="odt-code-line"> </span>
@@ -1630,10 +1681,14 @@
 </code></pre></div>
 
 <ul>
-<li>le fichier ci-dessus définit six vues <em>Tiles</em> nommées : <strong>masterPage</strong> (ligne 9), <strong>saisie</strong> (ligne 20), <strong>simulation</strong> (ligne 25), <strong>simulations</strong> (ligne 30), <strong>exception</strong> (ligne 35), <strong>erreur</strong> (ligne 40).</li>
-<li>lignes 9-17 : définissent une vue appelée <em>masterPage</em> (<em>name</em>) et associée à la page maître [MasterPage.JSP] (<em>template</em>). On a vu que cette page JSP définissait six sous-vues. Une vue <em>Tiles</em> associée à la page maître doit indiquer le fragment JSP associé à chacune des six sous-vues. On voit que certaines sous-vues reçoivent pour valeur (<em>value</em>) la chaîne vide. Ces sous-vues ne seront pas incluses dans la page maître [MasterPage.JSP]. La vue <em>Tiles</em> nommée <em>masterPage</em> est donc constituée du seul  sous-fragment [Entete.JSP].</li>
-<li>lignes 20-22 :  définissent une vue appelée <em>saisie</em> (<em>name</em>) et qui étend (<em>extends</em>) la vue nommée <em>masterPage</em> vue précédemment. Cela signifie qu&#x27;elle reprend toutes les définitions de la vue <em>masterPage</em>. Sa définition est équivalente à la suivante :</li>
+  <li>le fichier ci-dessus définit six vues <i>Tiles</i> nommées : <b>masterPage</b> (ligne 9), <b>saisie</b> (ligne 20), <b>simulation</b> (ligne 25), <b>simulations</b> (ligne 30), <b>exception</b> (ligne 35), <b>erreur</b> (ligne 40).
+  </li>
+  <li>lignes 9-17 : définissent une vue appelée <i>masterPage</i> (<i>name</i>) et associée à la page maître [MasterPage.JSP] (<i>template</i>). On a vu que cette page JSP définissait six sous-vues. Une vue <i>Tiles</i> associée à la page maître doit indiquer le fragment JSP associé à chacune des six sous-vues. On voit que certaines sous-vues reçoivent pour valeur (<i>value</i>) la chaîne vide. Ces sous-vues ne seront pas incluses dans la page maître [MasterPage.JSP]. La vue <i>Tiles</i> nommée <i>masterPage</i> est donc constituée du seul  sous-fragment [Entete.JSP].
+  </li>
+  <li> lignes 20-22 :  définissent une vue appelée <i>saisie</i> (<i>name</i>) et qui étend (<i>extends</i>) la vue nommée <i>masterPage</i> vue précédemment. Cela signifie qu&#x27;elle reprend toutes les définitions de la vue <i>masterPage</i>. Sa définition est équivalente à la suivante :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">definition</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;saisie&quot;</span> <span style="color:#7f007f">template</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/MasterPage.JSP&quot;</span><span style="color:#008080">&gt;</span></span>
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">put-attribute</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;entete&quot;</span> <span style="color:#7f007f">value</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;/Entete.JSP&quot;</span><span style="color:#008080">/&gt;</span></span>
@@ -1649,7 +1704,7 @@
 
 <p>On voit qu&#x27;elle est associée à la page JSP [MasterPage.JSP] et qu&#x27;à ce titre elle doit définir les six sous-vues de cette page. On voit que la déinition de la ligne 9 annule celle de la ligne 4. La vue <em>Tiles</em> nommée <em>saisie</em> est donc constituée des fragments JSP [Entete.JSP, Saisie.JSP]</p>
 <p>Si nous continuons ce raisonnement, nous obtenons le tableau suivant :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;"><b>vue Tiles</b></p></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><p style="margin:0;"><b>pages JSP</b></p></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>vue Tiles</b></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div style="margin:0 0 0.5em 0"><b>pages JSP</b></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>masterPage
 </code></pre></div>
 </div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><div markdown="block">
@@ -1794,8 +1849,8 @@
 <span class="odt-code-line">}</span>
 </code></pre></div>
 
-<p><a id="refheading91800522158564"></a>
-<a id="vue-initiale"></a></p>
+<p><a id="vue-initiale"></a>
+<a id="refheading91800522158564"></a></p>
 <h2 id="197-la-vue-initiale">19.7. La vue initiale</h2>
 <p>Pour étudier l&#x27;application, nous allons la présenter à partir des différentes actions de l&#x27;utilisateur. Nous étudierons à chaque fois, l&#x27;action <em>Struts</em> qui exécute cette action et la vue <em>Tiles</em> qui est envoyée en réponse.</p>
 <p>Dans [struts.xml] nous avons les actions suivantes :</p>
@@ -1819,8 +1874,10 @@
 
 <p><span style="color: #000000">  </span></p>
 <ul>
-<li>lignes 2-8 : l&#x27;action par défaut de l&#x27;application est [Formulaire!input].</li>
+  <li>lignes 2-8 : l&#x27;action par défaut de l&#x27;application est [Formulaire!input].
+  </li>
 </ul>
+
 <p>La classe [Formulaire] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web.actions;</span></span>
@@ -1877,20 +1934,30 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 4 : l&#x27;action [Formulaire] implémente l&#x27;interface <em>Preparable</em>. Celle-ci n&#x27;a qu&#x27;une méthode, la méthode <em>prepare</em> de la ligne 24. Cette méthode est exécutée une fois avant toute méthode de l&#x27;action. Elle sert généralement à initialiser le modèle de l&#x27;action.</li>
+  <li>ligne 4 : l&#x27;action [Formulaire] implémente l&#x27;interface <i>Preparable</i>. Celle-ci n&#x27;a qu&#x27;une méthode, la méthode <i>prepare</i> de la ligne 24. Cette méthode est exécutée une fois avant toute méthode de l&#x27;action. Elle sert généralement à initialiser le modèle de l&#x27;action.
+  </li>
 </ul>
+
 <p>Le modèle de l&#x27;action est formé des lignes 6-21 :</p>
 <ul>
-<li>ligne 7 : le champ <em>config</em> est initialisé par Spring comme il a été expliqué. Il donne accès aux données de portée application :<ul>
-<li>une référence sur la couche [métier]</li>
-<li>une référence sur la liste des employés.</li>
-<li>une référence sur l&#x27;exception qui a pu éventuellement se produire lors de l&#x27;instanciation de l&#x27;objet [Config]</li>
+  <li>ligne 7 : le champ <i>config</i> est initialisé par Spring comme il a été expliqué. Il donne accès aux données de portée application :
+    <ul>
+      <li>une référence sur la couche [métier]
+      </li>
+      <li>une référence sur la liste des employés.
+      </li>
+      <li>une référence sur l&#x27;exception qui a pu éventuellement se produire lors de l&#x27;instanciation de l&#x27;objet [Config]
+      </li>
+    </ul>
+  </li>
+  <li>ligne 9 : une liste des employés. Celle-ci va alimenter le combo des employés dans le fragment [Saisie.JSP].
+  </li>
+  <li>ligne 11 : une liste d&#x27;erreurs. Celle-ci va alimenter le fragment [Erreur.JSP].
+  </li>
+  <li>ligne 21 : la liste des options du menu du fragment [Entete.JSP]
+  </li>
 </ul>
-</li>
-<li>ligne 9 : une liste des employés. Celle-ci va alimenter le combo des employés dans le fragment [Saisie.JSP].</li>
-<li>ligne 11 : une liste d&#x27;erreurs. Celle-ci va alimenter le fragment [Erreur.JSP].</li>
-<li>ligne 21 : la liste des options du menu du fragment [Entete.JSP]</li>
-</ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000482000001D07C742355.png" style="display:inline-block; margin:4px;width:15.266cm;height:6.138cm;" class="odt-zoomable" data-zoom-src="images/1000000000000482000001D07C742355.png" /></td></tr></table>
 
 <p>En [1], les liens du menu affiché sont contrôlés par le champ <em>menu</em> de l&#x27;action [Formulaire].</p>
@@ -1914,9 +1981,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 4 : on récupère l&#x27;exception dans l&#x27;objet [Config] instancié par Spring</li>
-<li>ligne 5 : s&#x27;il y a eu exception dans l&#x27;instanciation de l&#x27;objet [Config] alors on initialise la liste d&#x27;erreurs de la ligne 11. La classe [Erreur] est la suivante :</li>
+  <li>ligne 4 : on récupère l&#x27;exception dans l&#x27;objet [Config] instancié par Spring
+  </li>
+  <li>ligne 5 : s&#x27;il y a eu exception dans l&#x27;instanciation de l&#x27;objet [Config] alors on initialise la liste d&#x27;erreurs de la ligne 11. La classe [Erreur] est la suivante :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web.entities;</span></span>
 <span class="odt-code-line"></span>
@@ -1944,13 +2014,18 @@
 
 <p>La classe sert à mémoriser la pile des exceptions :</p>
 <ul>
-<li>ligne 11 : la classe de l&#x27;exception</li>
-<li>ligne 12 : le message de l&#x27;exception</li>
+  <li>ligne 11 : la classe de l&#x27;exception
+  </li>
+  <li>ligne 12 : le message de l&#x27;exception
+  </li>
 </ul>
-<p>Revenons à la méthode <em>prepare </em>:</p>
+
+<p>Revenons à la méthode <em>prepare</em> :</p>
 <ul>
-<li>ligne 13 : la liste des employés de l&#x27;objet [Config] est mémorisée dans le champ <em>employes</em> de l&#x27;action.</li>
+  <li>ligne 13 : la liste des employés de l&#x27;objet [Config] est mémorisée dans le champ <i>employes</i> de l&#x27;action.
+  </li>
 </ul>
+
 <p>Une fois la méthode <em>prepare</em> exécutée, la méthode <em>input</em> va l&#x27;être à son tour. C&#x27;est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#646464">@</span><span style="color:#000000">Override</span></span>
@@ -2001,9 +2076,12 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 8-13 : il y a 6 liens possibles dans le menu</li>
-<li>lignes 18-25 : le constructeur de la classe permet de fixer les liens qui doivent être affichés et ceux qui ne le doivent pas.</li>
+  <li>lignes 8-13 : il y a 6 liens possibles dans le menu
+  </li>
+  <li>lignes 18-25 : le constructeur de la classe permet de fixer les liens qui doivent être affichés et ceux qui ne le doivent pas.
+  </li>
 </ul>
+
 <p>Les liens du menu sont affichés dans [Entete.JSP], fragment JSP présent dans toutes les vues <em>Tiles</em>. Chaque action aura un champ <em>menu</em> pour contrôler l&#x27;affichage du menu de [Entete.JSP].</p>
 <p>Revenons à la méthode <em>input</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
@@ -2022,9 +2100,12 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 3-6 : si la liste des erreurs est vide, le menu [Faire la simulation, Voir les simulations, Terminer la session] sera affiché et la clé <em>input</em> retournée.</li>
-<li>lignes 9-10 : si la liste des erreurs n&#x27;est pas vide, le menu sera vide et la clé <em>exception</em> sera retournée.</li>
+  <li>lignes 3-6 : si la liste des erreurs est vide, le menu [Faire la simulation, Voir les simulations, Terminer la session] sera affiché et la clé <i>input</i> retournée.
+  </li>
+  <li>lignes 9-10 : si la liste des erreurs n&#x27;est pas vide, le menu sera vide et la clé <i>exception</i> sera retournée.
+  </li>
 </ul>
+
 <p>Revenons à la configuration de l&#x27;action [Formulaire] dans [struts.xml] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f5fbf">&lt;!-- action Formulaire --&gt;</span></span>
@@ -2037,9 +2118,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 5 : la clé <em>input</em> affiche la vue Tiles nommée <em>saisie</em></li>
-<li>ligne 4 : la clé <em>exception</em> affiche la vue Tiles nommée <em>exception</em></li>
+  <li>ligne 5 : la clé <i>input</i> affiche la vue Tiles nommée <i>saisie</i>
+  </li>
+  <li>ligne 4 : la clé <i>exception</i> affiche la vue Tiles nommée <i>exception</i>
+  </li>
 </ul>
+
 <p>Commençons par la vue Tiles nommée <em>saisie</em>. Elle est composée des framents JSP [Entete.JSP] et [Saisie.JSP].</p>
 <p>Le fragment [Entete.JSP] est le suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002EC00000059D6B8D290.png" style="display:inline-block; margin:4px;width:13.85cm;height:1.649cm;" class="odt-zoomable" data-zoom-src="images/10000000000002EC00000059D6B8D290.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
@@ -2077,9 +2161,12 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 8-25 : affichage des six liens du menu [Faire la simulation (lignes 8-10), Effacer la simulation (lignes 11-13), Voir les simulations (lignes 14-16), Retour au formulaire (lignes 17-19), Enregistrer la simulation (lignes 20-22), Terminer la session (lignes 23-25).</li>
-<li>lignes 8, 11, 14, 17, 20, 23 : l&#x27;affichage des liens est contrôlé par le champ <em>menu</em> de l&#x27;action courante.</li>
+  <li>lignes 8-25 : affichage des six liens du menu [Faire la simulation (lignes 8-10), Effacer la simulation (lignes 11-13), Voir les simulations (lignes 14-16), Retour au formulaire (lignes 17-19), Enregistrer la simulation (lignes 20-22), Terminer la session (lignes 23-25).
+  </li>
+  <li>lignes 8, 11, 14, 17, 20, 23 : l&#x27;affichage des liens est contrôlé par le champ <i>menu</i> de l&#x27;action courante.
+  </li>
 </ul>
+
 <p>On remarquera que le fragment [Entete.JSP] affiche une table Html (lignes 4-28) mais n&#x27;est pas une page Html complète. Il ne faut pas oublier ici que toutes les vues de l&#x27;application s&#x27;insèrent dans la page maître [MasterPage.JSP] suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -2140,18 +2227,24 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 17 : le formulaire n&#x27;a pas d&#x27;attribut <em>action</em>. Par défaut, on a <em>action=&#x27;Formulaire&#x27;</em>.</li>
-<li>ligne 18 : affichage du combo des employés. Le contenu du combo (attribut <em>list</em>)est fourni par le champ <em>employes</em> de l&#x27;action courante. L&#x27;attribut <em>value</em> des options sera le n° SS des employés (attribut <em>listKey</em>). Le libellé affiché pour chaque option sera le prénom et le nom de l&#x27;employé (attribut <em>listValue</em>). Le n° SS de l&#x27;employé sélectionné dans le combo sera posté au champ [Formulaire].<em>comboEmployesvalue</em> (attribut <em>name</em>).</li>
-<li>ligne 19 : champ de saisie des heures travaillées. La valeur affichée (attribut <em>value</em>) est celle du champ <em>heuresTravaillees</em> de l&#x27;action [Formulaire] au format suivant (Formulaire.properties) :</li>
+  <li>ligne 17 : le formulaire n&#x27;a pas d&#x27;attribut <i>action</i>. Par défaut, on a <i>action=&#x27;Formulaire&#x27;</i>.
+  </li>
+  <li>ligne 18 : affichage du combo des employés. Le contenu du combo (attribut <i>list</i>)est fourni par le champ <i>employes</i> de l&#x27;action courante. L&#x27;attribut <i>value</i> des options sera le n° SS des employés (attribut <i>listKey</i>). Le libellé affiché pour chaque option sera le prénom et le nom de l&#x27;employé (attribut <i>listValue</i>). Le n° SS de l&#x27;employé sélectionné dans le combo sera posté au champ [Formulaire].<i>comboEmployesvalue</i> (attribut <i>name</i>).
+  </li>
+  <li>ligne 19 : champ de saisie des heures travaillées. La valeur affichée (attribut <i>value</i>) est celle du champ <i>heuresTravaillees</i> de l&#x27;action [Formulaire] au format suivant (Formulaire.properties) :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">double.format=</span><span style="color:#2a00ff">{0,number,#0.00##}</span></span>
 </code></pre></div>
 
 <p>La valeur sera postée au champ [Formulaire].<em>heuresTravaillees</em> (attribut <em>name</em>).</p>
 <ul>
-<li>ligne 20 :  champ de saisie des jours travaillés. La valeur affichée (attribut <em>value</em>) est celle du champ <em>joursTravailles</em> de l&#x27;action [Formulaire].</li>
+  <li>ligne 20 :  champ de saisie des jours travaillés. La valeur affichée (attribut <i>value</i>) est celle du champ <i>joursTravailles</i> de l&#x27;action [Formulaire].
+  </li>
 </ul>
+
 <p>La valeur sera postée au champ [Formulaire].<em>joursTravailles</em> (attribut <em>name</em>).</p>
 <p>Au final, la vue Tiles <em>saisie</em> affichée au démarrage lorsqu&#x27;il n&#x27;y a pas d&#x27;erreurs est la suivante :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002ED000000C2FEF8686E.png" style="display:inline-block; margin:4px;width:13.869cm;height:3.59cm;" class="odt-zoomable" data-zoom-src="images/10000000000002ED000000C2FEF8686E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
@@ -2191,8 +2284,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 10-14 : un itérateur sur la collection <em>List&lt;Erreur&gt; erreurs</em> de l&#x27;action [Formulaire]. On se rappelle qu&#x27;en cas d&#x27;erreur on y avait stocké une pile d&#x27;exceptions.</li>
+  <li>lignes 10-14 : un itérateur sur la collection <i>List&lt;Erreur&gt; erreurs</i> de l&#x27;action [Formulaire]. On se rappelle qu&#x27;en cas d&#x27;erreur on y avait stocké une pile d&#x27;exceptions.
+  </li>
 </ul>
+
 <p><a id="refheading91802522158564"></a></p>
 <h2 id="198-faire-une-simulation">19.8. Faire une simulation</h2>
 <p>Une fois la vue de démarrage obtenue, on peut faire un calcul de salaire via le lien [Faire une simulation].</p>
@@ -2202,9 +2297,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053D0000018ADC810037.png" style="display:inline-block; margin:4px;width:17.741cm;height:5.212cm;" class="odt-zoomable" data-zoom-src="images/100000000000053D0000018ADC810037.png" /></td></tr></table>
 
 <ul>
-<li>en [1], une saisie erronée</li>
-<li>en [2], la réponse envoyée.</li>
+  <li>en [1], une saisie erronée
+  </li>
+  <li>en [2], la réponse envoyée.
+  </li>
 </ul>
+
 <p>Considérons la configuration de l&#x27;action [Formulaire] dans [struts.xml] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f5fbf">&lt;!-- action Formulaire --&gt;</span></span>
@@ -2260,9 +2358,12 @@
 </code></pre></div>
 
 <ul>
-<li>les lignes 6-20 vérifient que le champ <em>heuresTravaillees</em> est un nombre réel dans l&#x27;intervalle [0,300].</li>
-<li>les lignes 22-36 vérifient que le champ <em>joursTravailles</em> est un nombre entier dans l&#x27;intervalle [0,31].</li>
+  <li>les lignes 6-20 vérifient que le champ <i>heuresTravaillees</i> est un nombre réel dans l&#x27;intervalle [0,300].
+  </li>
+  <li>les lignes 22-36 vérifient que le champ <i>joursTravailles</i> est un nombre entier dans l&#x27;intervalle [0,31].
+  </li>
 </ul>
+
 <p>Revenons à la configuration de l&#x27;action [Formulaire] dans [struts.xml] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f5fbf">&lt;!-- action Formulaire --&gt;</span></span>
@@ -2347,9 +2448,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 27 : on sait que lorsqu&#x27;elle est présente, la méthode <em>validate</em> est exécutée par le processus de validation. On en profite pour mettre à jour le menu de la ligne 4 qui fait partie du modèle du fragment [Entete.JSP].</li>
-<li>lignes 29-32 : s&#x27;il y a eu des erreurs de validation, alors on positionne le menu pour réafficher la vue Tiles <em>saisie</em>. S&#x27;il n&#x27;y a pas eu d&#x27;erreurs de validation, alors on ne fait rien. C&#x27;est la méthode <em>calculSalaire</em> qui est alors chargée de créer le modèle de la vue à afficher.</li>
+  <li>ligne 27 : on sait que lorsqu&#x27;elle est présente, la méthode <i>validate</i> est exécutée par le processus de validation. On en profite pour mettre à jour le menu de la ligne 4 qui fait partie du modèle du fragment [Entete.JSP].
+  </li>
+  <li>lignes 29-32 : s&#x27;il y a eu des erreurs de validation, alors on positionne le menu pour réafficher la vue Tiles <i>saisie</i>. S&#x27;il n&#x27;y a pas eu d&#x27;erreurs de validation, alors on ne fait rien. C&#x27;est la méthode <i>calculSalaire</i> qui est alors chargée de créer le modèle de la vue à afficher.
+  </li>
 </ul>
+
 <p><a id="refheading91806522158564"></a></p>
 <h3 id="1982-le-calcul-du-salaire">19.8.2. Le calcul du salaire</h3>
 <p>Revenons au code JSP de l&#x27;entête :</p>
@@ -2371,8 +2475,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 9 : lorsque l&#x27;utilisateur clique sur le lien [Faire la simulation], la fonction Javascript <em>doSimulation</em> est exécutée. Celle-ci est défini dans le fragment [Saisie.JSP] :</li>
+  <li>ligne 9 : lorsque l&#x27;utilisateur clique sur le lien [Faire la simulation], la fonction Javascript <i>doSimulation</i> est exécutée. Celle-ci est défini dans le fragment [Saisie.JSP] :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">script</span> <span style="color:#7f007f">language</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;javascript&quot;</span> <span style="color:#7f007f">type</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/javascript&quot;</span><span style="color:#008080">&gt;</span></span>
 <span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">function</span><span style="color:#000000"> doSimulation(){</span></span>
@@ -2392,11 +2498,16 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 14 : un champ caché nommé <em>action</em> sera posté à l&#x27;action [Formulaire]. Ce champ va nous permettre de préciser l&#x27;action et la méthode qui doivent être exécutées au POST du formulaire. On se rappelle peut-être des premiers exemples, que celles-ci peuvent être précisées dans un paramètre nommé <strong>action:Action!méthode</strong>. Peu importe la valeur de ce paramètre. Il suffit qu&#x27;il soit présent.</li>
-<li>lignes 2-6 : la fonction Javascript qui est exécutée lorsque l&#x27;utilisateur clique sur le lien [Faire la simulation] du fragment [Entete.JSP].</li>
-<li>ligne 4 : on change l&#x27;attribut <em>name</em> du champ caché <em>action</em>. On fait en sorte qu&#x27;il soit de la forme <strong>action:Action!méthode</strong> attendue par Struts.</li>
-<li>ligne 5 : le formulaire nommé <em>Saisie</em> de la ligne 5 est posté. Du coup est postée la chaîne de paramètres suivante :</li>
+  <li>ligne 14 : un champ caché nommé <i>action</i> sera posté à l&#x27;action [Formulaire]. Ce champ va nous permettre de préciser l&#x27;action et la méthode qui doivent être exécutées au POST du formulaire. On se rappelle peut-être des premiers exemples, que celles-ci peuvent être précisées dans un paramètre nommé <b>action:Action!méthode</b>. Peu importe la valeur de ce paramètre. Il suffit qu&#x27;il soit présent.
+  </li>
+  <li>lignes 2-6 : la fonction Javascript qui est exécutée lorsque l&#x27;utilisateur clique sur le lien [Faire la simulation] du fragment [Entete.JSP].
+  </li>
+  <li>ligne 4 : on change l&#x27;attribut <i>name</i> du champ caché <i>action</i>. On fait en sorte qu&#x27;il soit de la forme <b>action:Action!méthode</b> attendue par Struts.
+  </li>
+  <li>ligne 5 : le formulaire nommé <i>Saisie</i> de la ligne 5 est posté. Du coup est postée la chaîne de paramètres suivante :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>comboEmployesValue=SS1&amp;heuresTravaillees=xx&amp;joursTravailles=yy&amp;action:Formulaire!calculSalaire
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>SS1 : n° INSEE de l&#39;employé sélectionné dans le combo
@@ -2424,9 +2535,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 5 : le calcul de la feuille de salaire est demandée à la couche [métier]</li>
-<li>ligne 7 : on met un objet de type <em>Simulation</em> dans la session de l&#x27;utilisateur. En effet, on peut en avoir besoin lors d&#x27;une requête ultérieure. La classe [Simulation] est la suivante :</li>
+  <li>ligne 5 : le calcul de la feuille de salaire est demandée à la couche [métier]
+  </li>
+  <li>ligne 7 : on met un objet de type <i>Simulation</i> dans la session de l&#x27;utilisateur. En effet, on peut en avoir besoin lors d&#x27;une requête ultérieure. La classe [Simulation] est la suivante :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web.entities;</span></span>
 <span class="odt-code-line"></span>
@@ -2462,12 +2576,18 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 12 : le n° de la simulation. Est incrémenté à chaque nouvelle simulation enregistrée.</li>
-<li>ligne 13 : la feuille de salaire de l&#x27;employé</li>
-<li>ligne 14 : son nombre d&#x27;heures travaillées</li>
-<li>ligne 15 : son nombre de jours travaillés</li>
-<li>ligne 25 : la méthode <em>getIndemnites</em> rend le total des indmnités de l&#x27;employé</li>
+  <li>ligne 12 : le n° de la simulation. Est incrémenté à chaque nouvelle simulation enregistrée.
+  </li>
+  <li>ligne 13 : la feuille de salaire de l&#x27;employé
+  </li>
+  <li>ligne 14 : son nombre d&#x27;heures travaillées
+  </li>
+  <li>ligne 15 : son nombre de jours travaillés
+  </li>
+  <li>ligne 25 : la méthode <i>getIndemnites</i> rend le total des indmnités de l&#x27;employé
+  </li>
 </ul>
+
 <p>Nous verrons que la classe [Simulation] est le modèle du fragment [Simulations.JSP] qui présente toutes les simulations faites.</p>
 <p>Retour à la méthode [Formulaire].<em>calculSalaire</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
@@ -2488,9 +2608,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 9 : mise à jour du menu</li>
-<li>ligne 11 : renvoi de la clé de navigation <em>simulation</em>.</li>
+  <li>ligne 9 : mise à jour du menu
+  </li>
+  <li>ligne 11 : renvoi de la clé de navigation <i>simulation</i>.
+  </li>
 </ul>
+
 <p>Retour à la configuration de l&#x27;action [Formulaire] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f5fbf">&lt;!-- action Formulaire --&gt;</span></span>
@@ -2505,10 +2628,14 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000046800000493C41572FB.png" style="display:inline-block; margin:4px;width:14.923cm;height:15.492cm;" class="odt-zoomable" data-zoom-src="images/100000000000046800000493C41572FB.png" /></td></tr></table>
 
 <ul>
-<li>en [1], le fragment [Entete.JSP]</li>
-<li>en [2], le fragment [Saisie.JSP]</li>
-<li>en [3], le fragment [Simulation.JSP]. On rappelle que la feuille de salaire présentée est la feuille de salaire fictive rendue par la couche [metier].</li>
+  <li>en [1], le fragment [Entete.JSP]
+  </li>
+  <li>en [2], le fragment [Saisie.JSP]
+  </li>
+  <li>en [3], le fragment [Simulation.JSP]. On rappelle que la feuille de salaire présentée est la feuille de salaire fictive rendue par la couche [metier].
+  </li>
 </ul>
+
 <p>Les deux premiers fragments ont déjà été présentés. Le fragment [Simulation.JSP] est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -2725,7 +2852,7 @@
 </code></pre></div>
 
 <p>C&#x27;est long ... mais c&#x27;est fonctionnellement simple. Ce fragment affiche les différentes propriétés du champ [Formulaire].<em>feuilleSalaire</em> qui représente la feuille de salaire de l&#x27;employé.</p>
-<p>Retour à la méthode [Formulaire].<em>calculSalaire </em>:</p>
+<p>Retour à la méthode [Formulaire].<em>calculSalaire</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">// calcul du salaire</span>
 <span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> String calculSalaire() {</span></span>
@@ -2747,11 +2874,15 @@
 
 <p>La calcul du salaire peut mal se passer. Ce serait le cas notamment si le lien avec le Sgbd se cassait. Dans ce cas, on gère l&#x27;exception qui se produit. Nous avons déjà rencontré ce cas lors de l&#x27;étude de la méthode [Formulaire].<em>input</em>.</p>
 <ul>
-<li>lignes 7-11 : on crée une liste d&#x27;objets <em>Erreur</em> à partir de la pile des exceptions</li>
-<li>ligne 13 : on fixe le menu</li>
-<li>ligne 14 : on rend la clé <em>exception</em>.</li>
+  <li>lignes 7-11 : on crée une liste d&#x27;objets <i>Erreur</i> à partir de la pile des exceptions
+  </li>
+  <li>ligne 13 : on fixe le menu
+  </li>
+  <li>ligne 14 : on rend la clé <i>exception</i>.
+  </li>
 </ul>
-<p>La clé <em>exception</em> va faire afficher la vue Tiles <em>exception </em>:</p>
+
+<p>La clé <em>exception</em> va faire afficher la vue Tiles <em>exception</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#3f5fbf">&lt;!-- action Formulaire --&gt;</span></span>
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Formulaire&quot;</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;web.actions.Formulaire&quot;</span><span style="color:#008080">&gt;</span></span>
@@ -2771,9 +2902,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004B8000001A8B23F68A8.png" style="display:inline-block; margin:4px;width:15.981cm;height:5.609cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B8000001A8B23F68A8.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on enregistre la simulation</li>
-<li>en [2], la réponse qui présente la liste des simulations déjà faites à laquelle est ajoutée la nouvelle simulation</li>
+  <li>en [1], on enregistre la simulation
+  </li>
+  <li>en [2], la réponse qui présente la liste des simulations déjà faites à laquelle est ajoutée la nouvelle simulation
+  </li>
 </ul>
+
 <p>Le lien [Enregistrer la simulation] se trouve dans le fragment [Entete.JSP] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -2803,8 +2937,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 1 : l&#x27;action [EnregistrerSimulation] est associée à la classe [Enregistrer] et à sa méthode <em>execute</em>.</li>
+  <li>ligne 1 : l&#x27;action [EnregistrerSimulation] est associée à la classe [Enregistrer] et à sa méthode <i>execute</i>.
+  </li>
 </ul>
+
 <p>La classe [Enregistrer] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web.actions;</span></span>
@@ -2838,16 +2974,24 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 4 : parce que l&#x27;action doit avoir accès à la session, elle implémente l&#x27;interface <em>SessionAware</em>.</li>
-<li>ligne 7 : la session</li>
-<li>ligne 9 : le menu</li>
+  <li>ligne 4 : parce que l&#x27;action doit avoir accès à la session, elle implémente l&#x27;interface <i>SessionAware</i>.
+  </li>
+  <li>ligne 7 : la session
+  </li>
+  <li>ligne 9 : le menu
+  </li>
 </ul>
+
 <p>Lorsque l&#x27;action [Enregistrer] a été instanciée, sa méthode <em>execute</em> est exécutée. On rappelle que son travail est de mettre dans la session la dernière simulation. Celle-ci sera ajoutée à la liste de simulations déjà faites, elle-aussi conservée dans la session.</p>
 <ul>
-<li>ligne 19 : on récupère dans la session la dernière simulation qui y a été placée.</li>
-<li>lignes 20-22 : si on ne la trouve pas, alors c&#x27;est que probablement la session a expiré. En effet, celle-ci ne dure qu&#x27;un certain temps qu&#x27;on peut fixer dans le fichier [web.xml] qui configure l&#x27;application.</li>
-<li>ligne 21 : on rend la clé <em>error</em>.</li>
+  <li>ligne 19 : on récupère dans la session la dernière simulation qui y a été placée.
+  </li>
+  <li>lignes 20-22 : si on ne la trouve pas, alors c&#x27;est que probablement la session a expiré. En effet, celle-ci ne dure qu&#x27;un certain temps qu&#x27;on peut fixer dans le fichier [web.xml] qui configure l&#x27;application.
+  </li>
+  <li>ligne 21 : on rend la clé <i>error</i>.
+  </li>
 </ul>
+
 <p>Retour à la configuration de l&#x27;action [EnregistrerSimulation] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">   </span><span style="color:#3f5fbf">&lt;!-- action EnregistrerSimulation --&gt;</span></span>
@@ -2869,7 +3013,7 @@
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">h4</span><span style="color:#008080">&gt;&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;Erreur.sessionexpiree&quot;</span><span style="color:#008080">/&gt;&lt;/</span><span style="color:#3f7f7f">h4</span><span style="color:#008080">&gt;</span></span>
 </code></pre></div>
 
-<p>Retour à la méthode [Enregistrer].<em>execute </em>:</p>
+<p>Retour à la méthode [Enregistrer].<em>execute</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">// exécution de l&#x27;action</span>
 <span class="odt-code-line"><span style="color:#000000">  </span><span style="font-weight:bold;color:#7f0055">public</span><span style="color:#000000"> String execute() {</span></span>
@@ -2903,12 +3047,18 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 9-16 : les différentes simulations sont numérotées à partir de 1. Le dernier n° attribué est mis dans la session sous la clé <em>numDerniereSimulation</em>. Le code des lignes 9-16 consiste à récupérer cette clé et à incrémenter la valeur qui lui est associée.</li>
-<li>lignes 18-22 : la liste des simulations est conservée dans la session associée à la clé <em>simulations</em>. Les lignes 18-22 consistent à retrouver cette liste si elle existe ou à la créer si elle n&#x27;existe pas.</li>
-<li>lignes 24-25 : une fois la liste des simulations obtenues, on lui ajoute la simulation courante (ligne 25). Auparavant, la simulation courante a reçu un numéro (ligne 24).</li>
-<li>ligne 27 : on fixe le menu à afficher</li>
-<li>ligne 28 : on rend la clé de navigation <em>simulations</em>.</li>
+  <li>lignes 9-16 : les différentes simulations sont numérotées à partir de 1. Le dernier n° attribué est mis dans la session sous la clé <i>numDerniereSimulation</i>. Le code des lignes 9-16 consiste à récupérer cette clé et à incrémenter la valeur qui lui est associée.
+  </li>
+  <li>lignes 18-22 : la liste des simulations est conservée dans la session associée à la clé <i>simulations</i>. Les lignes 18-22 consistent à retrouver cette liste si elle existe ou à la créer si elle n&#x27;existe pas.
+  </li>
+  <li>lignes 24-25 : une fois la liste des simulations obtenues, on lui ajoute la simulation courante (ligne 25). Auparavant, la simulation courante a reçu un numéro (ligne 24).
+  </li>
+  <li>ligne 27 : on fixe le menu à afficher
+  </li>
+  <li>ligne 28 : on rend la clé de navigation <i>simulations</i>.
+  </li>
 </ul>
+
 <p>Retour à la configuration de l&#x27;action [EnregistrerSimulation] dans [struts.xml] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">   </span><span style="color:#3f5fbf">&lt;!-- action EnregistrerSimulation --&gt;</span></span>
@@ -2922,9 +3072,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004B7000001B3796A2D7A.png" style="display:inline-block; margin:4px;width:15.968cm;height:5.756cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B7000001B3796A2D7A.png" /></td></tr></table>
 
 <ul>
-<li>en [1], le fragment [Entete.JSP] que nous connaissons bien maintenant.</li>
-<li>en [2], le fragment [Simulations.JSP]</li>
+  <li>en [1], le fragment [Entete.JSP] que nous connaissons bien maintenant.
+  </li>
+  <li>en [2], le fragment [Simulations.JSP]
+  </li>
 </ul>
+
 <p>Le fragment [Simulations.JSP] est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -2987,25 +3140,34 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 5-7 : s&#x27;il n&#x27;y a pas de simulations dans la session, alors on affiche la vue suivante :</li>
+  <li>lignes 5-7 : s&#x27;il n&#x27;y a pas de simulations dans la session, alors on affiche la vue suivante :
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000353000000976B6102CB.png" style="display:inline-block; margin:4px;width:15.76cm;height:2.799cm;" class="odt-zoomable" data-zoom-src="images/1000000000000353000000976B6102CB.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
 <ul>
-<li>lignes 13-21 : affichage des entêtes des colonnes du tableau</li>
+  <li>lignes 13-21 : affichage des entêtes des colonnes du tableau
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002770000003617601DF9.png" style="display:inline-block; margin:4px;width:11.689cm;height:1cm;" class="odt-zoomable" data-zoom-src="images/10000000000002770000003617601DF9.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
 <ul>
-<li>lignes 23-55 : itérateur sur la liste des simulations trouvée dans la session</li>
-<li>lignes 24-26 : création d&#x27;une URL nommé <em>URL</em> (attribut <em>id</em>). Le lien Html généré par cette URL est le suivant :</li>
+  <li>lignes 23-55 : itérateur sur la liste des simulations trouvée dans la session
+  </li>
+  <li>lignes 24-26 : création d&#x27;une URL nommé <i>URL</i> (attribut <i>id</i>). Le lien Html généré par cette URL est le suivant :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&lt;a href=&quot;</span><span class="na">view-source:http:</span><span class="err">//</span><span class="na">localhost:8084</span><span class="err">/</span><span class="na">pam</span><span class="err">/</span><span class="na">SupprimerSimulation</span><span class="err">.</span><span class="na">action</span><span class="err">?</span><span class="na">id</span><span class="o">=</span><span class="s">1&quot;</span><span class="p">&gt;</span>/pam/SupprimerSimulation.action?id=1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>&quot;&gt;Retirer<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>On voit que le lien cible l&#x27;action [SupprimerSimulation] avec le paramètre <em>id</em> qui représente le n° de la simulation à retirer de la liste.</p>
 <ul>
-<li>lignes 28-54 : à chaque itération sur la liste des simulations, on affiche les propriétés de la simulation courante.</li>
+  <li>lignes 28-54 : à chaque itération sur la liste des simulations, on affiche les propriétés de la simulation courante.
+  </li>
 </ul>
+
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002B30000008545ACF2AF.png" style="display:inline-block; margin:4px;width:12.779cm;height:2.461cm;" class="odt-zoomable" data-zoom-src="images/10000000000002B30000008545ACF2AF.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
 <p><a id="refheading91810522158564"></a></p>
@@ -3016,9 +3178,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004D6000001D0FB47287B.png" style="display:inline-block; margin:4px;width:16.378cm;height:6.138cm;" class="odt-zoomable" data-zoom-src="images/10000000000004D6000001D0FB47287B.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on supprime la simulation n° 1</li>
-<li>en [2], la simulation n° 1 a été supprimée</li>
+  <li>en [1], on supprime la simulation n° 1
+  </li>
+  <li>en [2], la simulation n° 1 a été supprimée
+  </li>
 </ul>
+
 <p>Le lien [Retirer] se trouve dans le fragment [Simulations.JSP] que nous avons déjà étudié :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -3054,8 +3219,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 16-18 : génèrent le lien Html</li>
+  <li>lignes 16-18 : génèrent le lien Html
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&lt;a href=&quot;</span><span class="na">view-source:http:</span><span class="err">//</span><span class="na">localhost:8084</span><span class="err">/</span><span class="na">pam-01</span><span class="err">/</span><span class="na">SupprimerSimulation</span><span class="err">.</span><span class="na">action</span><span class="err">?</span><span class="na">id</span><span class="o">=</span><span class="s">2&quot;</span><span class="p">&gt;</span>/pam-01/SupprimerSimulation.action?id=<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>num&quot;&gt;Retirer<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>où <em>num</em> est le n° de la simulation à retirer.</p>
@@ -3090,8 +3257,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 16 : l&#x27;action [SupprimerSimulation] est associée à la classe [Supprimer]. Parce qu&#x27;aucune méthode n&#x27;est précisée, c&#x27;est sa méthode <em>execute</em> qui sera exécutée.  La classe [Supprimer] est la suivante :</li>
+  <li>ligne 16 : l&#x27;action [SupprimerSimulation] est associée à la classe [Supprimer]. Parce qu&#x27;aucune méthode n&#x27;est précisée, c&#x27;est sa méthode <i>execute</i> qui sera exécutée.  La classe [Supprimer] est la suivante :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web.actions;</span></span>
 <span class="odt-code-line"></span>
@@ -3152,19 +3321,28 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 4 : l&#x27;action [Supprimer] implémente l&#x27;interface [SessionAware] pour avoir accès à la session.</li>
-<li>ligne 7 : la session</li>
-<li>ligne 9 : le n° de la simulation à supprimer. On se rappelle en effet qu&#x27;on arrive à l&#x27;instanciation de la classe [Supprimer] par l&#x27;URL Html :</li>
+  <li>ligne 4 : l&#x27;action [Supprimer] implémente l&#x27;interface [SessionAware] pour avoir accès à la session.
+  </li>
+  <li>ligne 7 : la session
+  </li>
+  <li>ligne 9 : le n° de la simulation à supprimer. On se rappelle en effet qu&#x27;on arrive à l&#x27;instanciation de la classe [Supprimer] par l&#x27;URL Html :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&lt;a href=&quot;</span><span class="na">view-source:http:</span><span class="err">//</span><span class="na">localhost:8084</span><span class="err">/</span><span class="na">pam-01</span><span class="err">/</span><span class="na">SupprimerSimulation</span><span class="err">.</span><span class="na">action</span><span class="err">?</span><span class="na">id</span><span class="o">=</span><span class="s">2&quot;</span><span class="p">&gt;</span>/pam-01/SupprimerSimulation.action?id=<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>num&quot;&gt;Retirer<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>où <em>num</em> est le n° de la simulation à retirer. Ce numéro sera stocké dans le champ <em>id</em> de la ligne 9.</p>
 <ul>
-<li>ligne 11 : le menu pour la vue qui sera affichée en réponse à la requête</li>
-<li>ligne 19 : la méthode <em>execute</em> qui va générer la réponse à la requête.</li>
-<li>ligne 21 : on récupère la liste des simulations déjà faites dans la session</li>
-<li>lignes 22-26 : ne pas récupérer cette liste dans la session veut probablement dire que la session a expiré. On a déjà rencontré ce cas. On rend la clé <em>erreur</em> qui fait afficher la vue Tiles <em>erreur </em>:</li>
+  <li>ligne 11 : le menu pour la vue qui sera affichée en réponse à la requête
+  </li>
+  <li>ligne 19 : la méthode <i>execute</i> qui va générer la réponse à la requête.
+  </li>
+  <li>ligne 21 : on récupère la liste des simulations déjà faites dans la session
+  </li>
+  <li>lignes 22-26 : ne pas récupérer cette liste dans la session veut probablement dire que la session a expiré. On a déjà rencontré ce cas. On rend la clé <i>erreur</i> qui fait afficher la vue Tiles <i>erreur </i>:
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">&lt;!-- action RetirerSimulation --&gt;</span>
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;SupprimerSimulation&quot;</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;web.actions.Supprimer&quot;</span><span style="color:#008080">&gt;</span></span>
@@ -3175,12 +3353,18 @@
 
 <p>La vue Tiles <em>erreur</em> a été présentée paragraphe <a href="#tiles-erreur">19.9</a>.</p>
 <ul>
-<li>lignes 28-36 : on vérifie que la chaîne <em>id</em> de la ligne 9 représente bien un nombre entier &gt;0.</li>
-<li>lignes 38-40 : si ce n&#x27;est pas le cas, on rend de nouveau la clé <em>erreur</em> qui fera afficher la vue Tiles <em>erreur</em></li>
-<li>lignes 43-48 : la simulation à retirer est cherchée dans la liste des simulations. Si elle est trouvée, elle est supprimée.</li>
-<li>ligne 50 : on met le menu à jour pour la vue Tiles <em>simulations</em>.</li>
-<li>ligne 51 : on rend la clé <em>simulations</em>. Celle-ci va faire afficher la vue Tiles <em>simulations </em>:</li>
+  <li>lignes 28-36 : on vérifie que la chaîne <i>id</i> de la ligne 9 représente bien un nombre entier &gt;0.
+  </li>
+  <li>lignes 38-40 : si ce n&#x27;est pas le cas, on rend de nouveau la clé <i>erreur</i> qui fera afficher la vue Tiles <i>erreur</i>
+  </li>
+  <li>lignes 43-48 : la simulation à retirer est cherchée dans la liste des simulations. Si elle est trouvée, elle est supprimée.
+  </li>
+  <li>ligne 50 : on met le menu à jour pour la vue Tiles <i>simulations</i>.
+  </li>
+  <li>ligne 51 : on rend la clé <i>simulations</i>. Celle-ci va faire afficher la vue Tiles <i>simulations </i>:
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">&lt;!-- action RetirerSimulation --&gt;</span>
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;SupprimerSimulation&quot;</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;web.actions.Supprimer&quot;</span><span style="color:#008080">&gt;</span></span>
@@ -3198,9 +3382,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000044C0000013555BBC052.png" style="display:inline-block; margin:4px;width:14.552cm;height:4.089cm;" class="odt-zoomable" data-zoom-src="images/100000000000044C0000013555BBC052.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on clique sur le lien de retour au formulaire</li>
-<li>en [2], on retrouve un formulaire vide</li>
+  <li>en [1], on clique sur le lien de retour au formulaire
+  </li>
+  <li>en [2], on retrouve un formulaire vide
+  </li>
 </ul>
+
 <p>Le lien [Retour au formulaire de simulation] est défini dans le fragment [Entete.JSP] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -3221,8 +3408,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 10 : le lien pointe sur l&#x27;action [RetourFormulaire]. Celle-ci est définie de la façon suivante dans le fichier [struts.xml] :</li>
+  <li>ligne 10 : le lien pointe sur l&#x27;action [RetourFormulaire]. Celle-ci est définie de la façon suivante dans le fichier [struts.xml] :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">   </span><span style="color:#3f5fbf">&lt;!-- action RetourFormulaire --&gt;</span></span>
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;RetourFormulaire&quot;</span> <span style="color:#008080">&gt;</span></span>
@@ -3242,9 +3431,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004BC0000016A0126809A.png" style="display:inline-block; margin:4px;width:16.034cm;height:4.789cm;" class="odt-zoomable" data-zoom-src="images/10000000000004BC0000016A0126809A.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on clique sur le lien [Voir les simulations]</li>
-<li>en [2], on retrouve la liste des simulations</li>
+  <li>en [1], on clique sur le lien [Voir les simulations]
+  </li>
+  <li>en [2], on retrouve la liste des simulations
+  </li>
 </ul>
+
 <p>Le lien [Voir les simulations] est défini dans le fragment [Entete.JSP] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -3265,8 +3457,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 10 : le lien [Voir les simulations] appelle l&#x27;action [VoirSimulations]. Celle-ci est définie de la façon suivante dans le fichier [struts.xml] :</li>
+  <li>ligne 10 : le lien [Voir les simulations] appelle l&#x27;action [VoirSimulations]. Celle-ci est définie de la façon suivante dans le fichier [struts.xml] :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">   </span><span style="color:#3f5fbf">&lt;!-- action VoirSimulations --&gt;</span></span>
 <span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">action</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;VoirSimulations&quot;</span> <span style="color:#7f007f">class</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;web.actions.Voir&quot;</span><span style="color:#008080">&gt;</span></span>
@@ -3315,9 +3509,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000045E000001254DF4540C.png" style="display:inline-block; margin:4px;width:14.79cm;height:3.877cm;" class="odt-zoomable" data-zoom-src="images/100000000000045E000001254DF4540C.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on efface la simulation courante</li>
-<li>en [2], on retrouve le formulaire de saisie vide</li>
+  <li>en [1], on efface la simulation courante
+  </li>
+  <li>en [2], on retrouve le formulaire de saisie vide
+  </li>
 </ul>
+
 <p>Le lien [Effacer la simulation] est défini dans le fragment [Entete.JSP] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -3348,10 +3545,14 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004B6000000F24C0459BB.png" style="display:inline-block; margin:4px;width:15.954cm;height:3.201cm;" class="odt-zoomable" data-zoom-src="images/10000000000004B6000000F24C0459BB.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on part de la vue des simulations et on termine la session</li>
-<li>en [2], on retrouve le formulaire de saisie vide. On demande à voir les simulations.</li>
-<li>en [3], la liste des simulations est désormais vide.</li>
+  <li>en [1], on part de la vue des simulations et on termine la session
+  </li>
+  <li>en [2], on retrouve le formulaire de saisie vide. On demande à voir les simulations.
+  </li>
+  <li>en [3], la liste des simulations est désormais vide.
+  </li>
 </ul>
+
 <p>Le lien [Terminer la session] est défini dans le fragment [Entete.JSP] :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -3381,9 +3582,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 1 : on voit que la classe [Terminer] va être instanciée et sa méthode <em>execute</em> exécutée.</li>
-<li>lignes 2-5 : après exécution de la méthode [Terminer].<em>execute</em>, il y aura redirection sur la vue initiale de saisie. C&#x27;est ce qui explique l&#x27;écran n° 2.</li>
+  <li>ligne 1 : on voit que la classe [Terminer] va être instanciée et sa méthode <i>execute</i> exécutée.
+  </li>
+  <li>lignes 2-5 : après exécution de la méthode [Terminer].<i>execute</i>, il y aura redirection sur la vue initiale de saisie. C&#x27;est ce qui explique l&#x27;écran n° 2.
+  </li>
 </ul>
+
 <p>La classe [Terminer] est la suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> web.actions;</span></span>
@@ -3413,12 +3617,18 @@
 
 <p>Le rôle de l&#x27;action [Terminer] est de vider la session courante de ses attributs.</p>
 <ul>
-<li>ligne 7 : l&#x27;action [Terminer] implémente l&#x27;interface [SessionAware] pour avoir accès à la session.</li>
-<li>ligne 10 : le dictionnaire de la session</li>
-<li>ligne 13 : la méthode <em>execute</em> qui est exécutée</li>
-<li>ligne 15 : elle vide le dictionnaire de la session. Du coup, la liste des simulations qui est en session va disparaître. C&#x27;est ce qui explique l&#x27;écran n° 3.</li>
-<li>ligne 16 : elle rend la clé <em>success</em>, qui on l&#x27;a vu, va afficher la vue Tiles <em>saisie</em> [2].</li>
+  <li>ligne 7 : l&#x27;action [Terminer] implémente l&#x27;interface [SessionAware] pour avoir accès à la session.
+  </li>
+  <li>ligne 10 : le dictionnaire de la session
+  </li>
+  <li>ligne 13 : la méthode <i>execute</i> qui est exécutée
+  </li>
+  <li>ligne 15 : elle vide le dictionnaire de la session. Du coup, la liste des simulations qui est en session va disparaître. C&#x27;est ce qui explique l&#x27;écran n° 3.
+  </li>
+  <li>ligne 16 : elle rend la clé <i>success</i>, qui on l&#x27;a vu, va afficher la vue Tiles <i>saisie</i> [2].
+  </li>
 </ul>
+
 <p><a id="refheading91820522158564"></a></p>
 <h2 id="1915-conclusion">19.15. Conclusion</h2>
 <p>Nous avons entièrement commenté la version 1 de notre étude de cas qui travaille avec une couche [metier] simulée :</p>

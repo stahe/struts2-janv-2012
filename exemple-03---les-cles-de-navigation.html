@@ -989,16 +989,24 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000515000001B79785B531.png" style="display:inline-block; margin:4px;width:17.212cm;height:5.808cm;" class="odt-zoomable" data-zoom-src="images/1000000000000515000001B79785B531.png" /></td></tr></table>
 
 <ul>
-<li>en [1] :<ul>
-<li>[web.xml] : le fichier de configuration de l&#x27;application web</li>
-<li>[struts.xml] : le fichier de configuration de Struts</li>
-<li>[Action1.java] : l&#x27;unique action de l&#x27;application</li>
-<li>[Page1.JSP, Page2.JSP] : les deux vues de l&#x27;application</li>
+  <li>en [1] :
+    <ul>
+      <li>[web.xml] : le fichier de configuration de l&#x27;application web
+      </li>
+      <li>[struts.xml] : le fichier de configuration de Struts
+      </li>
+      <li>[Action1.java] : l&#x27;unique action de l&#x27;application
+      </li>
+      <li>[Page1.JSP, Page2.JSP] : les deux vues de l&#x27;application
+      </li>
+    </ul>
+  </li>
+  <li>en [2] : affichage de [Page1.JSP]
+  </li>
+  <li>en [3] : affichage de [Page2.JSP]
+  </li>
 </ul>
-</li>
-<li>en [2] : affichage de [Page1.JSP]</li>
-<li>en [3] : affichage de [Page2.JSP]</li>
-</ul>
+
 <p><a id="refheading99991454977699"></a></p>
 <h2 id="42-le-fichier-strutsxml">4.2. Le fichier [struts.xml]</h2>
 <p>C&#x27;est le suivant :</p>
@@ -1028,12 +1036,16 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 17-19 : la méthode <em>execute</em> de [Action1] va rendre deux clés de navigation :<ul>
-<li><em>page1</em> qui fera afficher la vue <em>/vues/Page1.JSP</em></li>
-<li><em>page2</em> qui fera afficher la vue <em>/vues/Page2.JSP</em></li>
+  <li>lignes 17-19 : la méthode <i>execute</i> de [Action1] va rendre deux clés de navigation :
+    <ul>
+      <li><i>page1</i> qui fera afficher la vue <i>/vues/Page1.JSP</i>
+      </li>
+      <li><i>page2</i> qui fera afficher la vue <i>/vues/Page2.JSP</i>
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><a id="refheading100011454977699"></a></p>
 <h2 id="43-laction-action1">4.3. L&#x27;action [Action1]</h2>
 <p>Elle est analogue à celle de l&#x27;exemple précédent :</p>
@@ -1065,8 +1077,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 12-14 : la méthode <em>execute</em> rend de façon aléatoire les clés <em>page1</em> et <em>page2</em> attendues.</li>
+  <li>lignes 12-14 : la méthode <i>execute</i> rend de façon aléatoire les clés <i>page1</i> et <i>page2</i> attendues.
+  </li>
 </ul>
+
 <p><a id="refheading100031454977699"></a></p>
 <h2 id="44-les-vues-jsp">4.4. Les vues JSP</h2>
 <p><u><strong>Page1.JSP</strong></u></p>

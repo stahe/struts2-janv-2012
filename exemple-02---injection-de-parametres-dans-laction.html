@@ -989,11 +989,16 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003B1000001BF4FC60F4E.png" style="display:inline-block; margin:4px;width:12.502cm;height:5.914cm;" class="odt-zoomable" data-zoom-src="images/10000000000003B1000001BF4FC60F4E.png" /></td></tr></table>
 
 <ul>
-<li>en [1,2], les fichiers de configuration</li>
-<li>en [3], l&#x27;action</li>
-<li>en [4], la vue</li>
-<li>en [5], les bibliothèques du projet</li>
+  <li>en [1,2], les fichiers de configuration
+  </li>
+  <li>en [3], l&#x27;action
+  </li>
+  <li>en [4], la vue
+  </li>
+  <li>en [5], les bibliothèques du projet
+  </li>
 </ul>
+
 <p><a id="refheading99871454977699"></a></p>
 <h2 id="32-les-fichiers-de-configuration">3.2. Les fichiers de configuration</h2>
 <p>Le fichier [web.xml] est le suivant :</p>
@@ -1049,14 +1054,22 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 7-15 : définissent le package [default], celui qui est utilisé lorsqu&#x27;une action n&#x27;a pu être trouvée dans un autre package.</li>
-<li>ligne 8 : définit une action par défaut pour ce package nommé <em>index</em>.</li>
-<li>lignes 9-14 : configurent l&#x27;action nommée <em>index</em>. On voit qu&#x27;elle n&#x27;est pas associée à une classe (absence de l&#x27;attribut <em>class </em>ligne 9).</li>
-<li>ligne 10 : le résultat est pour la clé <em>success</em> (absence de l&#x27;attribut <em>name</em>). Il est de type <em>redirectAction</em> (attribut <em>type</em>). Ce type permet de rediriger une action vers une autre action. Ici lorsque le client demandera l&#x27;action <em>/index</em>, il sera redirigé vers l&#x27;action <em>/actions/Action1 </em>(lignes 11-12).</li>
-<li>lignes 16-20 : définissent le package actions (<em>name</em>) associé aux actions d&#x27;URL <em>/actions/Action</em> (<em>class</em>).</li>
-<li>lignes 17-19 : configurent l&#x27;action <em>/actions/Action1</em> (name). Sur demande de cette action, Struts instanciera la classe <em>actions.Action1</em> (<em>class</em>), puis la méthode <em>execute</em> de cette classe sera exécutée. Celle-ci devra rendre la clé <em>success</em>, car c&#x27;est la seule clé définie ligne 18.</li>
-<li>ligne 18 : pour la clé <em>success</em>, la vue à afficher sera la page JSP [vues/Action1.JSP].</li>
+  <li>lignes 7-15 : définissent le package [default], celui qui est utilisé lorsqu&#x27;une action n&#x27;a pu être trouvée dans un autre package.
+  </li>
+  <li>ligne 8 : définit une action par défaut pour ce package nommé <i>index</i>.
+  </li>
+  <li>lignes 9-14 : configurent l&#x27;action nommée <i>index</i>. On voit qu&#x27;elle n&#x27;est pas associée à une classe (absence de l&#x27;attribut <i>class </i>ligne 9).
+  </li>
+  <li>ligne 10 : le résultat est pour la clé <i>success</i> (absence de l&#x27;attribut <i>name</i>). Il est de type <i>redirectAction</i> (attribut <i>type</i>). Ce type permet de rediriger une action vers une autre action. Ici lorsque le client demandera l&#x27;action <i>/index</i>, il sera redirigé vers l&#x27;action <i>/actions/Action1 </i>(lignes 11-12).
+  </li>
+  <li>lignes 16-20 : définissent le package actions (<i>name</i>) associé aux actions d&#x27;URL <i>/actions/Action</i> (<i>class</i>).
+  </li>
+  <li>lignes 17-19 : configurent l&#x27;action <i>/actions/Action1</i> (name). Sur demande de cette action, Struts instanciera la classe <i>actions.Action1</i> (<i>class</i>), puis la méthode <i>execute</i> de cette classe sera exécutée. Celle-ci devra rendre la clé <i>success</i>, car c&#x27;est la seule clé définie ligne 18.
+  </li>
+  <li>ligne 18 : pour la clé <i>success</i>, la vue à afficher sera la page JSP [vues/Action1.JSP].
+  </li>
 </ul>
+
 <p>Au final, on retiendra que le projet Struts ne sait exécuter que l&#x27;action d&#x27;URL [actions/Action1].</p>
 <p><a id="refheading99891454977699"></a></p>
 <h2 id="33-laction">3.3. L&#x27;action</h2>
@@ -1099,9 +1112,12 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 8-9 : deux champs accessibles via des get / set (lignes 18-32)</li>
-<li>lignes 12-14 : la méthode <em>execute</em> rend la clé <em>success</em> comme il était attendu. Elle ne fait rien d&#x27;autre.</li>
+  <li>lignes 8-9 : deux champs accessibles via des get / set (lignes 18-32)
+  </li>
+  <li>lignes 12-14 : la méthode <i>execute</i> rend la clé <i>success</i> comme il était attendu. Elle ne fait rien d&#x27;autre.
+  </li>
 </ul>
+
 <p><a id="refheading99911454977699"></a></p>
 <h2 id="34-la-vue-jsp">3.4. La vue JSP</h2>
 <p>La vue <em>Action1.JSP</em> est la suivante :</p>
@@ -1129,8 +1145,10 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003860000018484D84349.png" style="display:inline-block; margin:4px;width:11.933cm;height:5.133cm;" class="odt-zoomable" data-zoom-src="images/10000000000003860000018484D84349.png" /></td></tr></table>
 
 <ul>
-<li>en [1], l&#x27;URL demandée. A noter que l&#x27;URL initiale demandée était [/exemple-02] sans action. Les fichiers [web.xml] [struts.xml] ont alors été exploités. On a vu que le fichier [web.xml] confiait le traitement de toute requête à Struts 2. Le fichier [struts.xml] a alors été exploité :</li>
+  <li>en [1], l&#x27;URL demandée. A noter que l&#x27;URL initiale demandée était [/exemple-02] sans action. Les fichiers [web.xml] [struts.xml] ont alors été exploités. On a vu que le fichier [web.xml] confiait le traitement de toute requête à Struts 2. Le fichier [struts.xml] a alors été exploité :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line">&lt;struts&gt;</span>
 <span class="odt-code-line"><span style="color:#000000"> </span><span style="color:#800080">&lt;package</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">name</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">default</span><span style="color:#800080">&quot;</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">namespace</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">/</span><span style="color:#800080">&quot;</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">extends</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">struts-default</span><span style="color:#800080">&quot;&gt;</span></span>
@@ -1174,7 +1192,7 @@
 <p>En [1], l&#x27;action [Action1] est demandée avec des paramètres <em>param1</em> et <em>param2</em>. Revenons au schéma d&#x27;exécution d&#x27;une action Struts :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000002AA000000F511158BE2.png" style="display:inline-block; margin:4px;width:9.022cm;height:3.242cm;" class="odt-zoomable" data-zoom-src="images/10000000000002AA000000F511158BE2.png" /></td></tr></table>
 
-<p>Le contrôleur [FilterDispatcher] fait exécuter la méthode <em>execute</em> de l&#x27;action. Le flux d&#x27;exécution passe au-travers d&#x27;intercepteurs. L&#x27;un d&#x27;entre-eux traite la chaîne de paramètres <a id="parametres-get"></a><em>param1=qqchose&amp;param2=autrechose</em>. Il utilise alors les méthodes <em>setParam1</em> et <em>setParam2</em> de l&#x27;action <em>Action1 </em>:</p>
+<p>Le contrôleur [FilterDispatcher] fait exécuter la méthode <em>execute</em> de l&#x27;action. Le flux d&#x27;exécution passe au-travers d&#x27;intercepteurs. L&#x27;un d&#x27;entre-eux traite la chaîne de paramètres <a id="parametres-get"></a><em>param1=qqchose&amp;param2=autrechose</em>. Il utilise alors les méthodes <em>setParam1</em> et <em>setParam2</em> de l&#x27;action <em>Action1</em> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#000000">package</span><span style="color:#008080"> </span><span style="color:#000000">actions;</span></span>
 <span class="odt-code-line"></span>

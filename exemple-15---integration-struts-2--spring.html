@@ -1020,35 +1020,54 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005020000029A34360EF5.png" style="display:inline-block; margin:4px;width:16.96cm;height:8.811cm;" class="odt-zoomable" data-zoom-src="images/10000000000005020000029A34360EF5.png" /></td></tr></table>
 
 <ul>
-<li>en [1] :<ul>
-<li>[web.xml] qui configure l&#x27;application web va évoluer vis à vis de ce qu&#x27;il était dans les versions précédentes</li>
-<li>[applicationContext.xml] est le fichier de configuration de Spring</li>
+  <li>en [1] :
+    <ul>
+      <li>[web.xml] qui configure l&#x27;application web va évoluer vis à vis de ce qu&#x27;il était dans les versions précédentes
+      </li>
+      <li>[applicationContext.xml] est le fichier de configuration de Spring
+      </li>
+    </ul>
+  </li>
+  <li>en [2] : la vue [Context.JSP] qui affichera les données de portée Application
+  </li>
+  <li>en [3] : 
+    <ul>
+      <li>le fichier des messages [messages.properties]
+      </li>
+      <li>le fichier de configuration principal de Struts [struts.xml]. Va évoluer vis à vis des applications précédentes.
+      </li>
+    </ul>
+  </li>
+  <li>en [4] :
+    <ul>
+      <li>l&#x27;action Struts [Action1.java]
+      </li>
+      <li>la classe [Config.java] qui va mémoriser les données de portée application
+      </li>
+      <li>le fichier de configuration secondaire de Struts [example.xml]
+      </li>
+    </ul>
+  </li>
+  <li>en [5] : la bibliothèque Struts 2
+  </li>
+  <li>en [6] :
+    <ul>
+      <li>les archives nécessaires à Spring [spring-core, spring-context, spring-beans, spring-web, commons-logging]
+      </li>
+      <li>l&#x27;archive du plugin Spring pour Struts 2. Permet l&#x27;intégration de Spring avec Struts 2 [struts2-spring-plugin]
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>en [2] : la vue [Context.JSP] qui affichera les données de portée Application</li>
-<li>en [3] : <ul>
-<li>le fichier des messages [messages.properties]</li>
-<li>le fichier de configuration principal de Struts [struts.xml]. Va évoluer vis à vis des applications précédentes.</li>
-</ul>
-</li>
-<li>en [4] :<ul>
-<li>l&#x27;action Struts [Action1.java]</li>
-<li>la classe [Config.java] qui va mémoriser les données de portée application</li>
-<li>le fichier de configuration secondaire de Struts [example.xml]</li>
-</ul>
-</li>
-<li>en [5] : la bibliothèque Struts 2</li>
-<li>en [6] :<ul>
-<li>les archives nécessaires à Spring [spring-core, spring-context, spring-beans, spring-web, commons-logging]</li>
-<li>l&#x27;archive du plugin Spring pour Struts 2. Permet l&#x27;intégration de Spring avec Struts 2 [struts2-spring-plugin]</li>
-</ul>
-</li>
-</ul>
+
 <p>Vis à vis des versions précédentes :</p>
 <ul>
-<li>il faut rajouter des archives au projet</li>
-<li>modifier les fichiers [web.xml] et [struts.xml]</li>
+  <li>il faut rajouter des archives au projet
+  </li>
+  <li>modifier les fichiers [web.xml] et [struts.xml]
+  </li>
 </ul>
+
 <p><a id="refheading91758522158564"></a></p>
 <h2 id="172-configuration">17.2. Configuration</h2>
 <p><a id="refheading91760522158564"></a></p>
@@ -1088,10 +1107,14 @@
 </code></pre></div>
 
 <ul>
-<li>le fichier de configuration de Spring a la balise racine <em>&lt;beans&gt;</em> (lignes 2 et 11). On pourrait traduire <em>beans</em> par objets. Spring va instancier tous les objet (<em>bean</em>) trouvés dans ce fichier de configuration. Il ne le fait qu&#x27;une fois, lorsque le <em>listener</em> Spring est lancé au démarrage de l&#x27;application web. </li>
-<li>lignes 7-9 : définissent un bean nommé <em>config</em> (id). Le bean config est associé à la classe (<em>class</em>) [example.Config]. Spring va instancier cette classe.</li>
-<li>ligne 8 : définit une propriété de la classe [example.Config]. Spring va appeler la méthode <em>[example.Config].setNbMaxUsers(10)</em>. Il faut donc que la méthode <em>setNbMaxUsers</em> existe dans la classe. Celle-ci est la suivante :</li>
+  <li>le fichier de configuration de Spring a la balise racine <i>&lt;beans&gt;</i> (lignes 2 et 11). On pourrait traduire <i>beans</i> par objets. Spring va instancier tous les objet (<i>bean</i>) trouvés dans ce fichier de configuration. Il ne le fait qu&#x27;une fois, lorsque le <i>listener</i> Spring est lancé au démarrage de l&#x27;application web. 
+  </li>
+  <li>lignes 7-9 : définissent un bean nommé <i>config</i> (id). Le bean config est associé à la classe (<i>class</i>) [example.Config]. Spring va instancier cette classe.
+  </li>
+  <li>ligne 8 : définit une propriété de la classe [example.Config]. Spring va appeler la méthode <i>[example.Config].setNbMaxUsers(10)</i>. Il faut donc que la méthode <i>setNbMaxUsers</i> existe dans la classe. Celle-ci est la suivante :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-java">
 <span class="odt-code-line"><span style="font-weight:bold;color:#7f0055">package</span><span style="color:#000000"> example;</span></span>
 <span class="odt-code-line"></span>
@@ -1191,10 +1214,14 @@
 
 <p>L&#x27;action [Action1] est identique à ce qu&#x27;elle était dans l&#x27;application précédente aux détails près suivants :</p>
 <ul>
-<li>ligne 15 : un champ <em>config</em> a été ajouté. Parce qu&#x27;il porte le nom d&#x27;un bean instancié par Spring, ce champ recevra automatiquement une référence sur cet objet. Ainsi l&#x27;action a accès à la configuration de l&#x27;application ou plus généralement aux données de portée <em>Application</em>.</li>
-<li>ligne 31 : Spring instanciera le champ <em>config</em> via sa méthode <em>set</em>. Elle doit donc être présente.</li>
-<li>ligne 21 : l&#x27;action accède aux informations de portée <em>Application</em>. On met le nombre maximal d&#x27;utilisateurs <em>nbMaxUsers</em> dans la requête afin que la vue [Context.JSP] puisse l&#x27;afficher.</li>
+  <li>ligne 15 : un champ <i>config</i> a été ajouté. Parce qu&#x27;il porte le nom d&#x27;un bean instancié par Spring, ce champ recevra automatiquement une référence sur cet objet. Ainsi l&#x27;action a accès à la configuration de l&#x27;application ou plus généralement aux données de portée <i>Application</i>.
+  </li>
+  <li>ligne 31 : Spring instanciera le champ <i>config</i> via sa méthode <i>set</i>. Elle doit donc être présente.
+  </li>
+  <li>ligne 21 : l&#x27;action accède aux informations de portée <i>Application</i>. On met le nombre maximal d&#x27;utilisateurs <i>nbMaxUsers</i> dans la requête afin que la vue [Context.JSP] puisse l&#x27;afficher.
+  </li>
 </ul>
+
 <p><a id="refheading91764522158564"></a></p>
 <h3 id="1723-le-fichier-examplexml">17.2.3. Le fichier [example.xml]</h3>
 <p>Le fichier secondaire de configuration de Struts est identique à celui de la version précédente :</p>

@@ -1032,9 +1032,12 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053600000200047A26E8.png" style="display:inline-block; margin:4px;width:17.648cm;height:6.773cm;" class="odt-zoomable" data-zoom-src="images/100000000000053600000200047A26E8.png" /></td></tr></table>
 
 <ul>
-<li>en [1], le formulaire de saisie</li>
-<li>en [2], la réponse renvoyée</li>
+  <li>en [1], le formulaire de saisie
+  </li>
+  <li>en [2], la réponse renvoyée
+  </li>
 </ul>
+
 <p>L&#x27;application a un fonctionnement similaire à celui de la saisie des nombres entiers aussi ne commenterons-nous que les points qui diffèrent.</p>
 <p><a id="refheading91702522158564"></a></p>
 <h2 id="141-le-projet-netbeans">14.1. Le projet Netbeans</h2>
@@ -1042,23 +1045,36 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000347000001CB4C22D6CA.png" style="display:inline-block; margin:4px;width:11.1cm;height:6.073cm;" class="odt-zoomable" data-zoom-src="images/1000000000000347000001CB4C22D6CA.png" /></td></tr></table>
 
 <ul>
-<li>en [1], les vues de l&#x27;application<ul>
-<li>[Accueil.JSP] : la page d&#x27;accueil</li>
-<li>[FormDate.JSP] : le formulaire de saisie</li>
-<li>[ConfirmationFormDate.JSP] : la page de confirmation</li>
+  <li>en [1], les vues de l&#x27;application
+    <ul>
+      <li>[Accueil.JSP] : la page d&#x27;accueil
+      </li>
+      <li>[FormDate.JSP] : le formulaire de saisie
+      </li>
+      <li>[ConfirmationFormDate.JSP] : la page de confirmation
+      </li>
+    </ul>
+  </li>
+  <li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts
+  </li>
+  <li>en [3] :
+    <ul>
+      <li>[FormDate.java] : l&#x27;action qui affiche et traite le formulaire
+      </li>
+      <li>[FormDate-validation.xml] : les règles de validation de l&#x27;action [FormDate]. Ce fichier délègue ces validations au modèle.
+      </li>
+      <li>[FormDateModel] : le modèle de l&#x27;action [FormDate]
+      </li>
+      <li>[ FormDateModel-validation.xml] : les règles de validation du modèle
+      </li>
+      <li>[FormDateModel.properties] : le fichier des messages du modèle
+      </li>
+      <li>[example.xml] : fichier de configuration secondaire de Struts
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>en [2], le fichier des messages [messages.properties] et le fichier de configuration principal de Struts</li>
-<li>en [3] :<ul>
-<li>[FormDate.java] : l&#x27;action qui affiche et traite le formulaire</li>
-<li>[FormDate-validation.xml] : les règles de validation de l&#x27;action [FormDate]. Ce fichier délègue ces validations au modèle.</li>
-<li>[FormDateModel] : le modèle de l&#x27;action [FormDate]</li>
-<li>[ FormDateModel-validation.xml] : les règles de validation du modèle</li>
-<li>[FormDateModel.properties] : le fichier des messages du modèle</li>
-<li>[example.xml] : fichier de configuration secondaire de Struts</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheading91704522158564"></a></p>
 <h2 id="142-la-configuration-du-projet">14.2. La configuration du projet</h2>
 <p>Le projet est principalement configuré par le fichier [example.xml] suivant :</p>
@@ -1235,10 +1251,14 @@
 
 <p>La valeur associée à la clé n&#x27;est pas ici un message, mais un format d&#x27;affichage :</p>
 <ul>
-<li><strong>0</strong> est un paramètre représentant la valeur à afficher. Ici ce sera le champ <em>date5</em> du modèle.</li>
-<li><strong>date</strong> représente une date. Précédemment, on avait <em>number</em> pour un nombre.</li>
-<li><strong>dd/MM/yyyy</strong> représente le format de la date. Ici, on le veut sous la forme jj/mm/aaaa. Le format Java qui convient est dd/MM/yyyy (d : day, M : Month, y : year)</li>
+  <li><b>0</b> est un paramètre représentant la valeur à afficher. Ici ce sera le champ <i>date5</i> du modèle.
+  </li>
+  <li><b>date</b> représente une date. Précédemment, on avait <i>number</i> pour un nombre.
+  </li>
+  <li><b>dd/MM/yyyy</b> représente le format de la date. Ici, on le veut sous la forme jj/mm/aaaa. Le format Java qui convient est dd/MM/yyyy (d : day, M : Month, y : year)
+  </li>
 </ul>
+
 <p>La balise</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#008080">&lt;</span><span style="color:#3f7f7f">s:text</span> <span style="color:#7f007f">name</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;date.format&quot;</span><span style="color:#008080">&gt;</span></span>
@@ -1284,9 +1304,12 @@
 </code></pre></div>
 
 <ul>
-<li>les champs <em>date1</em> et <em>date6</em> sont de type <em>String</em></li>
-<li>les autres champs sont de type <em>Date</em></li>
+  <li>les champs <i>date1</i> et <i>date6</i> sont de type <i>String</i>
+  </li>
+  <li>les autres champs sont de type <i>Date</i>
+  </li>
 </ul>
+
 <p><a id="refheading91714522158564"></a></p>
 <h2 id="147-la-validation-du-modele">14.7. La validation du modèle</h2>
 <p>La validation du modèle est contrôlée par deux fichiers : [FormDate-validation.xml] et [FormDateModel-validation.xml].</p>
@@ -1397,13 +1420,20 @@
 </code></pre></div>
 
 <ul>
-<li>la règle des lignes 11-20 vérifie que le champ de saisie <em>date1</em> suit le modèle d&#x27;une expression régulière représentant une  date de la forme jj/mm/aaaa. On notera qu&#x27;on vérifie que la chaîne a la forme d&#x27;une date mais qu&#x27;on ne vérifie pas que c&#x27;est une date valide. Ainsi 29/02/2011 a la forme d&#x27;une date mais n&#x27;est pas une date valide.</li>
-<li>la règle des lignes 22-29 vérifie que le champ de saisie <em>date2</em> est une date valide. </li>
-<li>la règle des lignes 31-42 vérifie que le champ de saisie <em>date3</em> est une date valide &gt;=18/05/2000 </li>
-<li>la règle des lignes 44-55 vérifie que le champ de saisie <em>date4 </em>est une date valide &lt;=20/06/2001. </li>
-<li>la règle des lignes 57-69 vérifie que le champ de saisie <em>date5</em> est une date valide &lt;=20/06/2001 et &gt;=18/05/2000.</li>
-<li>la règle des lignes 71-80 vérifie que le champ <em>date6</em> a la forme d&#x27;une date jj/mm/aaaa.</li>
+  <li>la règle des lignes 11-20 vérifie que le champ de saisie <i>date1</i> suit le modèle d&#x27;une expression régulière représentant une  date de la forme jj/mm/aaaa. On notera qu&#x27;on vérifie que la chaîne a la forme d&#x27;une date mais qu&#x27;on ne vérifie pas que c&#x27;est une date valide. Ainsi 29/02/2011 a la forme d&#x27;une date mais n&#x27;est pas une date valide.
+  </li>
+  <li>la règle des lignes 22-29 vérifie que le champ de saisie <i>date2</i> est une date valide. 
+  </li>
+  <li>la règle des lignes 31-42 vérifie que le champ de saisie <i>date3</i> est une date valide &gt;=18/05/2000 
+  </li>
+  <li>la règle des lignes 44-55 vérifie que le champ de saisie <i>date4 </i>est une date valide &lt;=20/06/2001. 
+  </li>
+  <li>la règle des lignes 57-69 vérifie que le champ de saisie <i>date5</i> est une date valide &lt;=20/06/2001 et &gt;=18/05/2000.
+  </li>
+  <li>la règle des lignes 71-80 vérifie que le champ <i>date6</i> a la forme d&#x27;une date jj/mm/aaaa.
+  </li>
 </ul>
+
 <p>Une fois le fichier [FormDateModel-validation.xml] exploité par l&#x27;intercepteur de validation, celui-ci fait exécuter la méthode <em>validate</em> de l&#x27;action [FormDate] si elle existe. Nous allons la présenter en même temps que la totalité de l&#x27;action.</p>
 <p><a id="refheading91716522158564"></a></p>
 <h2 id="148-laction-formdate">14.8. L&#x27;action [FormDate]</h2>
@@ -1491,25 +1521,38 @@
 
 <p>L&#x27;action [FormDate] est bâtie sur le même modèle que l&#x27;action [FormInt]. Nous ne commenterons que la méthode <em>validate</em>. On rappelle que la méthode <em>validate</em> est exécutée après exploitation du fichier de validation [FormDateModel-validation.xml] et avant l&#x27;exécution de la méthode <em>execute</em>.</p>
 <ul>
-<li>la méthode <em>validate</em> complète la validation des dates <em>date1</em> et <em>date6</em>. Le fichier de validation [FormDateModel-validation.xml] avait vérifié que les chaînes saisies avaient la forme d&#x27;une date. On vérifie maintenant que ce sont bien des dates valides. On rappelle également que <em>date1</em> et <em>date6</em> étaient les deux seuls champs du modèle à être de type <em>String</em>.</li>
-<li>ligne 50 : on crée un format de date jj/mm/aaaa afin de vérifier que les chaînes de ce type sont bien des dates valides.</li>
-<li>ligne 51 : <em>setLenient(false)</em> permet d&#x27;éviter que la date invalide 32/01/2012 soit interprétée comme la date valide 01/02/2012.</li>
-<li>ligne 53 : on ne valide <em>date1</em> que si les précédentes validations n&#x27;ont pas eu d&#x27;erreurs sur ce champ.</li>
-<li>ligne 56 : on vérifie que <em>date1</em> est une date valide au format jj/mm/aaaa.</li>
-<li>ligne 58 : si ce n&#x27;est pas le cas, on associe un message d&#x27;erreur au champ <em>date1</em>.</li>
-<li>ligne 62 : on ne valide <em>date6</em> que si ce champ a passé les précédentes validations.</li>
-<li>ligne 66 : on vérifie que <em>date6</em> est une date valide</li>
-<li>ligne 68 : si <em>date6</em> est &lt;18/05/2000 ou date6&gt;20/06/2001 alors <em>date6</em> est incorrect.</li>
+  <li>la méthode <i>validate</i> complète la validation des dates <i>date1</i> et <i>date6</i>. Le fichier de validation [FormDateModel-validation.xml] avait vérifié que les chaînes saisies avaient la forme d&#x27;une date. On vérifie maintenant que ce sont bien des dates valides. On rappelle également que <i>date1</i> et <i>date6</i> étaient les deux seuls champs du modèle à être de type <i>String</i>.
+  </li>
+  <li>ligne 50 : on crée un format de date jj/mm/aaaa afin de vérifier que les chaînes de ce type sont bien des dates valides.
+  </li>
+  <li>ligne 51 : <i>setLenient(false)</i> permet d&#x27;éviter que la date invalide 32/01/2012 soit interprétée comme la date valide 01/02/2012.
+  </li>
+  <li>ligne 53 : on ne valide <i>date1</i> que si les précédentes validations n&#x27;ont pas eu d&#x27;erreurs sur ce champ.
+  </li>
+  <li>ligne 56 : on vérifie que <i>date1</i> est une date valide au format jj/mm/aaaa.
+  </li>
+  <li>ligne 58 : si ce n&#x27;est pas le cas, on associe un message d&#x27;erreur au champ <i>date1</i>.
+  </li>
+  <li>ligne 62 : on ne valide <i>date6</i> que si ce champ a passé les précédentes validations.
+  </li>
+  <li>ligne 66 : on vérifie que <i>date6</i> est une date valide
+  </li>
+  <li>ligne 68 : si <i>date6</i> est &lt;18/05/2000 ou date6&gt;20/06/2001 alors <i>date6</i> est incorrect.
+  </li>
 </ul>
+
 <p><a id="refheading91718522158564"></a></p>
 <h2 id="149-derniers-details">14.9. Derniers détails</h2>
 <p>Le formulaire précédent présente des failles comme le montre l&#x27;exemple suivant :</p>
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000053F000001C014F88B05.png" style="display:inline-block; margin:4px;width:17.768cm;height:5.927cm;" class="odt-zoomable" data-zoom-src="images/100000000000053F000001C014F88B05.png" /></td></tr></table>
 
 <ul>
-<li>en [1], on rentre une date invalide</li>
-<li>en [2], elle a été acceptée. Seuls les premiers caractères jj/mm/aaaa ont été pris en compte.</li>
+  <li>en [1], on rentre une date invalide
+  </li>
+  <li>en [2], elle a été acceptée. Seuls les premiers caractères jj/mm/aaaa ont été pris en compte.
+  </li>
 </ul>
+
 <p>Les champs <em>date2</em> à <em>date5</em> qui sont liés à des modèles de type <em>Date</em> ont tous ce problème. Là encore, peut-être ai-je raté quelque chose dans la documentation. Les champs <em>date1</em> et <em>date6</em> qui sont liés à des modèles de type <em>String</em> n&#x27;ont pas ce problème. </p>
 
 

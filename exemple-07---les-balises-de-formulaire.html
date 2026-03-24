@@ -1048,10 +1048,14 @@
 <table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000031F000001CBEAC2C9EE.png" style="display:inline-block; margin:4px;width:10.571cm;height:6.073cm;" class="odt-zoomable" data-zoom-src="images/100000000000031F000001CBEAC2C9EE.png" /></td></tr></table>
 
 <ul>
-<li>en [1], les vues du projet [Form<strong><em>x</em></strong>.JSP]</li>
-<li>en [2], le fichier de configuration de Struts et les messages internationalisés</li>
-<li>en [3], les actions [Form<strong><em>x</em></strong>.java] et un autre fichier de configuration de Struts.</li>
+  <li>en [1], les vues du projet [Form<i><b>x</b></i>.JSP]
+  </li>
+  <li>en [2], le fichier de configuration de Struts et les messages internationalisés
+  </li>
+  <li>en [3], les actions [Form<i><b>x</b></i>.java] et un autre fichier de configuration de Struts.
+  </li>
 </ul>
+
 <p><a id="refheading100551454977699"></a></p>
 <h2 id="92-configuration-de-struts">9.2. Configuration de Struts</h2>
 <p>Le fichier [struts.xml] est le suivant :</p>
@@ -1079,9 +1083,12 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 9 : inclut un autre fichier de configuration [example.xml]. C&#x27;est lui qui va configurer les actions.</li>
-<li>lignes 11-19 : le package <em>default</em>. Définit une adresse de redirection pour l&#x27;URL /. Elle sera redirigée vers l&#x27;URL <em>/example/Form.action</em>.</li>
+  <li>ligne 9 : inclut un autre fichier de configuration [example.xml]. C&#x27;est lui qui va configurer les actions.
+  </li>
+  <li>lignes 11-19 : le package <i>default</i>. Définit une adresse de redirection pour l&#x27;URL /. Elle sera redirigée vers l&#x27;URL <i>/example/Form.action</i>.
+  </li>
 </ul>
+
 <p>Le fichier [example.xml] qui configure les actions est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-xml">
 <span class="odt-code-line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
@@ -1105,11 +1112,16 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 7-17 : définissent les actions <em>/example/Form</em>, <em>/example/Form1</em>, <em>/example/Form2</em> où <em>/example</em> est le namespace (ligne 7) et <em>Formx</em> les actions.</li>
-<li>lignes 8-10 : l&#x27;exécution de l&#x27;action <em>Form</em> produira l&#x27;affichage de la vue <em>/example/Form.JSP</em>.</li>
-<li>lignes 11-13 : l&#x27;exécution de l&#x27;action <em>Form1</em> produira l&#x27;affichage de la vue <em>/example/Form1.JSP</em>.</li>
-<li>lignes 14-16 : l&#x27;exécution de l&#x27;action <em>Form2</em> produira l&#x27;affichage de la vue <em>/example/Form2.JSP</em>.</li>
+  <li>lignes 7-17 : définissent les actions <i>/example/Form</i>, <i>/example/Form1</i>, <i>/example/Form2</i> où <i>/example</i> est le namespace (ligne 7) et <i>Formx</i> les actions.
+  </li>
+  <li>lignes 8-10 : l&#x27;exécution de l&#x27;action <i>Form</i> produira l&#x27;affichage de la vue <i>/example/Form.JSP</i>.
+  </li>
+  <li>lignes 11-13 : l&#x27;exécution de l&#x27;action <i>Form1</i> produira l&#x27;affichage de la vue <i>/example/Form1.JSP</i>.
+  </li>
+  <li>lignes 14-16 : l&#x27;exécution de l&#x27;action <i>Form2</i> produira l&#x27;affichage de la vue <i>/example/Form2.JSP</i>.
+  </li>
 </ul>
+
 <p><a id="refheading100571454977699"></a></p>
 <h2 id="93-les-fichiers-des-messages">9.3. Les fichiers des messages</h2>
 <p>Nous ne nous attarderons pas sur l&#x27;internationalisation du projet. Nous l&#x27;avons déjà étudiée dans l&#x27;exemple 01. Nous donnons le contenu du fichier [messages.properties] afin que le lecteur puisse comprendre les vues qui vont suivre.</p>
@@ -1199,28 +1211,37 @@
 </code></pre></div>
 
 <ul>
-<li>le formulaire commence ligne 26 et se termine ligne 38. Ligne 26, l&#x27;attribut <em>action</em> est absent. Cet attribut précise à quelle action, les données du formulaire seront postées. En l&#x27;absence de l&#x27;attribut <em>action</em> elles seront postées à l&#x27;action qui a conduit à l&#x27;affichage de la vue, ici l&#x27;action [Form].</li>
-<li>ligne 27 : un champ de saisie. L&#x27;attribut <em>key</em> précise son libellé. L&#x27;attribut <em>name</em> est le nom du paramètre qui sera posté. La chaîne postée pour ce champ sera de la forme :</li>
+  <li>le formulaire commence ligne 26 et se termine ligne 38. Ligne 26, l&#x27;attribut <i>action</i> est absent. Cet attribut précise à quelle action, les données du formulaire seront postées. En l&#x27;absence de l&#x27;attribut <i>action</i> elles seront postées à l&#x27;action qui a conduit à l&#x27;affichage de la vue, ici l&#x27;action [Form].
+  </li>
+  <li>ligne 27 : un champ de saisie. L&#x27;attribut <i>key</i> précise son libellé. L&#x27;attribut <i>name</i> est le nom du paramètre qui sera posté. La chaîne postée pour ce champ sera de la forme :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>textfield=texte_saisi
 </code></pre></div>
 <p>Le nom du paramètre correspond à un champ de l&#x27;action [Form]. La valeur du champ de saisie <em>texte_saisi</em> sera ici injectée dans le champ <em>textfield</em> de l&#x27;action [Form]. Inversement, si la vue [Form.JSP] est affichée suite à l&#x27;action [Form], la valeur du champ de saisie sera celle du champ <em>textfield</em> de l&#x27;action [Form]. Ce champ est donc utilisé en lecture et écriture. La classe [Form] doit avoir les méthodes <em>getTextField</em> et <em>setTextField</em> pour cela.</p>
 <p>Ce raisonnement est valable pour toutes les balises de saisie qui vont suivre. Nous ne le répéterons pas.</p>
 <ul>
-<li>ligne 28 : saisie d&#x27;un mot de passe. La chaîne postée à l&#x27;action [Form] sera de la forme</li>
+  <li>ligne 28 : saisie d&#x27;un mot de passe. La chaîne postée à l&#x27;action [Form] sera de la forme
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>password=mot_de_passe_saisi
 </code></pre></div>
 <p>Un champ <em>password</em> avec ses get / set doit exister dans l&#x27;action [Form].</p>
 <ul>
-<li>ligne 29 : saisie d&#x27;un texte multi-lignes dans une zone de 5 lignes et 40 colonnes. La chaîne postée à l&#x27;action [Form] sera de la forme</li>
+  <li>ligne 29 : saisie d&#x27;un texte multi-lignes dans une zone de 5 lignes et 40 colonnes. La chaîne postée à l&#x27;action [Form] sera de la forme
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>textarea=saisie
 </code></pre></div>
 <p>Un champ <em>textarea</em> avec ses get / set doit exister dans l&#x27;action [Form].</p>
 <ul>
-<li>ligne 30 : une liste déroulante (<em>size=1</em>) à sélection unique. Une seule valeur de la liste peut être sélectionnée. La chaîne postée à l&#x27;action [Form] sera de la forme :</li>
+  <li>ligne 30 : une liste déroulante (<i>size=1</i>) à sélection unique. Une seule valeur de la liste peut être sélectionnée. La chaîne postée à l&#x27;action [Form] sera de la forme :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>select1=valeur_sélectionnée
 </code></pre></div>
 <p>Un champ <em>select1</em> avec ses get / set doit exister dans l&#x27;action [Form].</p>
@@ -1242,9 +1263,12 @@
 <p>apparaîtra sélectionné dans le combo.</p>
 <p>L&#x27;attribut <em>headerValue</em> fixe le texte à afficher comme 1ère option du combo et <em>headerKey</em> la valeur à poster si cette option est choisie par l&#x27;utilisateur.</p>
 <ul>
-<li>ligne 31 : là encore une liste de taille 3 (<em>size=3</em>) : contrairement à la précédente liste où un seul élément est visible, ici 3 éléments de la liste seront visibles. Le mode de sélection reste le même. On ne peut sélectionner qu&#x27;un élément.</li>
-<li>ligne 32 : de nouveau une liste mais à sélection multiple (<em>multiple=true</em>). Dans ce cas, la valeur postée à l&#x27;action [Form] sera de la forme :</li>
+  <li>ligne 31 : là encore une liste de taille 3 (<i>size=3</i>) : contrairement à la précédente liste où un seul élément est visible, ici 3 éléments de la liste seront visibles. Le mode de sélection reste le même. On ne peut sélectionner qu&#x27;un élément.
+  </li>
+  <li>ligne 32 : de nouveau une liste mais à sélection multiple (<i>multiple=true</i>). Dans ce cas, la valeur postée à l&#x27;action [Form] sera de la forme :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>select3=chaine2&amp;select3=chaine5
 </code></pre></div>
 <p>si les options <em>chaine2</em> et <em>chaine5</em> ont été sélectionnées. Lorsque plusieurs valeurs sont postées pour un même paramètre, ici <em>select3</em>, l&#x27;action doit avoir un champ ayant le nom du paramètre et être de type <em>tableau</em>. Donc par exemple, ici l&#x27;action [Form] pourrait avoir un champ du genre :</p>
@@ -1252,8 +1276,10 @@
 </code></pre></div>
 <p>et les méthodes get / set qui vont avec. Le tableau <em>select3</em> recevra alors le tableau de chaînes de caractères [<em>chaine2</em>,<em>chaine5</em>]. Inversement, à l&#x27;affichage de la vue [Form.JSP], les valeurs du champ <em>[Form].select3</em> déterminent les options de la liste <em>select3</em> qui apparaîtront sélectionnées. On est toujours en lecture / écriture.</p>
 <ul>
-<li>ligne 33 : un groupe de boutons radio. Le libellé du groupe est fourni par l&#x27;attribut <em>key</em>. Les libellés des boutons individuels sont fournis par l&#x27;attribut <em>list</em>. La valeur de cet attribut est le nom d&#x27;une méthode de l&#x27;action [Form] qui doit rendre une collection, un dictionnaire ou un tableau. Ici, la méthode <em>[Form].getRadioValues</em> rendra un tableau de chaînes de caractères [<em>chaine1</em>,<em>chaine2</em>,...] qui génèrera les balises Html suivantes :</li>
+  <li>ligne 33 : un groupe de boutons radio. Le libellé du groupe est fourni par l&#x27;attribut <i>key</i>. Les libellés des boutons individuels sont fournis par l&#x27;attribut <i>list</i>. La valeur de cet attribut est le nom d&#x27;une méthode de l&#x27;action [Form] qui doit rendre une collection, un dictionnaire ou un tableau. Ici, la méthode <i>[Form].getRadioValues</i> rendra un tableau de chaînes de caractères [<i>chaine1</i>,<i>chaine2</i>,...] qui génèrera les balises Html suivantes :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line">&lt;input type=&quot;radio&quot; name=&quot;radio&quot; ... value=&quot;<span style="font-style:italic">chaine1</span>&quot;/&gt;<span style="font-style:italic">chaine1</span></span>
 <span class="odt-code-line">&lt;input type=&quot;radio&quot; name=&quot;radio&quot; ... value=&quot;<span style="font-style:italic">chaine2</span>&quot;/&gt;<span style="font-style:italic">chaine2</span></span>
@@ -1265,8 +1291,10 @@
 </code></pre></div>
 <p>et cette valeur sera injectée dans le champ <em>[Form].radio</em>.</p>
 <ul>
-<li>ligne 34 : une case à cocher. Si elle est cochée, la chaîne de paramètres suivante sera postée à l&#x27;action [Form]</li>
+  <li>ligne 34 : une case à cocher. Si elle est cochée, la chaîne de paramètres suivante sera postée à l&#x27;action [Form]
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>checkbox=true
 </code></pre></div>
 <p>Si elle n&#x27;est pas cochée, aucune chaîne de paramètres n&#x27;est postée. Struts 2 a un mécanisme interne qui fait que tout se passe comme si la chaîne</p>
@@ -1274,8 +1302,10 @@
 </code></pre></div>
 <p>avait été postée.</p>
 <ul>
-<li>ligne 35 : une liste de cases à cocher. On peut en cocher plusieurs. Le libellé du groupe est fourni par l&#x27;attribut <em>key</em>. Les libellés des cases à cocher individuelles sont fournis par l&#x27;attribut <em>list</em>. La valeur de cet attribut est le nom d&#x27;une méthode de l&#x27;action [Form] qui doit rendre une collection, un dictionnaire ou un tableau. Ici, la méthode <em>[</em><em>Form].getCheckboxlistValues</em> rendra un tableau de chaînes de caractères [<em>chaine1</em>,<em>chaine2</em>,...] qui génèrera les balises Html suivantes :</li>
+  <li>ligne 35 : une liste de cases à cocher. On peut en cocher plusieurs. Le libellé du groupe est fourni par l&#x27;attribut <i>key</i>. Les libellés des cases à cocher individuelles sont fournis par l&#x27;attribut <i>list</i>. La valeur de cet attribut est le nom d&#x27;une méthode de l&#x27;action [Form] qui doit rendre une collection, un dictionnaire ou un tableau. Ici, la méthode <i>[</i><i>Form].getCheckboxlistValues</i> rendra un tableau de chaînes de caractères [<i>chaine1</i>,<i>chaine2</i>,...] qui génèrera les balises Html suivantes :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line">&lt;input type=&quot;checkbox&quot; name=&quot;checkboxlist&quot; ... value=&quot;<span style="font-style:italic">chaine1</span>&quot;/&gt;<span style="font-style:italic">chaine1</span></span>
 <span class="odt-code-line">&lt;input type=&quot;checkbox&quot; name=&quot;checkboxlist&quot; ... value=&quot;<span style="font-style:italic">chaine2</span>&quot;/&gt;<span style="font-style:italic">chaine2</span></span>
@@ -1287,14 +1317,18 @@
 </code></pre></div>
 <p>Le tableau [<em>chaine2</em>, <em>chaine5</em>] sera affecté au champ <em>[Form].checkboxlist</em> qui doit donc être de type tableau de chaînes de caractères comme pour les listes à sélection multiple. Inversement, à l&#x27;affichage de la vue [Form.JSP], les valeurs du champ <em>[Form].checkboxlist</em> déterminent les cases à cocher qui seront cochées.</p>
 <ul>
-<li>ligne 36 : un champ caché. Un champ caché est un champ qui est posté sans être saisi par l&#x27;utilisateur. Sa valeur est fixée par le programmeur. Ici le champ caché prendra sa valeur du champ <em>[Form].hidden</em>. Cette même valeur sera postée sous la forme :</li>
+  <li>ligne 36 : un champ caché. Un champ caché est un champ qui est posté sans être saisi par l&#x27;utilisateur. Sa valeur est fixée par le programmeur. Ici le champ caché prendra sa valeur du champ <i>[Form].hidden</i>. Cette même valeur sera postée sous la forme :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>hidden=qqchose
 </code></pre></div>
 <p>et réaffecté au champ <em>[Form].hidden</em>.</p>
 <ul>
-<li>ligne 37 : un bouton de type <em>submit</em>. Un clic sur ce bouton, postera toutes les valeurs du formulaire à l&#x27;action [Form]. La chaîne des paramètres postés ressemblera à ceci :</li>
+  <li>ligne 37 : un bouton de type <i>submit</i>. Un clic sur ce bouton, postera toutes les valeurs du formulaire à l&#x27;action [Form]. La chaîne des paramètres postés ressemblera à ceci :
+  </li>
 </ul>
+
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>textfield=texte&amp;password=&amp;textarea=ligne1%0D%0Aligne2%0D%0A&amp;select1=z%C3%A9ro&amp;select2=trois&amp;select3=z%C3%A9ro&amp;select3=deux&amp;__multiselect_select3=&amp;radio=bleu&amp;checkbox=true&amp;__checkbox_checkbox=true&amp;checkboxlist=v%C3%A9lo&amp;checkboxlist=bus&amp;__multiselect_checkboxlist=&amp;hidden=initial&amp;submitText=Valider 
 </code></pre></div>
 <p><a id="refheading100611454977699"></a></p>
@@ -1353,23 +1387,40 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 1 : le champ associé à la balise <em>textfield</em> du formulaire. Servira à initialiser ce champ de saisie aussi bien qu&#x27;à en récupérer la valeur.  Reçoit au moment du POST, la valeur saisie dans ce champ.</li>
-<li>ligne 2 : le champ associé à la balise <em>password</em> du formulaire.  Reçoit au moment du POST, la valeur saisie dans ce champ.</li>
-<li>ligne 13 : associé à la balise <em>textarea</em> du formulaire.  Reçoit au moment du POST, le texte saisi dans ce champ.</li>
-<li>ligne 14 : associé à la balise <em>select1</em> du formulaire, une liste à choix unique. Sa valeur initiale sélectionne un élément du combo. C&#x27;est l&#x27;élément ayant son attribut <em>value</em> égal à cette valeur qui sera sélectionnée. Au moment du POST, reçoit l&#x27;attribut <em>value</em> de l&#x27;option sélectionnée dans le combo.</li>
-<li>ligne 15 : les chaînes de caractères qui vont alimenter le combo <em>select1</em>.</li>
-<li>lignes 16 et 17 : idem <em>select1</em></li>
-<li>ligne 18 : associé à la balise <em>select1</em> du formulaire, une liste à choix multiple. Les valeurs initiales dans le tableau sélectionnent les éléments correspondants de la liste. Ce sont les éléments ayant leur attribut <em>value</em> égal à l&#x27;un de ces éléments qui seront sélectionnés. Au moment du POST, reçoit les attributs <em>value</em> des différentes options sélectionnées dans le combo.</li>
-<li>ligne 19 :  les chaînes de caractères qui vont alimenter la liste <em>select3</em></li>
-<li>ligne 20 : associé à la balise <em>radio</em> du formulaire. Sa valeur sert à cocher l&#x27;un des boutons radio, celui qui a son attribut <em>value</em> égal à cette valeur.  Reçoit au moment du POST, la valeur du bouton radio coché.</li>
-<li>ligne 21 : les différents libellés et valeurs des boutons radio.</li>
-<li>ligne 22 : associé à la balise <em>checkbox</em> du formulaire. Sa valeur initiale sert à cocher / décocher la case. Reçoit au moment du POST, la valeur <em>true</em> si la case a été cochée, <em>false</em> sinon.</li>
-<li>ligne 23 : associé à la balise <em>checkboxlist</em> du formulaire. Les valeurs initiales dans le tableau sélectionnent les cases à cocher correspondantes. Ce sont les cases ayant leur attribut <em>value</em> égal à l&#x27;un de ces valeurs initiales qui seront cochées. Au moment du POST, reçoit les attributs <em>value</em> des différentes cases cochées.</li>
-<li>ligne 24 : les chaînes de caractères qui vont alimenter les libellés des cases de <em>checkboxlist</em>.</li>
-<li>ligne 25 : associé au champ caché <em>hidden</em>. Sa valeur initiale va fixer la valeur du champ caché. Au moment du POST, recevra cette même valeur car l&#x27;utilisateur n&#x27;a pas la possibilité de la modifier.</li>
-<li>ligne 26 : associé à la balise <em>submit</em>. Au moment du POST, reçoit le libellé du bouton. On peut se passer de ce champ.</li>
-<li>les méthodes des lignes 29, 34 et 39 seront commentées un peu plus loin.</li>
+  <li>ligne 1 : le champ associé à la balise <i>textfield</i> du formulaire. Servira à initialiser ce champ de saisie aussi bien qu&#x27;à en récupérer la valeur.  Reçoit au moment du POST, la valeur saisie dans ce champ.
+  </li>
+  <li>ligne 2 : le champ associé à la balise <i>password</i> du formulaire.  Reçoit au moment du POST, la valeur saisie dans ce champ.
+  </li>
+  <li>ligne 13 : associé à la balise <i>textarea</i> du formulaire.  Reçoit au moment du POST, le texte saisi dans ce champ.
+  </li>
+  <li>ligne 14 : associé à la balise <i>select1</i> du formulaire, une liste à choix unique. Sa valeur initiale sélectionne un élément du combo. C&#x27;est l&#x27;élément ayant son attribut <i>value</i> égal à cette valeur qui sera sélectionnée. Au moment du POST, reçoit l&#x27;attribut <i>value</i> de l&#x27;option sélectionnée dans le combo.
+  </li>
+  <li>ligne 15 : les chaînes de caractères qui vont alimenter le combo <i>select1</i>.
+  </li>
+  <li>lignes 16 et 17 : idem <i>select1</i>
+  </li>
+  <li>ligne 18 : associé à la balise <i>select1</i> du formulaire, une liste à choix multiple. Les valeurs initiales dans le tableau sélectionnent les éléments correspondants de la liste. Ce sont les éléments ayant leur attribut <i>value</i> égal à l&#x27;un de ces éléments qui seront sélectionnés. Au moment du POST, reçoit les attributs <i>value</i> des différentes options sélectionnées dans le combo.
+  </li>
+  <li>ligne 19 :  les chaînes de caractères qui vont alimenter la liste <i>select3</i>
+  </li>
+  <li>ligne 20 : associé à la balise <i>radio</i> du formulaire. Sa valeur sert à cocher l&#x27;un des boutons radio, celui qui a son attribut <i>value</i> égal à cette valeur.  Reçoit au moment du POST, la valeur du bouton radio coché.
+  </li>
+  <li>ligne 21 : les différents libellés et valeurs des boutons radio.
+  </li>
+  <li>ligne 22 : associé à la balise <i>checkbox</i> du formulaire. Sa valeur initiale sert à cocher / décocher la case. Reçoit au moment du POST, la valeur <i>true</i> si la case a été cochée, <i>false</i> sinon.
+  </li>
+  <li>ligne 23 : associé à la balise <i>checkboxlist</i> du formulaire. Les valeurs initiales dans le tableau sélectionnent les cases à cocher correspondantes. Ce sont les cases ayant leur attribut <i>value</i> égal à l&#x27;un de ces valeurs initiales qui seront cochées. Au moment du POST, reçoit les attributs <i>value</i> des différentes cases cochées.
+  </li>
+  <li>ligne 24 : les chaînes de caractères qui vont alimenter les libellés des cases de <i>checkboxlist</i>.
+  </li>
+  <li>ligne 25 : associé au champ caché <i>hidden</i>. Sa valeur initiale va fixer la valeur du champ caché. Au moment du POST, recevra cette même valeur car l&#x27;utilisateur n&#x27;a pas la possibilité de la modifier.
+  </li>
+  <li>ligne 26 : associé à la balise <i>submit</i>. Au moment du POST, reçoit le libellé du bouton. On peut se passer de ce champ.
+  </li>
+  <li>les méthodes des lignes 29, 34 et 39 seront commentées un peu plus loin.
+  </li>
 </ul>
+
 <p><a id="refheading100631454977699"></a></p>
 <h2 id="96-la-vue-formjsp-partie-confirmation">9.6. La vue [Form.JSP] – partie Confirmation</h2>
 <p>La vue [Form.JSP] a une partie &quot; Confirmation des saisies &quot; qui n&#x27;a pas encore été vue :</p>
@@ -1433,17 +1484,28 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 13 : affiche la valeur du champ <em>[Form].textfield</em></li>
-<li>ligne 17 : affiche la valeur du champ <em>[Form].password</em></li>
-<li>ligne 21 : affiche la valeur du champ <em>[Form].textarea</em></li>
-<li>ligne 25 : affiche la valeur du champ <em>[Form].select1</em></li>
-<li>ligne 29 : affiche la valeur du champ <em>[Form].select2</em></li>
-<li>ligne 33 : affiche les valeurs du tableau <em>[Form].select3</em>. Utilise pour cela, la méthode <em>[Form].getSelect3SelectedValues</em>.</li>
-<li>ligne 37 : affiche la valeur du champ <em>[Form].radio</em></li>
-<li>ligne 41 : affiche la valeur du champ <em>[Form].checkbox</em></li>
-<li>ligne 45 : affiche les valeurs du tableau <em>[Form].checkboxlist</em>. Utilise pour cela, la méthode <em>[Form].getCheckboxlistSelectedValues</em>.</li>
-<li>ligne 49 : affiche la valeur du champ <em>[Form].hidden</em></li>
+  <li>ligne 13 : affiche la valeur du champ <i>[Form].textfield</i>
+  </li>
+  <li>ligne 17 : affiche la valeur du champ <i>[Form].password</i>
+  </li>
+  <li>ligne 21 : affiche la valeur du champ <i>[Form].textarea</i>
+  </li>
+  <li>ligne 25 : affiche la valeur du champ <i>[Form].select1</i>
+  </li>
+  <li>ligne 29 : affiche la valeur du champ <i>[Form].select2</i>
+  </li>
+  <li>ligne 33 : affiche les valeurs du tableau <i>[Form].select3</i>. Utilise pour cela, la méthode <i>[Form].getSelect3SelectedValues</i>.
+  </li>
+  <li>ligne 37 : affiche la valeur du champ <i>[Form].radio</i>
+  </li>
+  <li>ligne 41 : affiche la valeur du champ <i>[Form].checkbox</i>
+  </li>
+  <li>ligne 45 : affiche les valeurs du tableau <i>[Form].checkboxlist</i>. Utilise pour cela, la méthode <i>[Form].getCheckboxlistSelectedValues</i>.
+  </li>
+  <li>ligne 49 : affiche la valeur du champ <i>[Form].hidden</i>
+  </li>
 </ul>
+
 <p><a id="refheading100651454977699"></a></p>
 <h2 id="97-laction-form-partie-confirmation">9.7. L&#x27;action [Form] – partie confirmation</h2>
 <p>Les méthodes  <em>getSelect3SelectedValues</em> et  <em>getCheckboxlistSelectedValues</em> citées précédemment, sont définies dans la classe [Form] :</p>
@@ -1741,8 +1803,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 6 : l&#x27;action [Form2] implémente l&#x27;interface [<strong>ModelDriven</strong>]. Il n&#x27;y a qu&#x27;une méthode à implémenter, la méthode <strong>getModel</strong> de la ligne 12. Celle-ci rend une instance de la classe [Data] étudiée précédemment.</li>
+  <li>ligne 6 : l&#x27;action [Form2] implémente l&#x27;interface [<b>ModelDriven</b>]. Il n&#x27;y a qu&#x27;une méthode à implémenter, la méthode <b>getModel</b> de la ligne 12. Celle-ci rend une instance de la classe [Data] étudiée précédemment.
+  </li>
 </ul>
+
 <p>Le fait que l&#x27;action [Form2] implémente l&#x27;interface [<strong>ModelDriven</strong>] a la conséquence suivante : la vue affichée à la suite de l&#x27;action [Form2] a un accès direct aux propriétés du modèle de l&#x27;action [Form2], celui-ci étant rendu par la méthode <strong>getModel</strong>(). Aussi la vue [Form2.JSP] redevient ce qu&#x27;elle était avec l&#x27;action [Form] initiale :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#bf5f3f">&lt;%@</span> <span style="color:#3f7f7f">page</span> <span style="color:#7f007f">contentType</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;text/html; charset=UTF-8&quot;</span> <span style="color:#7f007f">pageEncoding</span><span style="color:#000000">=</span><span style="font-style:italic;color:#2a00ff">&quot;UTF-8&quot;</span><span style="color:#bf5f3f">%&gt;</span></span>
@@ -1848,9 +1912,12 @@
 <p><span style="color: #000000">L&#x27;avantage de mettre le modèle en-dehors de la vue, est que cette architecture délimite plus clairement les fonctionnalités de chaque élément de l&#x27;architecture MVC. Le modèle M est clairement identifié par une classe. Par ailleurs, le modèle peut pré-exister aux actions. Ainsi, si une application web gère une base de personnes, il est probable que la classe <em>Personne</em> existe. Si une action propose un formulaire de saisie pour créer une nouvelle personne, le modèle de cette action est tout trouvé : c&#x27;est la classe <em>Personne</em>.</span></p>
 <p><span style="color: #000000">Nous avons vu comme il a été simple de passer de l&#x27;action [Form] à l&#x27;action [Form2] :</span></p>
 <ul>
-<li>le modèle <strong>M</strong> de la vue <strong>V</strong> a été encapsulé dans une classe à part</li>
-<li>l&#x27;action qui génère la vue utilisant ce modèle implémente l&#x27;interface <strong>ModelDriven</strong> avec la méthode <strong>getModel</strong> qui rend une instance du modèle <strong>M</strong>. L&#x27;action peut être alors vue comme une extension du contrôleur <strong>C</strong> de Struts 2, la classe <strong>FilterDispatcher</strong>.</li>
+  <li>le modèle <b>M</b> de la vue <b>V</b> a été encapsulé dans une classe à part
+  </li>
+  <li>l&#x27;action qui génère la vue utilisant ce modèle implémente l&#x27;interface <b>ModelDriven</b> avec la méthode <b>getModel</b> qui rend une instance du modèle <b>M</b>. L&#x27;action peut être alors vue comme une extension du contrôleur <b>C</b> de Struts 2, la classe <b>FilterDispatcher</b>.
+  </li>
 </ul>
+
 <p>Le lecteur pourra appliquer cette démarche à toute action décrite par la suite.</p>
 
 
