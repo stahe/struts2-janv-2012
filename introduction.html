@@ -141,9 +141,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode sombre"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Passer au mode sombre" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -151,9 +151,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode clair"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Passer au mode clair" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -1025,7 +1025,7 @@
 <p><a id="refheading99511454977699"></a></p>
 <h2 id="11-la-place-de-struts-2-dans-une-application-web">1.1. La place de Struts 2 dans une application web</h2>
 <p>Tout d&#x27;abord, situons Struts 2 dans le développement d&#x27;une application web. Le plus souvent, celle-ci sera bâtie sur une architectures multi-couches telle que la suivante :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005120000010F52DA01EA.png" style="display:inline-block; margin:4px;width:17.171cm;height:3.586cm;" class="odt-zoomable" data-zoom-src="images/10000000000005120000010F52DA01EA.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005120000010F52DA01EA.png" width="649" height="136" style="display:inline-block; margin:4px;width:17.171cm;height:3.586cm;" class="odt-zoomable" data-zoom-src="images/10000000000005120000010F52DA01EA.png" /></td></tr></table>
 
 <ul>
 <li>la couche [<strong>web</strong>] est la couche en contact avec l&#x27;utilisateur de l&#x27;application web. Celui-ci interagit avec l&#x27;application web au travers de pages web visualisées par un navigateur. <strong>C&#x27;est dans cette couche que se situe Struts 2 et uniquement dans cette couche</strong>.</li>
@@ -1034,16 +1034,16 @@
 <li>l&#x27;intégration des couches peut être réalisée par un conteneur Spring ou Ejb3 (Enterprise Java Bean).</li>
 </ul>
 <p>La plupart des exemples donnés dans la suite, n&#x27;utiliseront qu&#x27;une seule couche, la couche [web] :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001CB000000DC8F508E6B.png" style="display:inline-block; margin:4px;width:6.073cm;height:2.91cm;" class="odt-zoomable" data-zoom-src="images/10000000000001CB000000DC8F508E6B.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000001CB000000DC8F508E6B.png" width="230" height="110" style="display:inline-block; margin:4px;width:6.073cm;height:2.91cm;" class="odt-zoomable" data-zoom-src="images/10000000000001CB000000DC8F508E6B.png" /></td></tr></table>
 
 <p>Ce document se terminera cependant par la construction d&#x27;une application web multicouches :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000050900000109E756FF33.png" style="display:inline-block; margin:4px;width:17.053cm;height:3.507cm;" class="odt-zoomable" data-zoom-src="images/100000000000050900000109E756FF33.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000050900000109E756FF33.png" width="645" height="133" style="display:inline-block; margin:4px;width:17.053cm;height:3.507cm;" class="odt-zoomable" data-zoom-src="images/100000000000050900000109E756FF33.png" /></td></tr></table>
 
 <p>L&#x27;ensemble des couches [metier], [dao], [jpa/hibernate] nous sera fourni sous la forme d&#x27;une archive jar afin que de nouveau, nous n&#x27;ayons que la couche [web] à construire.</p>
 <p><a id="refheading99531454977699"></a></p>
 <h2 id="12-le-modele-de-developpement-mvc-de-struts-2">1.2. Le modèle de développement MVC de Struts 2</h2>
 <p>Struts 2 implémente le modèle d&#x27;architecture dit MVC (Modèle – Vue – Contrôleur) de la façon suivante :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000046D0000016F5978A320.png" style="display:inline-block; margin:4px;width:14.99cm;height:4.856cm;" class="odt-zoomable" data-zoom-src="images/100000000000046D0000016F5978A320.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000046D0000016F5978A320.png" width="567" height="184" style="display:inline-block; margin:4px;width:14.99cm;height:4.856cm;" class="odt-zoomable" data-zoom-src="images/100000000000046D0000016F5978A320.png" /></td></tr></table>
 
 <p>Le traitement d&#x27;une demande d&#x27;un client se déroule de la façon suivante :</p>
 <p>Les URL demandées sont de la forme <em>http://machine:port/contexte/rep1/rep2/.../Action.</em> Le chemin [<em>/rep1/rep2/.../Action</em>] doit correspondre à une action définie dans un fichier de configuration de Struts 2, sinon elle est refusée. Une action est définie dans un fichier Xml sous la forme suivante :</p>
@@ -1102,15 +1102,15 @@
 </ol>
 
 <p>Maintenant, précisons le lien entre architecture web MVC et architecture en couches. En fait, ce sont deux concepts différents qui sont parfois confondus. Prenons une application web Struts 2 à une couche :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003E70000016B4696B1A1.png" style="display:inline-block; margin:4px;width:13.217cm;height:4.803cm;" class="odt-zoomable" data-zoom-src="images/10000000000003E70000016B4696B1A1.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000003E70000016B4696B1A1.png" width="500" height="182" style="display:inline-block; margin:4px;width:13.217cm;height:4.803cm;" class="odt-zoomable" data-zoom-src="images/10000000000003E70000016B4696B1A1.png" /></td></tr></table>
 
 <p>Si nous implémentons la couche [web] avec Struts 2, nous aurons bien une architecture web MVC mais pas une architecture multi-couches. Ici, la couche [web] s&#x27;occupera de tout : présentation, métier, accès aux données. Avec Struts 2, ce sont les classes de type [Action] qui feront ce travail.</p>
 <p>Maintenant, considérons une architecture web multi-couches :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000048C0000010A4681095B.png" style="display:inline-block; margin:4px;width:15.399cm;height:3.519cm;" class="odt-zoomable" data-zoom-src="images/100000000000048C0000010A4681095B.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000048C0000010A4681095B.png" width="582" height="133" style="display:inline-block; margin:4px;width:15.399cm;height:3.519cm;" class="odt-zoomable" data-zoom-src="images/100000000000048C0000010A4681095B.png" /></td></tr></table>
 
 <p>La couche [web] peut être implémentée sans framework et sans suivre le modèle MVC. On a bien alors une architecture multi-couches mais la couche web n&#x27;implémente pas le modèle MVC.</p>
 <p>Dans MVC, nous avons dit que le modèle M était celui de la vue V, c.a.d. l&#x27;ensemble des données affichées par la vue V. Parfois (souvent), une autre définition du modèle M de MVC est donnée :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004C700000109249566B9.png" style="display:inline-block; margin:4px;width:16.18cm;height:3.507cm;" class="odt-zoomable" data-zoom-src="images/10000000000004C700000109249566B9.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004C700000109249566B9.png" width="612" height="133" style="display:inline-block; margin:4px;width:16.18cm;height:3.507cm;" class="odt-zoomable" data-zoom-src="images/10000000000004C700000109249566B9.png" /></td></tr></table>
 
 <p>Beaucoup d&#x27;auteurs considèrent que ce qui est à droite de la couche [web] forme le modèle M du MVC. Pour éviter les ambigüités on peut parler :</p>
 <ul>
@@ -1137,18 +1137,18 @@
 <p><a id="refheading99571454977699"></a></p>
 <h3 id="131-ide-netbeans">1.3.1. IDE Netbeans</h3>
 <p>Sur le site de téléchargement de Netbeans, nous choisissons la version Java EE :</p>
-<p><img src="images/100000000000037E00000173C0A73F40.png" style="width:16.559cm;height:6.87cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000037E00000173C0A73F40.png" /></p>
+<p><img src="images/100000000000037E00000173C0A73F40.png" width="626" height="260" style="width:16.559cm;height:6.87cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000037E00000173C0A73F40.png" /></p>
 <p><a id="refheading99591454977699"></a></p>
 <h3 id="132-plugin-struts-2">1.3.2. Plugin Struts 2</h3>
 <p>Selon les versions de Netbeans, ce plugin n&#x27;a pas toujours été disponible. En décembre 2011, on le trouve à l&#x27;URL [<a href="http://plugins.netbeans.org/plugin/39218">http://plugins.netbeans.org</a>]. Cette URL permet de connaître les différents plugins disponibles pour Netbeans. On peut filtrer ce que l&#x27;on cherche. En [1], on demande les plugins qui contiennent le mot &quot; struts &quot; dans leur nom.</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000042C000001632EB5D944.png" style="display:inline-block; margin:4px;width:14.129cm;height:4.697cm;" class="odt-zoomable" data-zoom-src="images/100000000000042C000001632EB5D944.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000042C000001632EB5D944.png" width="534" height="178" style="display:inline-block; margin:4px;width:14.129cm;height:4.697cm;" class="odt-zoomable" data-zoom-src="images/100000000000042C000001632EB5D944.png" /></td></tr></table>
 
 <ul>
   <li>on suit le lien [2]
   </li>
 </ul>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000520000003DEAEE6F124.png" style="display:inline-block; margin:4px;width:17.357cm;height:13.097cm;" class="odt-zoomable" data-zoom-src="images/1000000000000520000003DEAEE6F124.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000520000003DEAEE6F124.png" width="656" height="495" style="display:inline-block; margin:4px;width:17.357cm;height:13.097cm;" class="odt-zoomable" data-zoom-src="images/1000000000000520000003DEAEE6F124.png" /></td></tr></table>
 
 <p>On télécharge le plugin et on le dézippe [2]. Pour l&#x27;intégrer à Netbeans, on pourra procéder comme suit :</p>
 <ul>
@@ -1156,7 +1156,7 @@
   </li>
 </ul>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000051E000001D69B7E53DF.png" style="display:inline-block; margin:4px;width:17.33cm;height:6.218cm;" class="odt-zoomable" data-zoom-src="images/100000000000051E000001D69B7E53DF.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000051E000001D69B7E53DF.png" width="655" height="235" style="display:inline-block; margin:4px;width:17.33cm;height:6.218cm;" class="odt-zoomable" data-zoom-src="images/100000000000051E000001D69B7E53DF.png" /></td></tr></table>
 
 <ul>
   <li>en [1], choisir le menu Tools/Plugins
@@ -1173,7 +1173,7 @@
 <p><a id="refheading99611454977699"></a></p>
 <h3 id="133-les-bibliotheques-struts-2">1.3.3. Les bibliothèques Struts 2</h3>
 <p>Si on a téléchargé le plugin Struts 2 pour Netbeans, on dispose des principales bibliothèques de Struts mais pas toutes. Dans la suite, nous aurons besoin de certaines bibliothèques disponibles sur le site de Struts 2 [<a href="http://struts.apache.org/">http://struts.apache.org/</a>].</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000538000002CF9F9ED3C6.png" style="display:inline-block; margin:4px;width:17.674cm;height:9.513cm;" class="odt-zoomable" data-zoom-src="images/1000000000000538000002CF9F9ED3C6.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000538000002CF9F9ED3C6.png" width="668" height="360" style="display:inline-block; margin:4px;width:17.674cm;height:9.513cm;" class="odt-zoomable" data-zoom-src="images/1000000000000538000002CF9F9ED3C6.png" /></td></tr></table>
 
 <p>Nous suivons le lien [1] puis le lien [2] pour télécharger le fichier zip de la distribution 2.2.3.1. Une fois la distribution dézippée, les bibliothèques nécessaires à Struts sont trouvées dans le dossier [lib] [3] de la distribution. On en trouve plusieurs dizaines et se pose alors la question de savoir lesquelles sont indispensables. C&#x27;est là que le plugin de Struts nous aidera.</p>
 
@@ -1211,13 +1211,14 @@
     <div class="md-footer-meta__inner">
 
       <div>
-        <a href="https://tahe.developpez.com" target="_blank">
-          https://tahe.developpez.com
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
         </a>
         <br>
-        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
-        <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
-        Partage dans les Mêmes Conditions 3.0 non transposé</em>.
+        Ce cours-tutoriel rédigé par <strong>Serge Tahé</strong> est mis à la disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d'utilisation commerciale –
+        Partage dans les mêmes conditions 3.0 non modifiée</em>.
+
       </div>
 
     </div>

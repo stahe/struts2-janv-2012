@@ -139,9 +139,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode sombre"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Passer au mode sombre" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -149,9 +149,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode clair"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Passer au mode clair" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -894,7 +894,7 @@
 <p>&quot; <strong>Struts 2 in Action</strong> &quot; écrit par Donald Brown - Chad Michael Davis – Scott Stanlick aux éditions Manning.</p>
 <p>Je voudrais terminer en présentant des problèmes que j&#x27;ai rencontrés lors de l&#x27;écriture des exemples de ce document. J&#x27;ai déjà signalé des comportements inattendus de Struts 2, notamment lors des saisies de nombres et de dates. Voici quelques autres problèmes rencontrés :</p>
 <p>Déchargeons l&#x27;application [pam-01] du serveur Tomcat :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000010E00000110D67F5588.png" style="display:inline-block; margin:4px;width:5.001cm;height:5.039cm;" class="odt-zoomable" data-zoom-src="images/100000000000010E00000110D67F5588.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000010E00000110D67F5588.png" width="189" height="190" style="display:inline-block; margin:4px;width:5.001cm;height:5.039cm;" class="odt-zoomable" data-zoom-src="images/100000000000010E00000110D67F5588.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;">&nbsp;</td></tr></table>
 
 <p>La console d&#x27;Apache affiche alors les logs suivants :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -954,12 +954,12 @@
 <p>Lignes 12, 14, 16, des erreurs graves sont signalées. Deux d&#x27;entre elles signalent une possibilité de fuite mémoire. Effectivement, l&#x27;application [pam-02] présente des fuites mémoire. Au bout d&#x27;un moment, l&#x27;application n&#x27;est plus utilisable. Il faut alors fermer Netbeans et redéployer l&#x27;application.</p>
 <p>Les erreurs se réfèrent toutes à des threads. L&#x27;application [pam-02] n&#x27;en utilise pas par elle-même. Il faut donc soupçonner les frameworks utilisés Struts 2, Spring 2.5, Tiles. On peut raisonnablement exclure Tiles qui probablement ne gère pas de threads. Restent Struts et Spring.</p>
 <p>On fait alors une autre expérience :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004F00000010B41EFCBAD.png" style="display:inline-block; margin:4px;width:16.722cm;height:3.533cm;" class="odt-zoomable" data-zoom-src="images/10000000000004F00000010B41EFCBAD.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004F00000010B41EFCBAD.png" width="632" height="134" style="display:inline-block; margin:4px;width:16.722cm;height:3.533cm;" class="odt-zoomable" data-zoom-src="images/10000000000004F00000010B41EFCBAD.png" /></td></tr></table>
 
 <p>On implémente la couche [web] avec le framework JSF au lieu de Struts 2. Rien d&#x27;autre ne change. On a alors les mêmes messages d&#x27;erreur qu&#x27;avec Struts 2.</p>
 <p>Donc le fautif semble être Spring, le pool de connexions <strong>dbcp</strong> utilisé ici par Spring, ou bien moi-même si je n&#x27;ai pas utilisé Spring à bon escient. J&#x27;ai pu oublier une configuration de Spring qui permettrait de nettoyer les threads créés, j&#x27;ai pu ... La solution à ce problème de fuite mémoire reste donc à trouver.</p>
 <p>Autre expérience. L&#x27;IDE Netbeans s&#x27;installe avec les serveurs Tomcat et Glassfish. Essayons d&#x27;exécuter sur Glassfish une application créée dans ce document :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004F50000037B1D85EE4A.png" style="display:inline-block; margin:4px;width:16.789cm;height:11.788cm;" class="odt-zoomable" data-zoom-src="images/10000000000004F50000037B1D85EE4A.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000004F50000037B1D85EE4A.png" width="635" height="446" style="display:inline-block; margin:4px;width:16.789cm;height:11.788cm;" class="odt-zoomable" data-zoom-src="images/10000000000004F50000037B1D85EE4A.png" /></td></tr></table>
 
 <ul>
   <li>en [2] les propriétés du projet [exemple-08] [1]
@@ -969,7 +969,7 @@
 </ul>
 
 <p>Voici la page récupérée dans le navigateur :</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000034200000210318DF67E.png" style="display:inline-block; margin:4px;width:11.033cm;height:6.985cm;" class="odt-zoomable" data-zoom-src="images/100000000000034200000210318DF67E.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000034200000210318DF67E.png" width="417" height="264" style="display:inline-block; margin:4px;width:11.033cm;height:6.985cm;" class="odt-zoomable" data-zoom-src="images/100000000000034200000210318DF67E.png" /></td></tr></table>
 
 <p>La portabilité attendue n&#x27;est pas au rendez-vous. Il y a ici deux erreurs :</p>
 <ul>
@@ -1015,13 +1015,14 @@
     <div class="md-footer-meta__inner">
 
       <div>
-        <a href="https://tahe.developpez.com" target="_blank">
-          https://tahe.developpez.com
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
         </a>
         <br>
-        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
-        <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
-        Partage dans les Mêmes Conditions 3.0 non transposé</em>.
+        Ce cours-tutoriel rédigé par <strong>Serge Tahé</strong> est mis à la disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d'utilisation commerciale –
+        Partage dans les mêmes conditions 3.0 non modifiée</em>.
+
       </div>
 
     </div>
